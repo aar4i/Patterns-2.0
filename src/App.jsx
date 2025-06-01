@@ -9,7 +9,7 @@ import Contact from './components/Contact'
 
 function App() {
   const [currentLanguage, setCurrentLanguage] = useState('en')
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState('light')
   const t = translations[currentLanguage]
 
   // Apply theme to document

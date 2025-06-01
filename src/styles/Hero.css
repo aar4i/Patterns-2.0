@@ -1,191 +1,172 @@
-/* Hero Section - Rigas Furniture Flat Design Style */
+/* Hero Section - Bold Brand Design */
 .hero {
   min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--bg-primary);
+  text-align: center;
   padding: 120px 0 80px;
   position: relative;
   overflow: hidden;
 }
 
-/* Background Pattern */
 .hero::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(45deg, var(--border-light) 1px, transparent 1px),
-    linear-gradient(-45deg, var(--border-light) 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.1;
-  z-index: 1;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23161616" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
 }
 
-.hero-container {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 800px;
+[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.hero-content {
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 2;
 }
 
-/* Hero Content */
 .hero-title {
   font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 700;
+  font-weight: 900;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
-  line-height: 1.1;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
-  letter-spacing: 2px;
+}
+
+.hero-title .accent {
+  color: var(--accent-primary);
+  display: block;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 800;
+  margin-top: 0.5rem;
 }
 
 .hero-subtitle {
   font-size: clamp(1.2rem, 3vw, 1.8rem);
   color: var(--text-secondary);
-  margin-bottom: 2rem;
-  line-height: 1.4;
-  font-weight: 400;
-}
-
-.hero-description {
-  font-size: 1.2rem;
-  color: var(--text-muted);
+  font-weight: 500;
   margin-bottom: 3rem;
-  line-height: 1.6;
-  max-width: 600px;
+  line-height: 1.4;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Hero Actions */
-.hero-actions {
+.hero-cta {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
 }
 
-.hero-cta {
-  background-color: var(--accent-primary);
-  color: white;
+.hero-btn {
   padding: 20px 40px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: var(--border-radius-md);
   transition: var(--transition);
-  border: none;
-  cursor: pointer;
-  min-height: 60px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  min-width: 200px;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-cta:hover {
-  background-color: var(--accent-secondary);
-  transform: translateY(-2px);
+.hero-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.hero-btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary.hero-btn {
+  background: linear-gradient(45deg, var(--accent-primary), var(--accent-light));
+  border: none;
+  color: var(--text-inverse);
+  box-shadow: 0 4px 15px rgba(166, 38, 57, 0.3);
+}
+
+.btn-primary.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(166, 38, 57, 0.4);
+}
+
+.btn-outline.hero-btn {
+  background: transparent;
+  color: var(--accent-primary);
+  border: 3px solid var(--accent-primary);
+}
+
+.btn-outline.hero-btn:hover {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-medium);
 }
 
-/* Hero Stats */
-.hero-stats {
+/* Service Preview Cards */
+.hero-services {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   margin-top: 4rem;
-  padding: 2rem 0;
-  border-top: 1px solid var(--border-light);
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--accent-primary);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.stat-label {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 500;
-}
-
-/* Scroll Indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.scroll-arrow {
-  width: 2px;
-  height: 30px;
-  background-color: var(--text-muted);
-  margin-top: 1rem;
-  position: relative;
-}
-
-.scroll-arrow::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
-  border-right: 2px solid var(--text-muted);
-  border-bottom: 2px solid var(--text-muted);
-  transform: translateX(-50%) rotate(45deg);
-}
-
-/* Featured Services Preview */
-.hero-services-preview {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-top: 4rem;
-  padding: 3rem 0;
-  border-top: 1px solid var(--border-light);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .service-preview {
-  background-color: var(--bg-secondary);
-  padding: 2rem 1.5rem;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-light);
   border-radius: var(--border-radius-md);
+  padding: 2rem 1.5rem;
   text-align: center;
   transition: var(--transition);
-  border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent-primary);
+  transform: scaleX(0);
+  transition: var(--transition);
 }
 
 .service-preview:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-medium);
+  transform: translateY(-5px);
   border-color: var(--accent-primary);
+  box-shadow: var(--shadow-dark);
+}
+
+.service-preview:hover::before {
+  transform: scaleX(1);
 }
 
 .service-icon {
@@ -195,10 +176,12 @@
 }
 
 .service-preview h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
-  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .service-preview p {
@@ -208,100 +191,145 @@
   margin: 0;
 }
 
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-muted);
+  animation: bounce 2s infinite;
+  cursor: pointer;
+}
+
+.scroll-indicator span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.scroll-arrow {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--accent-primary);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+/* Geometric Background Elements */
+.hero-bg-element {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+.hero-bg-element.circle {
+  width: 300px;
+  height: 300px;
+  border: 3px solid var(--accent-primary);
+  border-radius: 50%;
+  top: 10%;
+  right: -150px;
+  animation: rotate 20s linear infinite;
+}
+
+.hero-bg-element.square {
+  width: 200px;
+  height: 200px;
+  border: 3px solid var(--accent-primary);
+  bottom: 10%;
+  left: -100px;
+  transform: rotate(45deg);
+  animation: rotate 15s linear infinite reverse;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero {
     padding: 100px 0 60px;
-    min-height: 80vh;
+    min-height: 90vh;
   }
-  
-  .hero-container {
+
+  .hero-content {
     padding: 0 16px;
   }
-  
-  .hero-title {
-    margin-bottom: 1rem;
-  }
-  
-  .hero-subtitle {
-    margin-bottom: 1.5rem;
-  }
-  
-  .hero-description {
-    margin-bottom: 2rem;
-  }
-  
+
   .hero-cta {
-    padding: 16px 32px;
-    font-size: 1.1rem;
-    min-height: 56px;
+    flex-direction: column;
+    gap: 1.5rem;
   }
-  
-  .hero-stats {
+
+  .hero-btn {
+    min-width: 250px;
+    padding: 18px 32px;
+  }
+
+  .hero-services {
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     margin-top: 3rem;
-    padding: 1.5rem 0;
   }
-  
-  .stat-number {
-    font-size: 2rem;
-  }
-  
-  .hero-services-preview {
-    gap: 1rem;
-    margin-top: 3rem;
-    padding: 2rem 0;
-  }
-  
+
   .service-preview {
-    padding: 1.5rem 1rem;
+    padding: 1.5rem;
   }
-  
-  .service-icon {
-    font-size: 2.5rem;
+
+  .scroll-indicator {
+    bottom: 30px;
   }
 }
 
 @media (max-width: 480px) {
   .hero {
-    padding: 80px 0 40px;
+    padding: 90px 0 50px;
   }
-  
-  .hero-container {
+
+  .hero-content {
     padding: 0 12px;
   }
-  
-  .hero-actions {
-    gap: 1.5rem;
+
+  .hero-subtitle {
+    margin-bottom: 2.5rem;
   }
-  
-  .hero-cta {
-    padding: 14px 28px;
+
+  .hero-btn {
+    min-width: 100%;
+    padding: 16px 24px;
     font-size: 1rem;
-    min-height: 52px;
   }
-  
-  .hero-stats {
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 2rem;
+
+  .service-preview {
+    padding: 1.25rem;
   }
-  
-  .stat-number {
-    font-size: 1.8rem;
-  }
-  
-  .stat-label {
-    font-size: 0.8rem;
-  }
-  
-  .hero-services-preview {
-    grid-template-columns: 1fr;
-    margin-top: 2rem;
-  }
-  
-  .scroll-indicator {
-    bottom: 1rem;
-    font-size: 0.8rem;
+
+  .service-icon {
+    font-size: 2.5rem;
   }
 } 

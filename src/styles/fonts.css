@@ -1,7 +1,48 @@
-/* Modern Font Stack for Flat Design */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* ApfelGrotezk Local Font Configuration */
+@font-face {
+  font-family: 'ApfelGrotezk';
+  src: url('/fonts/ApfelGrotezk-Regular.woff2') format('woff2'),
+       url('/fonts/ApfelGrotezk-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ApfelGrotezk';
+  src: url('/fonts/ApfelGrotezk-Fett.woff2') format('woff2'),
+       url('/fonts/ApfelGrotezk-Fett.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ApfelGrotezk';
+  src: url('/fonts/ApfelGrotezk-Brukt.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  --font-fallback: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-primary: 'ApfelGrotezk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-fallback: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Применяем шрифт ко всему проекту */
+* {
+  font-family: var(--font-primary);
+}
+
+body {
+  font-family: var(--font-primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+}
+
+p, span, div, a, button, input, textarea {
+  font-family: var(--font-primary);
 } 
