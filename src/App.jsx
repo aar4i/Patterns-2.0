@@ -1,120 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
-
-const translations = {
-  en: {
-    nav: {
-      home: 'Home',
-      services: 'Services',
-      gallery: 'Gallery',
-      contact: 'Contact'
-    },
-    hero: {
-      title: 'FUTURE',
-      subtitle: 'TEXTILE',
-      description: 'Revolutionary clothing manufacturing that breaks boundaries between art, technology and fashion',
-      cta: 'START PROJECT'
-    },
-    services: {
-      title: 'SERVICES',
-      subtitle: 'BEYOND CONVENTIONAL',
-      items: [
-        {
-          title: 'CUSTOM DESIGN',
-          description: 'Deconstructed fashion that challenges traditional patterns'
-        },
-        {
-          title: 'MASS PRODUCTION',
-          description: 'Industrial scale manufacturing with artistic precision'
-        },
-        {
-          title: 'SUSTAINABLE TECH',
-          description: 'Eco-conscious processes meets postmodern aesthetics'
-        },
-        {
-          title: 'DIGITAL PATTERNS',
-          description: 'AI-generated designs for the new millennium'
-        }
-      ]
-    },
-    gallery: {
-      title: 'VISUAL',
-      subtitle: 'MANIFESTOS'
-    },
-    contact: {
-      title: 'CONNECT',
-      subtitle: 'COLLABORATE',
-      form: {
-        name: 'Your Name',
-        email: 'Email Address',
-        phone: 'Phone Number',
-        message: 'Describe your vision...',
-        submit: 'SEND MESSAGE'
-      },
-      info: {
-        email: 'hello@patterns-manufacturing.com',
-        phone: '+49 (0) 30 123 456 789',
-        address: 'Berlin, Germany'
-      }
-    }
-  },
-  de: {
-    nav: {
-      home: 'Start',
-      services: 'Leistungen',
-      gallery: 'Galerie',
-      contact: 'Kontakt'
-    },
-    hero: {
-      title: 'ZUKUNFT',
-      subtitle: 'TEXTIL',
-      description: 'Revolutionäre Bekleidungsherstellung, die Grenzen zwischen Kunst, Technologie und Mode aufbricht',
-      cta: 'PROJEKT STARTEN'
-    },
-    services: {
-      title: 'LEISTUNGEN',
-      subtitle: 'JENSEITS DER KONVENTION',
-      items: [
-        {
-          title: 'CUSTOM DESIGN',
-          description: 'Dekonstruierte Mode, die traditionelle Muster herausfordert'
-        },
-        {
-          title: 'MASSENPRODUKTION',
-          description: 'Industrielle Fertigung mit künstlerischer Präzision'
-        },
-        {
-          title: 'NACHHALTIGE TECH',
-          description: 'Umweltbewusste Prozesse treffen postmoderne Ästhetik'
-        },
-        {
-          title: 'DIGITALE MUSTER',
-          description: 'KI-generierte Designs für das neue Jahrtausend'
-        }
-      ]
-    },
-    gallery: {
-      title: 'VISUELLE',
-      subtitle: 'MANIFESTE'
-    },
-    contact: {
-      title: 'VERBINDEN',
-      subtitle: 'KOLLABORIEREN',
-      form: {
-        name: 'Ihr Name',
-        email: 'E-Mail-Adresse',
-        phone: 'Telefonnummer',
-        message: 'Beschreiben Sie Ihre Vision...',
-        submit: 'NACHRICHT SENDEN'
-      },
-      info: {
-        email: 'hello@patterns-manufacturing.com',
-        phone: '+49 (0) 30 123 456 789',
-        address: 'Berlin, Deutschland'
-      }
-    }
-  }
-}
+import { translations } from './translations'
 
 function App() {
   const [currentLanguage, setCurrentLanguage] = useState('en')
@@ -148,7 +34,6 @@ function App() {
 
       {/* Hero Section */}
       <section id="hero" className="hero">
-        <div className="hero-bg"></div>
         <div className="hero-content">
           <h1 className="hero-title">
             <span className="title-part">{t.hero.title}</span>
@@ -156,11 +41,6 @@ function App() {
           </h1>
           <p className="hero-description">{t.hero.description}</p>
           <button className="cta-button">{t.hero.cta}</button>
-        </div>
-        <div className="hero-shapes">
-          <div className="shape shape-1"></div>
-          <div className="shape shape-2"></div>
-          <div className="shape shape-3"></div>
         </div>
       </section>
 
@@ -176,7 +56,6 @@ function App() {
               <div key={index} className={`service-card card-${index + 1}`}>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
-                <div className="card-decoration"></div>
               </div>
             ))}
           </div>
@@ -223,32 +102,37 @@ function App() {
           <div className="contact-content">
             <div className="contact-form">
               <form>
-                <input type="text" placeholder={t.contact.form.name} />
-                <input type="email" placeholder={t.contact.form.email} />
-                <input type="tel" placeholder={t.contact.form.phone} />
-                <textarea placeholder={t.contact.form.message}></textarea>
+                <div className="form-field">
+                  <label className="field-label">{t.contact.form.name}</label>
+                  <input type="text" />
+                </div>
+                <div className="form-field">
+                  <label className="field-label">{t.contact.form.email}</label>
+                  <input type="email" />
+                </div>
+                <div className="form-field">
+                  <label className="field-label">{t.contact.form.phone}</label>
+                  <input type="tel" />
+                </div>
+                <div className="form-field">
+                  <label className="field-label message-label">{t.contact.form.message.split('\n')[0]}</label>
+                  <textarea rows="6">{t.contact.form.message.split('\n').slice(1).join('\n')}</textarea>
+                </div>
                 <button type="submit">{t.contact.form.submit}</button>
               </form>
             </div>
-            <div className="contact-info">
-              <div className="info-item">
-                <span className="label">EMAIL</span>
-                <span className="value">{t.contact.info.email}</span>
+            <div className="contact-alternative">
+              <div className="contact-or">{t.contact.alternative.or}</div>
+              <div className="contact-us-title">{t.contact.alternative.contactUs}</div>
+              <div className="contact-email">{t.contact.alternative.email}</div>
+              <div className="social-links">
+                <a href="#">{t.contact.social.ig}</a>
+                <a href="#">{t.contact.social.whatsapp}</a>
+                <a href="#">{t.contact.social.fb}</a>
               </div>
-              <div className="info-item">
-                <span className="label">PHONE</span>
-                <span className="value">{t.contact.info.phone}</span>
-              </div>
-              <div className="info-item">
-                <span className="label">LOCATION</span>
-                <span className="value">{t.contact.info.address}</span>
-              </div>
+              <div className="copyright">{t.contact.copyright}</div>
             </div>
           </div>
-        </div>
-        <div className="contact-shapes">
-          <div className="contact-shape shape-1"></div>
-          <div className="contact-shape shape-2"></div>
         </div>
       </section>
     </div>
