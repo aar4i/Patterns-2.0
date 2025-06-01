@@ -1,57 +1,36 @@
 @import './fonts.css';
 
-/* New Brand Color Scheme - Consistent Theme System */
+/* Гротескная красно-черно-белая цветовая схема */
 :root {
-  /* Light Theme - New Brand Colors */
-  --bg-primary: #eee8e7;
-  --bg-secondary: #d9d1d0;
-  --bg-tertiary: #c4bbba;
-  --bg-accent: #161616;
-  --text-primary: #161616;
-  --text-secondary: #444444;
-  --text-muted: #666666;
-  --text-inverse: #eee8e7;
-  --accent-primary: #a62639;
-  --accent-secondary: #8a1e2f;
-  --accent-light: #d63851;
-  --accent-success: #28A745;
-  --accent-warning: #FFC107;
-  --accent-danger: #DC3545;
-  --border-color: #161616;
-  --border-light: #c4bbba;
-  --shadow-light: 0 2px 8px rgba(22, 22, 22, 0.1);
-  --shadow-medium: 0 4px 16px rgba(22, 22, 22, 0.15);
-  --shadow-dark: 0 8px 32px rgba(22, 22, 22, 0.2);
+  /* Основная палитра */
+  --bg-primary: #161616;        /* Новый Черный фон */
+  --bg-secondary: #a62639;      /* Красный акцент (уже был) */
+  --bg-tertiary: #1a1a1a;      /* Темно-серый (можно оставить или подобрать новый на основе #161616) */
+  --bg-accent: #eee8e7;         /* Новый Белый контраст */
+  
+  --text-primary: #eee8e7;      /* Новый Белый текст (для черного фона) */
+  --text-secondary: #eee8e7;    /* Новый Белый текст на красном */
+  --text-muted: #cccccc;        /* Светло-серый (можно будет подобрать новый на основе #eee8e7) */
+  --text-inverse: #161616;      /* Новый Черный текст на белом */
+  --text-red: #a62639;          /* Красный текст (теперь совпадает с bg-secondary) */
+  
+  --accent-primary: #a62639;    /* Красный акцент (теперь совпадает с bg-secondary) */
+  --accent-secondary: #8a1f2e;  /* Более темный красный (подберу на основе #a62639) */
+  --accent-light: #eee8e7;      /* Новый Белый */
+  
+  --border-color: #333333;    /* Можно будет подобрать новый */
+  --border-light: #444444;    /* Можно будет подобрать новый */
+  --shadow-light: 0 2px 8px rgba(166, 38, 57, 0.3); /* Обновлю цвет тени */
+  --shadow-medium: 0 4px 16px rgba(166, 38, 57, 0.4);
+  --shadow-dark: 0 8px 32px rgba(166, 38, 57, 0.5);
+  
   --border-radius: 0;
-  --border-radius-sm: 2px;
-  --border-radius-md: 4px;
-  --transition: all 0.3s ease;
+  --border-radius-sm: 0;
+  --border-radius-md: 0;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-[data-theme="dark"] {
-  /* Dark Theme - Inverted Brand Colors */
-  --bg-primary: #161616;
-  --bg-secondary: #2a2a2a;
-  --bg-tertiary: #3d3d3d;
-  --bg-accent: #eee8e7;
-  --text-primary: #eee8e7;
-  --text-secondary: #cccccc;
-  --text-muted: #999999;
-  --text-inverse: #161616;
-  --accent-primary: #a62639;
-  --accent-secondary: #d63851;
-  --accent-light: #ff4d6a;
-  --accent-success: #34D058;
-  --accent-warning: #FFAB00;
-  --accent-danger: #F85149;
-  --border-color: #a62639;
-  --border-light: #3d3d3d;
-  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.5);
-}
-
-/* Reset and Base Styles */
+/* Базовые стили */
 * {
   margin: 0;
   padding: 0;
@@ -61,7 +40,7 @@
 body {
   font-family: var(--font-primary);
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--text-primary);
   background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
@@ -75,7 +54,7 @@ body {
   transition: var(--transition);
 }
 
-/* Container System */
+/* Контейнер */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -88,68 +67,86 @@ body {
   }
 }
 
-/* Typography - Bold Modern Design */
+/* Гротескная типографика */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.1;
   color: var(--text-primary);
   margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: 2px;
 }
 
 h1 {
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 800;
-  color: var(--accent-primary);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 400;
+  color: var(--text-primary);
 }
 
 h2 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
 }
 
 h3 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
 }
 
 p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--text-primary);
   margin-bottom: 1rem;
+  font-weight: 400;
 }
 
-/* Buttons - Bold Brand Design */
+/* Контрастные блоки как на скриншотах */
+.contrast-block {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 0.1rem 0.3rem;
+  display: inline-block;
+  line-height: 1;
+}
+
+.contrast-block.white {
+  background-color: var(--bg-accent);
+  color: var(--text-inverse);
+}
+
+.contrast-block.black {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 2px solid var(--text-primary);
+}
+
+/* Минималистичные кнопки */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 18px 36px;
-  font-size: 1.1rem;
-  font-weight: 700;
+  padding: 16px 32px;
+  font-size: 1rem;
+  font-weight: 400;
   text-decoration: none;
   border: 2px solid transparent;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition);
   white-space: nowrap;
   min-height: 56px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .btn-primary {
   background-color: var(--accent-primary);
-  color: var(--text-inverse);
+  color: var(--text-secondary);
   border-color: var(--accent-primary);
 }
 
 .btn-primary:hover {
   background-color: var(--accent-secondary);
   border-color: var(--accent-secondary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
 }
 
 .btn-outline {
@@ -160,186 +157,154 @@ p {
 
 .btn-outline:hover {
   background-color: var(--accent-primary);
-  color: var(--text-inverse);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
+  color: var(--text-secondary);
 }
 
-.btn-dark {
+.btn-white {
   background-color: var(--bg-accent);
   color: var(--text-inverse);
   border-color: var(--bg-accent);
 }
 
-.btn-dark:hover {
+.btn-white:hover {
   background-color: var(--text-primary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
+  color: var(--bg-primary);
 }
 
-.btn-large {
-  padding: 24px 48px;
-  font-size: 1.2rem;
-  min-height: 64px;
-}
-
-/* Cards - Modern Bold Design */
+/* Минималистичные карточки */
 .card {
   background-color: var(--bg-secondary);
-  border: 2px solid var(--border-light);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
-  padding: 2.5rem;
+  padding: 2rem;
   transition: var(--transition);
-  position: relative;
-  overflow: hidden;
 }
 
 .card:hover {
-  box-shadow: var(--shadow-dark);
-  transform: translateY(-4px);
+  box-shadow: var(--shadow-light);
   border-color: var(--accent-primary);
 }
 
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-light));
-}
-
-/* Section Spacing */
+/* Секции */
 section {
-  padding: 100px 0;
+  padding: 5rem 0;
   position: relative;
 }
 
 .section-title {
-  text-align: center;
+  text-align: left;
   margin-bottom: 4rem;
 }
 
 .section-title h2 {
-  color: var(--text-primary);
+  font-weight: 400;
   margin-bottom: 1rem;
-  position: relative;
-}
-
-.section-title h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background-color: var(--accent-primary);
+  letter-spacing: 3px;
 }
 
 .section-title .subtitle {
-  display: block;
-  font-size: 1.3rem;
-  color: var(--text-secondary);
-  font-weight: 500;
-  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
-/* Grid System */
+/* Сетка */
 .grid {
   display: grid;
-  gap: 2.5rem;
+  gap: 0;
 }
 
 .grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-}
-
-.grid-3 {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.grid-4 {
+.grid-3 {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* Accent Elements */
-.accent-red {
+.grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Утилиты */
+.text-red {
   color: var(--accent-primary);
 }
 
-.bg-accent {
-  background-color: var(--accent-primary);
-  color: var(--text-inverse);
+.bg-red {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
 }
 
-.bg-dark {
+.bg-black {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.bg-white {
   background-color: var(--bg-accent);
   color: var(--text-inverse);
 }
 
-.border-accent {
-  border-color: var(--accent-primary);
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
+/* Гротескные анимации */
+@keyframes glitch {
+  0%, 90%, 100% { 
+    transform: translate(0);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  10% { 
+    transform: translate(-2px, 2px);
+  }
+  20% { 
+    transform: translate(2px, -2px);
+  }
+  30% { 
+    transform: translate(-2px, -2px);
+  }
+  40% { 
+    transform: translate(2px, 2px);
+  }
+  50% { 
+    transform: translate(-2px, 2px);
+  }
+  60% { 
+    transform: translate(2px, -2px);
+  }
+  70% { 
+    transform: translate(-2px, -2px);
+  }
+  80% { 
+    transform: translate(2px, 2px);
   }
 }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.glitch:hover {
+  animation: glitch 0.3s ease-in-out;
 }
 
-.fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.slide-in-left {
-  animation: slideInLeft 0.8s ease-out forwards;
-}
-
-/* Responsive Design */
+/* Адаптивность */
 @media (max-width: 768px) {
   section {
-    padding: 80px 0;
+    padding: 3rem 0;
   }
-  
+
   .btn {
-    padding: 16px 28px;
-    font-size: 1rem;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    min-height: 48px;
   }
-  
-  .btn-large {
-    padding: 20px 36px;
-    font-size: 1.1rem;
+
+  .contrast-block {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
   }
-  
-  .card {
-    padding: 2rem;
-  }
-  
-  .grid {
-    gap: 2rem;
-  }
-  
+
   .section-title {
     margin-bottom: 3rem;
+  }
+
+  .grid {
+    gap: 0;
   }
 }
 
@@ -347,15 +312,15 @@ section {
   .container {
     padding: 0 12px;
   }
-  
+
   section {
-    padding: 60px 0;
+    padding: 2rem 0;
   }
-  
+
   .section-title {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
-  
+
   .grid-2, .grid-3, .grid-4 {
     grid-template-columns: 1fr;
   }

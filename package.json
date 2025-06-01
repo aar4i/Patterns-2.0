@@ -4,7 +4,16 @@
   "description": "Patterns manufacturing - Premium textile and fabric manufacturing solutions. Quality patterns and innovative manufacturing processes.",
   "private": true,
   "type": "module",
-  "keywords": ["patterns", "manufacturing", "textile", "fabric", "quality", "production", "react", "vite"],
+  "keywords": [
+    "patterns",
+    "manufacturing",
+    "textile",
+    "fabric",
+    "quality",
+    "production",
+    "react",
+    "vite"
+  ],
   "author": "Patterns Manufacturing",
   "homepage": "https://patterns-manufacturing.com",
   "scripts": {
@@ -14,6 +23,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "framer-motion": "^12.15.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

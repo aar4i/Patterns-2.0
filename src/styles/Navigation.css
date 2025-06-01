@@ -1,4 +1,4 @@
-/* Navigation - Modern Brand Design */
+/* Минималистичная навигация */
 .navigation {
   position: fixed;
   top: 0;
@@ -6,53 +6,50 @@
   right: 0;
   z-index: 1000;
   background-color: var(--bg-primary);
-  border-bottom: 3px solid var(--accent-primary);
+  border-bottom: 1px solid var(--border-color);
   transition: var(--transition);
-  height: 80px;
-  backdrop-filter: blur(10px);
+  height: 60px;
 }
 
 .navigation.scrolled {
-  box-shadow: var(--shadow-dark);
-  background-color: rgba(238, 232, 231, 0.95);
+  box-shadow: var(--shadow-light);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 [data-theme="dark"] .navigation.scrolled {
-  background-color: rgba(22, 22, 22, 0.95);
+  background-color: rgba(0, 0, 0, 0.95);
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
-  max-width: 1200px;
+  height: 60px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Logo */
+/* Логотип */
 .logo {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--accent-primary);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--text-primary);
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   transition: var(--transition);
+  letter-spacing: 1px;
 }
 
 .logo:hover {
-  color: var(--accent-secondary);
-  transform: scale(1.05);
+  color: var(--accent-primary);
 }
 
-/* Navigation Menu */
+/* Меню навигации */
 .nav-menu {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 3rem;
+  gap: 2rem;
   margin: 0;
   padding: 0;
 }
@@ -62,109 +59,86 @@
 }
 
 .nav-link {
-  color: var(--text-primary);
+  color: var(--text-secondary);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 12px 0;
+  font-weight: 400;
+  font-size: 0.9rem;
+  padding: 8px 0;
   transition: var(--transition);
-  border-bottom: 3px solid transparent;
   position: relative;
-}
-
-.nav-link::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -8px;
-  width: 4px;
-  height: 0;
-  background-color: var(--accent-primary);
-  transition: var(--transition);
-  transform: translateY(-50%);
+  letter-spacing: 0.5px;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--accent-primary);
-  border-bottom-color: var(--accent-primary);
+  color: var(--text-primary);
 }
 
-.nav-link:hover::before,
-.nav-link.active::before {
-  height: 20px;
-}
-
-/* Controls */
+/* Элементы управления */
 .nav-controls {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .theme-toggle,
 .language-toggle {
-  background: var(--bg-accent);
-  border: 2px solid var(--bg-accent);
-  color: var(--text-inverse);
-  padding: 10px 15px;
-  border-radius: var(--border-radius-md);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 400;
   transition: var(--transition);
-  min-width: 45px;
-  height: 45px;
+  min-width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .theme-toggle:hover,
 .language-toggle:hover {
-  background-color: var(--accent-primary);
+  background-color: var(--bg-secondary);
   border-color: var(--accent-primary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
+  color: var(--text-primary);
 }
 
-/* Mobile Menu Toggle */
+/* Мобильное меню */
 .mobile-toggle {
   display: none;
   flex-direction: column;
-  background: var(--accent-primary);
-  border: 2px solid var(--accent-primary);
-  border-radius: var(--border-radius-md);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
   cursor: pointer;
-  padding: 10px;
-  width: 45px;
-  height: 45px;
+  padding: 8px;
+  width: 36px;
+  height: 36px;
   align-items: center;
   justify-content: center;
   transition: var(--transition);
 }
 
 .mobile-toggle:hover {
-  background-color: var(--accent-secondary);
-  border-color: var(--accent-secondary);
-  transform: translateY(-2px);
+  background-color: var(--bg-secondary);
+  border-color: var(--accent-primary);
 }
 
 .hamburger {
-  width: 20px;
-  height: 3px;
-  background-color: var(--text-inverse);
-  margin: 2px 0;
+  width: 16px;
+  height: 2px;
+  background-color: var(--text-primary);
+  margin: 1px 0;
   transition: var(--transition);
-  border-radius: 2px;
+  border-radius: 1px;
 }
 
 .mobile-toggle.active .hamburger:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+  transform: rotate(45deg) translate(4px, 4px);
 }
 
 .mobile-toggle.active .hamburger:nth-child(2) {
@@ -172,18 +146,18 @@
 }
 
 .mobile-toggle.active .hamburger:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: rotate(-45deg) translate(4px, -4px);
 }
 
-/* Mobile Menu */
+/* Мобильное меню */
 .mobile-menu {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
   background-color: var(--bg-primary);
-  border-bottom: 3px solid var(--accent-primary);
-  box-shadow: var(--shadow-dark);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-light);
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
@@ -199,46 +173,26 @@
 .mobile-nav-menu {
   display: flex;
   flex-direction: column;
-  padding: 30px 20px;
-  gap: 1.5rem;
+  padding: 1rem 0;
   list-style: none;
   margin: 0;
 }
 
 .mobile-nav-link {
-  color: var(--text-primary);
+  color: var(--text-secondary);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 15px 0;
-  border-bottom: 2px solid var(--border-light);
+  font-weight: 400;
+  font-size: 0.9rem;
+  padding: 12px 20px;
   transition: var(--transition);
-  position: relative;
-}
-
-.mobile-nav-link::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 0;
-  height: 3px;
-  background-color: var(--accent-primary);
-  transition: var(--transition);
-  transform: translateY(-50%);
+  border-bottom: 1px solid var(--border-light);
+  letter-spacing: 0.5px;
 }
 
 .mobile-nav-link:hover,
 .mobile-nav-link.active {
-  color: var(--accent-primary);
-  padding-left: 20px;
-}
-
-.mobile-nav-link:hover::before,
-.mobile-nav-link.active::before {
-  width: 15px;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
 }
 
 .mobile-nav-link:last-child {
@@ -248,12 +202,11 @@
 .mobile-controls {
   display: flex;
   gap: 1rem;
-  padding-top: 1.5rem;
-  border-top: 2px solid var(--accent-primary);
-  margin-top: 1.5rem;
+  padding: 1rem 20px;
+  border-top: 1px solid var(--border-light);
 }
 
-/* Responsive Design */
+/* Адаптивность */
 @media (max-width: 768px) {
   .nav-menu,
   .nav-controls {
@@ -271,26 +224,24 @@
 
 @media (max-width: 480px) {
   .navigation {
-    height: 70px;
+    height: 56px;
   }
 
   .nav-container {
-    height: 70px;
+    height: 56px;
     padding: 0 12px;
   }
 
   .logo {
-    font-size: 1.5rem;
-    letter-spacing: 1px;
+    font-size: 1.1rem;
   }
 
   .mobile-toggle {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
   }
 
   .hamburger {
-    width: 18px;
-    height: 2px;
+    width: 14px;
   }
 } 

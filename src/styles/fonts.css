@@ -1,9 +1,17 @@
-/* ApfelGrotezk Local Font Configuration */
+/* ApfelGrotezk Font Family Configuration */
 @font-face {
   font-family: 'ApfelGrotezk';
   src: url('/fonts/ApfelGrotezk-Regular.woff2') format('woff2'),
        url('/fonts/ApfelGrotezk-Regular.woff') format('woff');
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ApfelGrotezk';
+  src: url('/fonts/ApfelGrotezk-Brukt.woff') format('woff');
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
@@ -17,32 +25,41 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'ApfelGrotezk';
-  src: url('/fonts/ApfelGrotezk-Brukt.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
-  --font-primary: 'ApfelGrotezk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-fallback: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* Основной шрифт - ApfelGrotezk */
+  --font-primary: 'ApfelGrotezk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-custom: 'ApfelGrotezk', sans-serif;
+  --font-fallback: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-/* Применяем шрифт ко всему проекту */
+/* Ensure clean font rendering */
 * {
   font-family: var(--font-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   font-family: var(--font-primary);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 p, span, div, a, button, input, textarea {
   font-family: var(--font-primary);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 } 

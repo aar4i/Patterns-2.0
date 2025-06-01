@@ -27,7 +27,7 @@ function Navigation({ t, currentLanguage, toggleLanguage, theme, toggleTheme, sc
     <nav className={`navigation ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
         <a href="#" className="logo" onClick={() => handleNavClick('hero')}>
-          PATTERNS
+          Patterns
         </a>
         
         <ul className="nav-menu">

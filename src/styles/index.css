@@ -1,4 +1,4 @@
-/* Base Styles - Minimal Setup */
+/* Минималистичные базовые стили */
 html {
   scroll-behavior: smooth;
 }
@@ -8,6 +8,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
+  font-weight: 400;
 }
 
 #root {
@@ -15,9 +16,9 @@ body {
   margin: 0 auto;
 }
 
-/* Scrollbar Styling */
+/* Минималистичная прокрутка */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -25,22 +26,22 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-primary);
-  border-radius: 4px;
+  background: var(--text-muted);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-secondary);
+  background: var(--accent-primary);
 }
 
-/* Selection Styling */
+/* Выделение текста */
 ::selection {
   background: var(--accent-primary);
   color: var(--text-inverse);
 }
 
-/* Focus Styles */
+/* Фокус */
 *:focus-visible {
-  outline: 2px solid var(--accent-primary);
-  outline-offset: 2px;
+  outline: 1px solid var(--accent-primary);
+  outline-offset: 1px;
 }

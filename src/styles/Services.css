@@ -1,165 +1,310 @@
-/* Services Section - Rigas Furniture Flat Design Style */
+/* Минималистичная секция Services */
 .services {
-  padding: 100px 0;
-  background-color: var(--bg-secondary);
-}
-
-.services-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.services-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.services-subtitle {
-  font-size: 1.3rem;
+  min-height: 100vh;
+  background-color: var(--bg-secondary); /* Красный фон */
   color: var(--text-secondary);
-  max-width: 600px;
+  padding: 4rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.services-container {
+  width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
-  line-height: 1.6;
+  padding: 0 2rem;
+}
+
+.service-item {
+  margin-bottom: -0.1rem; /* Такое же расстояние как между строками */
+}
+
+.service-item:last-child {
+  margin-bottom: 0;
+}
+
+.service-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-number {
+  background-color: transparent;
+  color: var(--bg-accent);
+  border: 2px solid var(--bg-accent);
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-family: var(--font-primary);
+  line-height: 1;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: .3rem;
+  vertical-align: baseline;
+  text-align: center;
+  box-sizing: border-box;
+  transform: translateY(-4px);
+  text-indent: 2px;
+}
+
+.service-title {
+  background-color: var(--bg-primary);
+  color: var(--bg-accent);
+  padding: 0 0.1rem; /* Верхний/нижний padding 0, боковой 0.1rem */
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1; /* Уменьшаем высоту строки */
+  font-family: var(--font-primary);
+  position: relative;
+  display: inline-block;
+}
+
+.service-title::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; /* Поднимаю выше, чтобы не создавать лишнее пространство */
+  left: 0.3px;
+  right: 0.3px;
+  height: 3px;
+  background-color: var(--bg-accent);
+}
+
+.service-subtitle {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1; /* Убираю лишнее межстрочное расстояние */
+  margin-left: 0;
+  margin-top: -0.1rem; /* Отрицательный отступ для компенсации */
+  font-family: var(--font-primary);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .services {
+    padding: 3rem 0;
+  }
+
+  .services-container {
+    padding: 0 1.5rem;
+  }
+
+  .service-item {
+    margin-bottom: -0.1rem; /* Сохраняем тот же отступ что на десктопе */
+  }
+
+  .service-number {
+    font-size: 0.8rem;
+    width: 18px;
+    height: 18px;
+    border-width: 1.5px;
+    transform: translateY(-3px); /* Поправляем позицию */
+  }
+
+  .service-title {
+    font-size: clamp(2.2rem, 5.5vw, 3.5rem); /* Увеличиваем минимальный размер */
+    padding: 0 0.1rem;
+    line-height: 1;
+  }
+
+  .service-title::after {
+    bottom: 3px;
+    left: 0.2px;
+    right: 0.2px;
+    height: 3px;
+    background-color: var(--bg-accent);
+  }
+
+  .service-subtitle {
+    font-size: clamp(2.2rem, 5.5vw, 3.5rem); /* Такой же размер как title */
+    margin-top: -0.1rem; /* Сохраняем плотный интервал */
+  }
+}
+
+@media (max-width: 480px) {
+  .services {
+    padding: 2rem 0;
+  }
+
+  .services-container {
+    padding: 0 1rem;
+  }
+
+  .service-item {
+    margin-bottom: -0.1rem; /* Сохраняем консистентность */
+  }
+
+  .service-number {
+    font-size: 0.7rem;
+    width: 16px;
+    height: 16px;
+    border-width: 1px;
+    transform: translateY(-2px);
+  }
+
+  .service-title {
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem); /* Больше чем было */
+    padding: 0 0.1rem;
+    line-height: 1;
+  }
+
+  .service-title::after {
+    bottom: 2px;
+    left: 0.1px;
+    right: 0.1px;
+    height: 2px; /* Немного тоньше */
+    background-color: var(--bg-accent);
+  }
+
+  .service-subtitle {
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem); /* Такой же размер как title */
+    margin-top: -0.1rem; /* Сохраняем плотный интервал */
+  }
 }
 
 /* Services Grid */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  margin-bottom: 4rem;
+  margin-top: 3rem;
 }
 
 /* Service Card */
 .service-card {
-  background-color: var(--bg-primary);
-  border: 1px solid var(--border-light);
-  border-radius: var(--border-radius-md);
-  padding: 3rem 2rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
   text-align: center;
   transition: var(--transition);
   position: relative;
-  overflow: hidden;
 }
 
 .service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-medium);
   border-color: var(--accent-primary);
+  box-shadow: var(--shadow-light);
 }
 
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: var(--accent-primary);
-  transform: scaleX(0);
-  transition: var(--transition);
-}
-
-.service-card:hover::before {
-  transform: scaleX(1);
-}
-
-.service-icon {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
-  display: block;
-  color: var(--accent-primary);
-}
-
-.service-title {
-  font-size: 1.5rem;
-  font-weight: 600;
+.service-card .icon {
+  font-size: 2.5rem;
   color: var(--text-primary);
   margin-bottom: 1rem;
-  text-transform: uppercase;
+  display: block;
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
   letter-spacing: 0.5px;
 }
 
-.service-description {
-  font-size: 1rem;
+.service-card p {
+  font-size: 0.9rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
 }
 
 .service-features {
   list-style: none;
   padding: 0;
-  margin: 0 0 2rem 0;
+  margin: 0 0 1.5rem 0;
 }
 
 .service-features li {
-  padding: 0.5rem 0;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 0.3rem 0;
   position: relative;
-  padding-left: 1.5rem;
+  font-weight: 400;
 }
 
 .service-features li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--accent-success);
-  font-weight: bold;
-}
-
-.service-link {
-  display: inline-flex;
-  align-items: center;
+  content: '·';
   color: var(--accent-primary);
-  text-decoration: none;
-  font-weight: 500;
-  text-transform: uppercase;
+  margin-right: 0.5rem;
+  font-weight: 400;
+}
+
+.service-price {
+  font-size: 1.1rem;
+  color: var(--accent-primary);
+  font-weight: 400;
+  margin-bottom: 1rem;
   letter-spacing: 0.5px;
-  font-size: 0.9rem;
+}
+
+.service-btn {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  border: 1px solid var(--accent-primary);
+  background: transparent;
+  color: var(--accent-primary);
+  border-radius: var(--border-radius);
+  cursor: pointer;
   transition: var(--transition);
+  letter-spacing: 0.5px;
 }
 
-.service-link:hover {
-  color: var(--accent-secondary);
+.service-btn:hover {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
 }
 
-.service-link::after {
-  content: '→';
-  margin-left: 0.5rem;
-  transition: var(--transition);
+/* Особенности сервисов */
+.service-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
 }
 
-.service-link:hover::after {
-  transform: translateX(4px);
-}
-
-/* Process Section */
-.process-section {
-  margin-top: 6rem;
-  padding-top: 4rem;
-  border-top: 1px solid var(--border-light);
-}
-
-.process-title {
+.highlight-item {
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 3rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  padding: 1rem;
 }
 
+.highlight-item .icon {
+  font-size: 2rem;
+  color: var(--accent-primary);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.highlight-item h4 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.highlight-item p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Процесс работы */
 .process-steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
+  margin-top: 3rem;
 }
 
 .process-step {
@@ -168,30 +313,32 @@
 }
 
 .step-number {
-  width: 60px;
-  height: 60px;
-  background-color: var(--accent-primary);
-  color: white;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--accent-primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0 auto 1.5rem auto;
-}
-
-.step-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-}
-
-.step-description {
+  margin: 0 auto 1rem;
   font-size: 1rem;
+  font-weight: 400;
+  color: var(--accent-primary);
+}
+
+.process-step h4 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.process-step p {
+  font-size: 0.85rem;
   color: var(--text-secondary);
-  line-height: 1.6;
+  font-weight: 400;
+  margin: 0;
 }
 
 /* Call to Action */
@@ -206,9 +353,10 @@
 
 .cta-title {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--text-primary);
   margin-bottom: 1rem;
+  letter-spacing: 1px;
 }
 
 .cta-description {
@@ -225,9 +373,8 @@
   color: white;
   padding: 16px 32px;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 400;
   text-decoration: none;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
   border-radius: var(--border-radius-md);
   border: none;
@@ -240,14 +387,12 @@
 
 .cta-button:hover {
   background-color: var(--accent-secondary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .services {
-    padding: 80px 0;
+    padding: 3rem 0;
   }
   
   .services-header {
@@ -257,35 +402,20 @@
   .services-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    margin-bottom: 3rem;
   }
   
   .service-card {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem;
   }
   
-  .service-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-  
-  .service-title {
-    font-size: 1.3rem;
-  }
-  
-  .process-section {
-    margin-top: 4rem;
-    padding-top: 3rem;
+  .service-highlights {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
   
   .process-steps {
+    grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-  
-  .step-number {
-    width: 50px;
-    height: 50px;
-    font-size: 1.3rem;
   }
   
   .services-cta {
@@ -300,30 +430,29 @@
 
 @media (max-width: 480px) {
   .services {
-    padding: 60px 0;
-  }
-  
-  .services-grid {
-    grid-template-columns: 1fr;
+    padding: 2rem 0;
   }
   
   .service-card {
-    padding: 1.5rem 1rem;
+    padding: 1.2rem;
   }
   
-  .service-icon {
-    font-size: 2.5rem;
+  .service-card .icon {
+    font-size: 2rem;
   }
   
-  .process-steps {
+  .service-highlights {
     grid-template-columns: 1fr;
   }
   
+  .highlight-item {
+    padding: 0.8rem;
+  }
+  
   .step-number {
-    width: 45px;
-    height: 45px;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
   }
   
   .services-cta {
