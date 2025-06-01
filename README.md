@@ -1,17 +1,128 @@
-<<<<<<< HEAD
-# React + Vite
+# Patterns - Modern Design Studio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A contemporary website showcasing innovative design patterns and creative solutions. Built with React, Vite, and modern web technologies.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Modern Design**: Clean, contemporary aesthetics with the ApfelGrotezk font
+- **Multilingual**: Support for English and German languages
+- **Responsive**: Fully responsive design for all devices
+- **Component-based**: Modular React components for easy maintenance
+- **Fast**: Built with Vite for lightning-fast development and builds
 
-## Expanding the ESLint configuration
+## 📁 Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# Patterns-2.0
-A cloth manufacturing website
->>>>>>> d02357d64dd2308914a1d33e588e3eedfbabf751
+```
+src/
+├── components/          # React components
+│   ├── Navigation.jsx   # Main navigation with language toggle
+│   ├── Hero.jsx         # Hero section with CTA
+│   ├── Services.jsx     # Services grid
+│   ├── Gallery.jsx      # Gallery with overlays
+│   └── Contact.jsx      # Contact form and info
+├── styles/              # CSS stylesheets
+│   ├── App.css          # Global styles
+│   ├── fonts.css        # Font definitions
+│   ├── index.css        # Base styles
+│   └── [Component].css  # Component-specific styles
+├── data/                # Static data
+│   └── translations.js  # Multilingual content
+└── assets/              # Static assets
+    ├── images/          # Image files
+    └── icons/           # Icon files
+
+public/
+└── fonts/               # Custom font files
+    └── ApfelGrotezk-Regular.woff
+```
+
+## 🛠️ Installation & Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd Patterns-2.0
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+## 🎨 Design System
+
+- **Font**: ApfelGrotezk (custom loaded)
+- **Color Palette**: 
+  - Primary: `#dc143c` (Crimson)
+  - Background: `#000` (Black)
+  - Text: `#fff` (White)
+  - Secondary: `#111`, `#333`, `#666`, `#ccc`
+
+## 📱 Components
+
+### Navigation
+- Fixed top navigation
+- Language switcher (EN/DE)
+- Smooth scroll navigation
+
+### Hero
+- Full-screen hero section
+- Animated typography
+- Call-to-action button
+
+### Services
+- Grid layout
+- Hover animations
+- Responsive cards
+
+### Gallery
+- 3-column grid
+- Overlay effects
+- Scaling animations
+
+### Contact
+- Contact form
+- Social media links
+- Alternative contact info
+
+## 🌐 Internationalization
+
+The project supports multiple languages through the `translations.js` file:
+- English (default)
+- German
+
+Add new languages by extending the translations object.
+
+## 🚀 Deployment
+
+The project is ready for deployment on any static hosting platform:
+- Vercel
+- Netlify
+- GitHub Pages
+- Firebase Hosting
+
+## 📄 License
+
+This project is private and proprietary.
+
+## 👨‍💻 Development
+
+Built with:
+- React 19+
+- Vite 6+
+- ESLint for code quality
+- Modern CSS with custom properties
+
+---
+
+**Patterns Studio** - Modern Design & Creative Solutions

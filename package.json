@@ -1,8 +1,12 @@
 {
-  "name": "patterns",
+  "name": "patterns-manufacturing",
+  "version": "1.0.0",
+  "description": "Patterns manufacturing - Premium textile and fabric manufacturing solutions. Quality patterns and innovative manufacturing processes.",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "keywords": ["patterns", "manufacturing", "textile", "fabric", "quality", "production", "react", "vite"],
+  "author": "Patterns Manufacturing",
+  "homepage": "https://patterns-manufacturing.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

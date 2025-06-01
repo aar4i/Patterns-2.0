@@ -1,0 +1,8 @@
+/* Custom Font: ApfelGrotezk */
+@font-face {
+  font-family: 'ApfelGrotezk';
+  src: url('/fonts/ApfelGrotezk-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+} 

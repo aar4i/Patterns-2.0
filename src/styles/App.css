@@ -1,0 +1,211 @@
+@import './fonts.css';
+
+/* CSS Custom Properties for Themes */
+:root {
+  /* Dark Theme (default) - Modern 2025 Purple-Blue Palette */
+  --bg-primary: #0A0B14;
+  --bg-secondary: #1A1B2E;
+  --bg-tertiary: #262844;
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #64748B;
+  --accent-primary: #8B5CF6;
+  --accent-hover: #7C3AED;
+  --accent-secondary: #3B82F6;
+  --border-color: #374151;
+  --shadow-color: rgba(139, 92, 246, 0.15);
+  --gradient-primary: linear-gradient(135deg, #8B5CF6, #3B82F6);
+  --gradient-secondary: linear-gradient(135deg, #1E293B, #334155);
+  --backdrop-blur: rgba(10, 11, 20, 0.95);
+  --glass-bg: rgba(26, 27, 46, 0.8);
+  --premium-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(139, 92, 246, 0.1);
+}
+
+[data-theme="light"] {
+  /* Light Theme - Modern 2025 Warm-Cool Balance */
+  --bg-primary: #FEFEFE;
+  --bg-secondary: #F8FAFC;
+  --bg-tertiary: #F1F5F9;
+  --text-primary: #1E293B;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --accent-primary: #7C3AED;
+  --accent-hover: #6D28D9;
+  --accent-secondary: #2563EB;
+  --border-color: #E2E8F0;
+  --shadow-color: rgba(124, 58, 237, 0.12);
+  --gradient-primary: linear-gradient(135deg, #7C3AED, #2563EB);
+  --gradient-secondary: linear-gradient(135deg, #F8FAFC, #E2E8F0);
+  --backdrop-blur: rgba(254, 254, 254, 0.95);
+  --glass-bg: rgba(248, 250, 252, 0.8);
+  --premium-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(124, 58, 237, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'ApfelGrotezk', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.App {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  transition: background-color 0.4s ease;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  margin-bottom: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  transition: color 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+.section-title .subtitle {
+  display: block;
+  font-size: 0.35em;
+  color: var(--text-secondary);
+  margin-top: 1rem;
+  font-weight: 400;
+  transition: color 0.4s ease;
+  letter-spacing: 0.2em;
+  opacity: 0.8;
+}
+
+/* Premium Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.2); }
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Premium Glass Effect */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: var(--premium-shadow);
+}
+
+/* Enhanced Transitions */
+* {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 clamp(1.25rem, 4vw, 2rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .section-title {
+    margin-bottom: 3rem;
+    letter-spacing: 0.03em;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .section-title {
+    margin-bottom: 2.5rem;
+    line-height: 1.1;
+  }
+  
+  .section-title .subtitle {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}

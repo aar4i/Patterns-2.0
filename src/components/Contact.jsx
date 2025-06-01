@@ -1,7 +1,27 @@
-import React from 'react'
-import './Contact.css'
+import React, { useState } from 'react'
+import '../styles/Contact.css'
 
 function Contact({ t }) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  })
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // Handle form submission here
+    console.log('Form submitted:', formData)
+  }
+
   return (
     <section id="contact" className="contact">
       <div className="container">
@@ -9,37 +29,78 @@ function Contact({ t }) {
           <span>{t.contact.title}</span>
           <span className="subtitle">{t.contact.subtitle}</span>
         </h2>
+        
         <div className="contact-content">
           <div className="contact-form">
-            <form>
-              <div className="form-field">
-                <label className="field-label">{t.contact.form.name}</label>
-                <input type="text" />
+            <form onSubmit={handleSubmit}>
+              <div className="form-row">
+                <div className="form-group">
+                  <input 
+                    type="text" 
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <input 
+                    type="email" 
+                    name="email"
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
               </div>
-              <div className="form-field">
-                <label className="field-label">{t.contact.form.email}</label>
-                <input type="email" />
+              
+              <div className="form-group">
+                <input 
+                  type="tel" 
+                  name="phone"
+                  placeholder="Phone Number (Optional)"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
               </div>
-              <div className="form-field">
-                <label className="field-label">{t.contact.form.phone}</label>
-                <input type="tel" />
+              
+              <div className="form-group">
+                <textarea 
+                  name="message"
+                  placeholder="Tell us about your project..."
+                  rows="5"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                ></textarea>
               </div>
-              <div className="form-field">
-                <label className="field-label message-label">{t.contact.form.message.split('\n')[0]}</label>
-                <textarea rows="6">{t.contact.form.message.split('\n').slice(1).join('\n')}</textarea>
-              </div>
-              <button type="submit">{t.contact.form.submit}</button>
+              
+              <button type="submit" className="submit-btn">
+                Send Message
+              </button>
             </form>
           </div>
+          
           <div className="contact-alternative">
-            <div className="contact-or">{t.contact.alternative.or}</div>
-            <div className="contact-us-title">{t.contact.alternative.contactUs}</div>
-            <div className="contact-email">{t.contact.alternative.email}</div>
-            <div className="social-links">
-              <a href="#">{t.contact.social.ig}</a>
-              <a href="#">{t.contact.social.whatsapp}</a>
-              <a href="#">{t.contact.social.fb}</a>
+            <div className="divider">
+              <span>{t.contact.alternative.or}</span>
             </div>
+            
+            <div className="direct-contact">
+              <h3>Direct Contact</h3>
+              <a href="mailto:hello@patterns-berlin.de" className="contact-email">
+                hello@patterns-berlin.de
+              </a>
+            </div>
+            
+            <div className="social-links">
+              <a href="https://www.instagram.com/patterns.manufacturing/" target="_blank" rel="noopener noreferrer" className="social-link">Instagram</a>
+              <a href="#" className="social-link">WhatsApp</a>
+              <a href="#" className="social-link">Facebook</a>
+            </div>
+            
             <div className="copyright">{t.contact.copyright}</div>
           </div>
         </div>

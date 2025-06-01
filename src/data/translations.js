@@ -7,10 +7,10 @@ export const translations = {
       contact: 'Contact'
     },
     hero: {
-      title: 'GAYMANUFACTURING',
-      subtitle: 'TEXTILE',
-      description: 'Revolutionary clothing manufacturing that breaks boundaries between art, technology and fashion',
-      cta: 'START PROJECT'
+      title: 'PATTERNS',
+      subtitle: 'MANUFACTURING',
+      description: 'Premium textile manufacturing and fashion solutions. Where creativity meets precision.',
+      cta: 'MAKE AN ORDER'
     },
     services: {
       title: 'SERVICES',
@@ -51,7 +51,7 @@ export const translations = {
       alternative: {
         or: 'OR',
         contactUs: 'CONTACT US',
-        email: 'GAYMANUFACTURING@PM.DE'
+        email: 'HELLO@PATTERNS-BERLIN.DE'
       },
       social: {
         ig: 'IG',
@@ -69,10 +69,10 @@ export const translations = {
       contact: 'Kontakt'
     },
     hero: {
-      title: 'GAYMANUFACTURING',
-      subtitle: 'TEXTIL',
-      description: 'Revolutionäre Bekleidungsherstellung, die Grenzen zwischen Kunst, Technologie und Mode aufbricht',
-      cta: 'PROJEKT STARTEN'
+      title: 'PATTERNS',
+      subtitle: 'HERSTELLUNG',
+      description: 'Premium Textilherstellung und Modelösungen. Wo Kreativität auf Präzision trifft.',
+      cta: 'BESTELLUNG AUFGEBEN'
     },
     services: {
       title: 'LEISTUNGEN',
@@ -113,7 +113,7 @@ export const translations = {
       alternative: {
         or: 'ODER',
         contactUs: 'KONTAKTIEREN SIE UNS',
-        email: 'GAYMANUFACTURING@PM.DE'
+        email: 'HELLO@PATTERNS-BERLIN.DE'
       },
       social: {
         ig: 'IG',
