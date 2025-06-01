@@ -8,43 +8,54 @@ function Hero({ t, scrollToSection }) {
 
   return (
     <section id="hero" className="hero">
-      <div className="hero-background">
-        <div className="hero-gradient"></div>
-        <div className="hero-shapes">
-          <div className="shape shape-1"></div>
-          <div className="shape shape-2"></div>
-          <div className="shape shape-3"></div>
-        </div>
-      </div>
-      
-      <div className="hero-content">
-        <h1 className="hero-title">
-          <span className="title-main">{t.hero.title}</span>
-          <span className="title-accent">{t.hero.subtitle}</span>
-        </h1>
-        
+      <div className="hero-container">
+        <h1 className="hero-title">{t.hero.title}</h1>
+        <h2 className="hero-subtitle">{t.hero.subtitle}</h2>
         <p className="hero-description">{t.hero.description}</p>
         
         <div className="hero-actions">
-          <button className="cta-primary" onClick={handleOrderClick}>
+          <button className="hero-cta" onClick={handleOrderClick}>
             {t.hero.cta}
           </button>
         </div>
         
         <div className="hero-stats">
-          <div className="stat">
+          <div className="stat-item">
             <span className="stat-number">500+</span>
             <span className="stat-label">Projects</span>
           </div>
-          <div className="stat">
+          <div className="stat-item">
             <span className="stat-number">15+</span>
             <span className="stat-label">Years</span>
           </div>
-          <div className="stat">
+          <div className="stat-item">
             <span className="stat-number">50+</span>
             <span className="stat-label">Brands</span>
           </div>
         </div>
+
+        <div className="hero-services-preview">
+          <div className="service-preview">
+            <span className="service-icon">🏭</span>
+            <h3>Manufacturing</h3>
+            <p>High-quality textile production with precision and care</p>
+          </div>
+          <div className="service-preview">
+            <span className="service-icon">✂️</span>
+            <h3>Custom Design</h3>
+            <p>Tailored solutions for your specific requirements</p>
+          </div>
+          <div className="service-preview">
+            <span className="service-icon">🚚</span>
+            <h3>Fast Delivery</h3>
+            <p>Quick and reliable shipping worldwide</p>
+          </div>
+        </div>
+      </div>
+      
+      <div className="scroll-indicator">
+        <span>Scroll Down</span>
+        <div className="scroll-arrow"></div>
       </div>
     </section>
   )
