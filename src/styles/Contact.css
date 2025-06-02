@@ -205,11 +205,21 @@
   line-height: 0.8; /* Максимально плотная высота строки */
   display: block;
   text-align: left;
+  position: relative;
+  overflow: hidden; /* Обязательно скрываем выходящий за границы контент */
+  transition: background-color 0.3s ease;
 }
 
 .submit-button:hover {
   background-color: var(--accent-primary); /* При hover другой оттенок красного */
 }
+
+.submit-text {
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* Анимация кнопки отключена */
 
 /* Разделитель */
 .contact-divider {

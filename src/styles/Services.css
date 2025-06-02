@@ -56,11 +56,11 @@
 .service-title {
   background-color: var(--bg-primary);
   color: var(--bg-accent);
-  padding: 0 0.1rem; /* Верхний/нижний padding 0, боковой 0.1rem */
+  padding: 0 0.1rem;
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 400;
   letter-spacing: 0.05em;
-  line-height: 1; /* Уменьшаем высоту строки */
+  line-height: 1;
   font-family: var(--font-primary);
   position: relative;
   display: inline-block;
@@ -69,7 +69,7 @@
 .service-title::after {
   content: '';
   position: absolute;
-  bottom: 4px; /* Поднимаю выше, чтобы не создавать лишнее пространство */
+  bottom: 4px;
   left: 0.3px;
   right: 0.3px;
   height: 3px;
@@ -80,9 +80,9 @@
   font-size: clamp(2.5rem, 6vw, 4.4rem);
   font-weight: 400;
   color: var(--text-secondary);
-  line-height: 1; /* Убираю лишнее межстрочное расстояние */
+  line-height: 1;
   margin-left: 0;
-  margin-top: -0.1rem; /* Отрицательный отступ для компенсации */
+  margin-top: -0.1rem;
   font-family: var(--font-primary);
 }
 
@@ -338,4 +338,24 @@
   .service-highlights {
     grid-template-columns: 1fr;
   }
-} 
+}
+
+/* Стили для дополнительной информации о сервисах */
+.service-details {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.service-description {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  color: var(--text-secondary);
+  line-height: 1.4;
+  font-family: var(--font-primary);
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+  letter-spacing: 0.3px;
+  opacity: 0.9;
+}
+
+/* Убираем все добавленные стили */

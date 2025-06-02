@@ -1,17 +1,11 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import '../styles/Hero.css'
 
 function Hero({ t, scrollToSection }) {
   return (
     <section id="hero" className="hero">
       <div className="hero-container">
-        <motion.div 
-          className="hero-content"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
+        <div className="hero-content">
           <h1 className="hero-title">
             <span className="contrast-block white">PATTERNS</span>
             <br />
@@ -22,7 +16,7 @@ function Hero({ t, scrollToSection }) {
             <span className="contrast-block">Textile Production</span>
             <span className="hero-year">2025</span>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

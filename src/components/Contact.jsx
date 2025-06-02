@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
 import '../styles/Contact.css'
 
 function Contact() {
@@ -11,6 +10,7 @@ function Contact() {
   })
 
   const [focusedField, setFocusedField] = useState(null)
+  const [isButtonAnimating, setIsButtonAnimating] = useState(false)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -43,21 +43,28 @@ function Contact() {
     }
   }
 
+  const handleButtonClick = (e) => {
+    // Запускаем анимацию кнопки независимо от валидации
+    console.log('Клик по кнопке - запускаем анимацию') // Отладка
+    setIsButtonAnimating(true)
+    
+    // Возвращаем кнопку в исходное состояние через время анимации
+    setTimeout(() => {
+      console.log('Завершаем анимацию кнопки') // Отладка
+      setIsButtonAnimating(false)
+    }, 1500) // Обновляем под новое время анимации 1.5 секунды
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    
     console.log('Form submitted:', formData)
   }
 
   return (
     <section id="contact" className="contact">
       <div className="contact-container">
-        <motion.div 
-          className="contact-content"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
+        <div className="contact-content">
           {/* Форма */}
           <div className="contact-form-section">
             <form onSubmit={handleSubmit} className="contact-form">
@@ -74,7 +81,6 @@ function Contact() {
                     onChange={handleInputChange}
                     onFocus={() => handleFocus('name')}
                     onBlur={() => handleBlur('name')}
-                    required
                     style={{ display: focusedField === 'name' || formData.name ? 'block' : 'none' }}
                   />
                 </div>
@@ -93,7 +99,6 @@ function Contact() {
                     onChange={handleInputChange}
                     onFocus={() => handleFocus('email')}
                     onBlur={() => handleBlur('email')}
-                    required
                     style={{ display: focusedField === 'email' || formData.email ? 'block' : 'none' }}
                   />
                 </div>
@@ -142,8 +147,8 @@ function Contact() {
                 </div>
               </div>
 
-              <button type="submit" className="submit-button">
-                SUBMIT
+              <button type="submit" className={`submit-button ${isButtonAnimating ? 'animating' : ''}`} onClick={handleButtonClick}>
+                <span className="submit-text">SUBMIT</span>
               </button>
             </form>
           </div>
@@ -175,7 +180,7 @@ function Contact() {
             <div>© Patterns Manufacturing 2025</div>
             <div>All rights reserved.</div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

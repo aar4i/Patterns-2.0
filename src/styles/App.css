@@ -37,6 +37,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   font-family: var(--font-primary);
   font-weight: 400;
@@ -49,9 +54,18 @@ body {
 }
 
 .App {
-  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
   background-color: var(--bg-primary);
-  transition: var(--transition);
+  will-change: transform;
+}
+
+.section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 /* Контейнер */

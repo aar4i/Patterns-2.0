@@ -1,3 +1,6 @@
+/* Импорт стилей для 3D куб-слайдера */
+@import './CubeReelSlider.css';
+
 /* Минималистичные базовые стили */
 html {
   scroll-behavior: smooth;
