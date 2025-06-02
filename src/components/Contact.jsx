@@ -10,12 +10,33 @@ function Contact() {
     message: ''
   })
 
+  const [focusedField, setFocusedField] = useState(null)
+
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
       [name]: value
     }))
+  }
+
+  const handleFieldClick = (fieldName) => {
+    setFocusedField(fieldName)
+    // Фокусируем input после клика
+    setTimeout(() => {
+      const input = document.querySelector(`input[name="${fieldName}"], textarea[name="${fieldName}"]`)
+      if (input) input.focus()
+    }, 100)
+  }
+
+  const handleFocus = (fieldName) => {
+    setFocusedField(fieldName)
+  }
+
+  const handleBlur = (fieldName) => {
+    if (!formData[fieldName]) {
+      setFocusedField(null)
+    }
   }
 
   const handleSubmit = (e) => {
@@ -37,43 +58,83 @@ function Contact() {
           <div className="contact-form-section">
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-field">
-                <div className="field-label">YOUR NAME</div>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                />
+                <div 
+                  className={`field-label ${focusedField === 'name' || formData.name ? 'focused' : ''}`}
+                  onClick={() => handleFieldClick('name')}
+                >
+                  {!(focusedField === 'name' || formData.name) && 'YOUR NAME'}
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    onFocus={() => handleFocus('name')}
+                    onBlur={() => handleBlur('name')}
+                    required
+                    style={{ display: focusedField === 'name' || formData.name ? 'block' : 'none' }}
+                  />
+                </div>
               </div>
 
               <div className="form-field">
-                <div className="field-label">EMAIL</div>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                />
+                <div 
+                  className={`field-label ${focusedField === 'email' || formData.email ? 'focused' : ''}`}
+                  onClick={() => handleFieldClick('email')}
+                >
+                  {!(focusedField === 'email' || formData.email) && 'EMAIL'}
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    onFocus={() => handleFocus('email')}
+                    onBlur={() => handleBlur('email')}
+                    required
+                    style={{ display: focusedField === 'email' || formData.email ? 'block' : 'none' }}
+                  />
+                </div>
               </div>
 
               <div className="form-field">
-                <div className="field-label">PHONE NUMBER</div>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                />
+                <div 
+                  className={`field-label ${focusedField === 'phone' || formData.phone ? 'focused' : ''}`}
+                  onClick={() => handleFieldClick('phone')}
+                >
+                  {!(focusedField === 'phone' || formData.phone) && 'PHONE NUMBER'}
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    onFocus={() => handleFocus('phone')}
+                    onBlur={() => handleBlur('phone')}
+                    style={{ display: focusedField === 'phone' || formData.phone ? 'block' : 'none' }}
+                  />
+                </div>
               </div>
 
               <div className="form-field">
-                <div className="field-label">DESCRIBE WHAT YOU WANT TO DO LOREM IPSUM AHAHAH</div>
-                <div className="textarea-placeholder">
-                  3 ROW HERE<br />
-                  4 ROW<br />
-                  5TH ROW HERE
+                <div 
+                  className={`field-label textarea-field ${focusedField === 'message' || formData.message ? 'focused' : ''}`}
+                  onClick={() => handleFieldClick('message')}
+                >
+                  {!(focusedField === 'message' || formData.message) && (
+                    <div className="textarea-content">
+                      DESCRIBE WHAT YOU WANT TO DO LOREM IPSUM AHAHAH<br />
+                      3 ROW HERE<br />
+                      4 ROW<br />
+                      5TH ROW HERE
+                    </div>
+                  )}
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    onFocus={() => handleFocus('message')}
+                    onBlur={() => handleBlur('message')}
+                    rows="4"
+                    style={{ display: focusedField === 'message' || formData.message ? 'block' : 'none' }}
+                  />
                 </div>
               </div>
 

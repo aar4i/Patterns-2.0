@@ -46,49 +46,104 @@
   font-weight: 400;
   letter-spacing: 0.05em;
   font-family: var(--font-primary);
-  display: inline-block;
-  width: fit-content;
-  line-height: 1;
+  display: block;
+  width: 100%;
+  max-width: 250px; /* Половина ширины для обычных полей */
+  line-height: 0.8; /* Максимально плотная высота строки */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.field-label.focused {
+  padding: 0;
+  width: 100%;
+  max-width: 250px; /* Половина ширины для обычных полей */
+  display: block;
+}
+
+.textarea-field {
+  padding: 0;
+  line-height: 0.8; /* Максимально плотная высота строки */
+  display: block;
+  width: 100%;
+  max-width: 500px; /* Полная ширина для поля описания */
+}
+
+.textarea-field.focused {
+  padding: 0;
+  width: 100%;
+  max-width: 500px; /* Полная ширина для поля описания */
+  display: block;
+  min-height: 120px;
+}
+
+.textarea-content {
+  line-height: 0.8; /* Максимально плотная высота строки для многострочного текста */
 }
 
 .form-field input {
   border: none;
-  border-bottom: 2px solid var(--text-inverse);
   background: transparent;
-  padding: 1rem 0;
-  font-size: 1.1rem;
+  padding: 0;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
   font-weight: 400;
-  color: var(--text-inverse);
+  color: var(--text-primary);
   font-family: var(--font-primary);
-}
-
-.form-field input:focus {
+  width: 100%;
+  display: none;
   outline: none;
-  border-bottom-color: var(--accent-primary);
+  letter-spacing: 0.05em;
+  line-height: 0.8; /* Точно такой же как у field-label */
+  text-transform: uppercase;
+  height: calc(clamp(1.2rem, 3vw, 1.6rem) * 0.8); /* Принудительная высота */
+  box-sizing: border-box;
 }
 
-.textarea-placeholder {
-  border-bottom: 2px solid var(--text-inverse);
-  padding: 1rem 0;
-  min-height: 80px;
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.6);
+.form-field textarea {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 400;
+  color: var(--text-primary);
   font-family: var(--font-primary);
-  line-height: 1.4;
+  width: 100%;
+  display: none;
+  outline: none;
+  resize: none;
+  letter-spacing: 0.05em;
+  line-height: 0.8;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+
+.form-field textarea {
+  line-height: 0.8; /* Максимально плотная высота строки */
+}
+
+.textarea-field textarea {
+  min-height: 120px; /* Фиксированная высота только для большого поля */
 }
 
 .submit-button {
   background-color: var(--accent-primary);
   color: var(--text-secondary);
   border: none;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
+  padding: 0;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
   font-weight: 400;
   letter-spacing: 0.05em;
   font-family: var(--font-primary);
   cursor: pointer;
-  width: fit-content;
+  width: 100%;
+  max-width: 500px; /* Ширина как у поля описания */
   margin-top: 1rem;
+  text-transform: uppercase;
+  line-height: 0.8; /* Максимально плотная высота строки */
+  display: block;
+  text-align: left;
 }
 
 .submit-button:hover {
@@ -107,6 +162,8 @@
   color: var(--text-primary);
   letter-spacing: 0.1em;
   font-family: var(--font-primary);
+  text-transform: uppercase;
+  line-height: 0.8; /* Максимально плотная высота строки */
 }
 
 /* Контактная информация */
@@ -124,6 +181,8 @@
   color: var(--text-primary);
   letter-spacing: 0.05em;
   font-family: var(--font-primary);
+  text-transform: uppercase;
+  line-height: 0.8; /* Максимально плотная высота строки */
 }
 
 .contact-email {
@@ -134,7 +193,8 @@
   font-weight: 400;
   letter-spacing: 0.05em;
   font-family: var(--font-primary);
-  line-height: 1;
+  line-height: 0.8; /* Максимально плотная высота строки */
+  text-transform: uppercase;
 }
 
 .contact-social {
@@ -151,6 +211,8 @@
   letter-spacing: 0.05em;
   font-family: var(--font-primary);
   transition: var(--transition);
+  text-transform: uppercase;
+  line-height: 0.8; /* Максимально плотная высота строки */
 }
 
 .social-link:hover {
@@ -196,12 +258,20 @@
 
   .field-label {
     font-size: clamp(1rem, 2.5vw, 1.3rem);
-    padding: 0.4rem 0.8rem;
+    max-width: 400px;
   }
 
-  .form-field input {
-    padding: 0.8rem 0;
-    font-size: 1rem;
+  .field-label.focused {
+    max-width: 400px;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+  }
+
+  .textarea-field.focused {
+    min-height: 100px;
   }
 }
 
@@ -225,12 +295,15 @@
 
   .field-label {
     font-size: clamp(0.9rem, 2vw, 1.1rem);
-    padding: 0.3rem 0.6rem;
   }
 
-  .form-field input {
-    padding: 0.7rem 0;
-    font-size: 0.9rem;
+  .form-field input,
+  .form-field textarea {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+  }
+
+  .textarea-field.focused {
+    min-height: 90px;
   }
 
   .contact-footer {
