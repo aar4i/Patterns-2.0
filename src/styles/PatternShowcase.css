@@ -1,0 +1,238 @@
+/* Pattern Showcase Styles */
+.pattern-showcase {
+  padding: 4rem 2rem;
+  background: var(--bg-secondary);
+  min-height: 100vh;
+}
+
+.showcase-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.showcase-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.showcase-header h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.showcase-header p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Controls */
+.pattern-controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+
+.control-group h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.control-button {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  min-width: 120px;
+}
+
+.control-button:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-light);
+}
+
+.control-button.active {
+  border-color: var(--accent-primary);
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+}
+
+.control-button span {
+  display: block;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.control-button small {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-top: 0.3rem;
+}
+
+.control-button.intensity {
+  min-width: 100px;
+}
+
+/* Preview */
+.pattern-preview {
+  position: relative;
+  height: 400px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.preview-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+}
+
+.preview-overlay h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.preview-overlay p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Usage Example */
+.usage-example {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+}
+
+.usage-example h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.usage-example pre {
+  background: #1a1a1a;
+  color: #f8f8f2;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.usage-example code {
+  color: inherit;
+}
+
+/* Hover Effects */
+.pattern-preview:hover .preview-overlay {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pattern-showcase {
+    padding: 2rem 1rem;
+  }
+
+  .pattern-controls {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .button-group {
+    gap: 0.5rem;
+  }
+
+  .control-button {
+    padding: 0.8rem 1rem;
+    min-width: 100px;
+  }
+
+  .control-button.intensity {
+    min-width: 80px;
+  }
+
+  .pattern-preview {
+    height: 300px;
+  }
+
+  .preview-overlay {
+    padding: 1.5rem;
+  }
+
+  .usage-example {
+    padding: 1rem;
+  }
+
+  .usage-example pre {
+    padding: 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .button-group {
+    justify-content: center;
+  }
+
+  .control-button {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .pattern-preview {
+    height: 250px;
+  }
+
+  .preview-overlay {
+    padding: 1rem;
+  }
+
+  .preview-overlay h3 {
+    font-size: 1.2rem;
+  }
+
+  .preview-overlay p {
+    font-size: 0.8rem;
+  }
+} 

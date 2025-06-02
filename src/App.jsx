@@ -32,7 +32,7 @@ function App() {
     }
   }, [currentSection, isScrolling, sections.length])
 
-    useEffect(() => {
+  useEffect(() => {
     const handleWheel = (event) => {
       // Если сейчас в процессе скролла, игнорируем
       if (isScrolling) return
@@ -68,7 +68,7 @@ function App() {
 
     window.addEventListener('wheel', handleWheel, { passive: false })
     return () => window.removeEventListener('wheel', handleWheel)
-  }, [currentSection, isScrolling])
+  }, [currentSection, isScrolling, sections.length])
 
   return (
     <div 

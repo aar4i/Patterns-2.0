@@ -1,9 +1,11 @@
 import React from 'react'
 import '../styles/Hero.css'
 
-function Hero({ t, scrollToSection }) {
+function Hero() {
   return (
     <section id="hero" className="hero">
+      {/* Чистый минималистичный дизайн */}
+      
       <div className="hero-container">
         <div className="hero-content">
           <h1 className="hero-title">

@@ -43,7 +43,7 @@ function Contact() {
     }
   }
 
-  const handleButtonClick = (e) => {
+  const handleButtonClick = () => {
     // Запускаем анимацию кнопки независимо от валидации
     console.log('Клик по кнопке - запускаем анимацию') // Отладка
     setIsButtonAnimating(true)

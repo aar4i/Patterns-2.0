@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { motion } from 'framer-motion'
 import '../styles/CubeReelSlider.css'
 
 // npm install react-swipeable
@@ -26,13 +25,13 @@ function CubeReelSlider({ children, autoPlay = false, autoPlayInterval = 3000, i
     setTimeout(() => setIsAnimating(false), 600)
   }, [isAnimating, totalSlides])
 
-  // Переход к конкретному слайду
-  const goToSlide = useCallback((index) => {
-    if (isAnimating || index === currentSlide) return
-    setIsAnimating(true)
-    setCurrentSlide(index)
-    setTimeout(() => setIsAnimating(false), 600)
-  }, [isAnimating, currentSlide])
+  // Переход к конкретному слайду (пока не используется, но может понадобиться)
+  // const goToSlide = useCallback((index) => {
+  //   if (isAnimating || index === currentSlide) return
+  //   setIsAnimating(true)
+  //   setCurrentSlide(index)
+  //   setTimeout(() => setIsAnimating(false), 600)
+  // }, [isAnimating, currentSlide])
 
   // Автопроигрывание
   useEffect(() => {

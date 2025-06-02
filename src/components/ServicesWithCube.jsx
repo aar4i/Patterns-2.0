@@ -30,7 +30,7 @@ function ServicesWithCube({ isActive, onSectionChange }) {
   const AllServicesSlide = () => (
     <section className="services">
       <div className="services-container">
-        {services.map((service, index) => (
+        {services.map((service) => (
           <div 
             key={service.id}
             className="service-item"
@@ -74,9 +74,10 @@ function ServicesWithCube({ isActive, onSectionChange }) {
     </section>
   )
 
-  const getServiceDescription = (serviceId) => {
-    return ""
-  }
+  // Функция для получения описания сервиса (пока не используется)
+  // const getServiceDescription = (serviceId) => {
+  //   return ""
+  // }
 
   return (
     <div id="services">

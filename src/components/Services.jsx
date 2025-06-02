@@ -28,7 +28,7 @@ function Services() {
   return (
     <section id="services" className="services">
       <div className="services-container">
-        {services.map((service, index) => (
+        {services.map((service) => (
           <div 
             key={service.id}
             className="service-item"
@@ -38,10 +38,10 @@ function Services() {
               {service.title}
             </div>
             <div className="service-subtitle">
-              {service.subtitle.split('\n').map((line, index) => (
-                <span key={index}>
+              {service.subtitle.split('\n').map((line, lineIndex) => (
+                <span key={lineIndex}>
                   {line}
-                  {index < service.subtitle.split('\n').length - 1 && <br />}
+                  {lineIndex < service.subtitle.split('\n').length - 1 && <br />}
                 </span>
               ))}
             </div>

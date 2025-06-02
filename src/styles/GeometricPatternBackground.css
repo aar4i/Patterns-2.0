@@ -1,0 +1,422 @@
+/* Сложные геометрические паттерны */
+.geometric-pattern-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Уровни интенсивности */
+.geometric-pattern-bg.pattern-subtle {
+  opacity: 0.08;
+}
+
+.geometric-pattern-bg.pattern-medium {
+  opacity: 0.15;
+}
+
+.geometric-pattern-bg.pattern-strong {
+  opacity: 0.25;
+}
+
+/* === HEXAGONS PATTERN === */
+.hexagons-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hexagon {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: var(--x);
+  top: var(--y);
+  background: var(--text-primary, #333);
+  clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%);
+  transform-origin: center;
+}
+
+.animated .hexagon {
+  animation: hexagonPulse 4s infinite ease-in-out;
+  animation-delay: var(--delay);
+}
+
+@keyframes hexagonPulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.3) rotate(30deg);
+    opacity: 1;
+  }
+}
+
+/* === TRIANGLES PATTERN === */
+.triangles-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: var(--x);
+  top: var(--y);
+}
+
+.triangle-up {
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 26px solid var(--text-primary, #333);
+}
+
+.triangle-down {
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 26px solid var(--text-primary, #333);
+  transform: translateY(26px);
+}
+
+.animated .triangle {
+  animation: triangleFlip 3s infinite ease-in-out;
+  animation-delay: var(--delay);
+}
+
+@keyframes triangleFlip {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-5px) scale(1.1);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(5px) scale(0.9);
+    opacity: 0.5;
+  }
+}
+
+.triangle-down.triangle {
+  animation-name: triangleFlipDown;
+}
+
+@keyframes triangleFlipDown {
+  0%, 100% {
+    transform: translateY(26px) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(21px) scale(1.1);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(31px) scale(0.9);
+    opacity: 0.5;
+  }
+}
+
+/* === ISOMETRIC CUBES === */
+.isometric-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: rotateX(60deg) rotateY(-45deg);
+  transform-style: preserve-3d;
+}
+
+.isometric-cube {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 40px;
+  height: 40px;
+  transform-style: preserve-3d;
+}
+
+.cube-face {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0.8;
+}
+
+.cube-top {
+  background: var(--text-primary, #333);
+  transform: rotateX(90deg) translateZ(20px);
+}
+
+.cube-left {
+  background: color-mix(in srgb, var(--text-primary, #333) 80%, black);
+  transform: rotateY(-90deg) translateZ(20px);
+}
+
+.cube-right {
+  background: color-mix(in srgb, var(--text-primary, #333) 60%, black);
+  transform: rotateY(90deg) translateZ(20px);
+}
+
+.animated .isometric-cube {
+  animation: cubeRise 5s infinite ease-in-out;
+  animation-delay: var(--delay);
+}
+
+@keyframes cubeRise {
+  0%, 100% {
+    transform: translateZ(0) scale(1);
+  }
+  50% {
+    transform: translateZ(30px) scale(1.1);
+  }
+}
+
+/* === DIAMONDS PATTERN === */
+.diamonds-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.diamond {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: var(--x);
+  top: var(--y);
+  background: var(--text-primary, #333);
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+.animated .diamond {
+  animation: diamondSpin 6s infinite linear;
+  animation-delay: var(--delay);
+}
+
+@keyframes diamondSpin {
+  0% {
+    transform: rotate(var(--rotation)) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: rotate(calc(var(--rotation) + 180deg)) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(calc(var(--rotation) + 360deg)) scale(1);
+    opacity: 0.6;
+  }
+}
+
+/* === TEXTILE WEAVE === */
+.textile-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.textile-thread {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  background: var(--text-primary, #333);
+}
+
+.textile-thread.horizontal {
+  width: 25px;
+  height: 2px;
+}
+
+.textile-thread.vertical {
+  width: 2px;
+  height: 25px;
+}
+
+.animated .textile-thread {
+  animation: weaveShimmer 2s infinite ease-in-out;
+  animation-delay: var(--delay);
+}
+
+@keyframes weaveShimmer {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+
+/* === CIRCUIT BOARD === */
+.circuit-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.circuit-tracks {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.circuit-track {
+  position: absolute;
+  background: var(--text-primary, #333);
+}
+
+.circuit-track.horizontal {
+  width: 100%;
+  height: 1px;
+  top: var(--y);
+  left: 0;
+}
+
+.circuit-track.vertical {
+  width: 1px;
+  height: 100%;
+  left: var(--x);
+  top: 0;
+}
+
+.circuit-component {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  left: var(--x);
+  top: var(--y);
+  background: var(--text-primary, #333);
+  border-radius: 2px;
+}
+
+.animated .circuit-track {
+  animation: circuitFlow 3s infinite ease-in-out;
+  animation-delay: var(--delay);
+}
+
+.animated .circuit-component {
+  animation: componentBlink 4s infinite ease-in-out;
+  animation-delay: var(--delay);
+}
+
+@keyframes circuitFlow {
+  0%, 100% {
+    opacity: 0.3;
+    box-shadow: 0 0 0 transparent;
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 4px var(--text-primary, #333);
+  }
+}
+
+@keyframes componentBlink {
+  0%, 90%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  5%, 15% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Hover эффекты */
+.geometric-pattern-bg:hover .hexagon {
+  animation-duration: 2s;
+}
+
+.geometric-pattern-bg:hover .triangle {
+  animation-duration: 1.5s;
+}
+
+.geometric-pattern-bg:hover .isometric-cube {
+  animation-duration: 2.5s;
+}
+
+.geometric-pattern-bg:hover .diamond {
+  animation-duration: 3s;
+}
+
+.geometric-pattern-bg:hover .textile-thread {
+  animation-duration: 1s;
+}
+
+.geometric-pattern-bg:hover .circuit-track,
+.geometric-pattern-bg:hover .circuit-component {
+  animation-duration: 1.5s;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .hexagon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .triangle-up,
+  .triangle-down {
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 17px;
+    border-top-width: 17px;
+  }
+  
+  .triangle-down {
+    transform: translateY(17px);
+  }
+  
+  .isometric-cube,
+  .cube-face {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .diamond {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .textile-thread.horizontal {
+    width: 15px;
+    height: 1px;
+  }
+  
+  .textile-thread.vertical {
+    width: 1px;
+    height: 15px;
+  }
+  
+  .circuit-component {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .geometric-pattern-bg {
+    opacity: 0.05;
+  }
+}
+
+@media (max-width: 480px) {
+  .geometric-pattern-bg {
+    opacity: 0.03;
+  }
+  
+  /* Отключаем сложные анимации на слабых устройствах */
+  .geometric-pattern-bg.animated {
+    animation: none;
+  }
+  
+  .geometric-pattern-bg.animated * {
+    animation: none;
+  }
+} 

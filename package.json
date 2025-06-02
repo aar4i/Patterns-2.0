@@ -26,8 +26,10 @@
     "@react-three/drei": "^10.1.2",
     "@react-three/fiber": "^9.1.2",
     "framer-motion": "^12.15.0",
+    "p5": "^2.0.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-p5": "^1.4.1",
     "react-swipeable": "^7.0.2",
     "three": "^0.177.0"
   },
