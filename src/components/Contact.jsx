@@ -18,6 +18,8 @@ function Contact() {
       ...prev,
       [name]: value
     }))
+    
+    // Убираем автоматическое изменение высоты - размер теперь фиксированный
   }
 
   const handleFieldClick = (fieldName) => {
@@ -31,6 +33,8 @@ function Contact() {
 
   const handleFocus = (fieldName) => {
     setFocusedField(fieldName)
+    
+    // Убираем изменение высоты - размер теперь фиксированный
   }
 
   const handleBlur = (fieldName) => {
@@ -120,7 +124,8 @@ function Contact() {
                 >
                   {!(focusedField === 'message' || formData.message) && (
                     <div className="textarea-content">
-                      DESCRIBE WHAT YOU WANT TO DO LOREM IPSUM AHAHAH<br />
+                      DESCRIBE WHAT YOU WANT<br />
+                      TO DO LOREM IPSUM AHAHAH<br />
                       3 ROW HERE<br />
                       4 ROW<br />
                       5TH ROW HERE
@@ -132,7 +137,6 @@ function Contact() {
                     onChange={handleInputChange}
                     onFocus={() => handleFocus('message')}
                     onBlur={() => handleBlur('message')}
-                    rows="4"
                     style={{ display: focusedField === 'message' || formData.message ? 'block' : 'none' }}
                   />
                 </div>

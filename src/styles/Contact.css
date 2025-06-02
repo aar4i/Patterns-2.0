@@ -8,7 +8,7 @@
 
 .contact-container {
   width: 100%;
-  max-width: 800px;
+  max-width: 2000px; /* Увеличиваем ширину контейнера для большой формы */
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -21,15 +21,17 @@
 
 /* Форма */
 .contact-form-section {
-  background-color: var(--bg-accent);
-  color: var(--text-inverse);
+  background-color: transparent; /* Убираем белый фон */
+  color: var(--text-primary);
   padding: 3rem 2rem;
+  display: flex;
+  justify-content: center; /* Центрируем форму */
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.4rem; /* Увеличиваем промежутки в 2 раза */
 }
 
 .form-field {
@@ -39,16 +41,16 @@
 }
 
 .field-label {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: white; /* Белый фон для полей */
+  color: black; /* Черный текст */
   padding: 0;
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
   font-weight: 400;
   letter-spacing: 0.05em;
   font-family: var(--font-primary);
   display: block;
   width: 100%;
-  max-width: 250px; /* Половина ширины для обычных полей */
+  max-width: 530px; /* Увеличиваем ширину в 2 раза */
   line-height: 0.8; /* Максимально плотная высота строки */
   cursor: pointer;
   transition: all 0.3s ease;
@@ -59,37 +61,64 @@
 .field-label.focused {
   padding: 0;
   width: 100%;
-  max-width: 250px; /* Половина ширины для обычных полей */
+  max-width: 530px; /* Увеличиваем ширину в 2 раза */
   display: block;
 }
 
 .textarea-field {
+  background-color: white; /* Белый фон для большого поля */
+  color: black; /* Черный текст */
   padding: 0;
+  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
   line-height: 0.8; /* Максимально плотная высота строки */
   display: block;
   width: 100%;
-  max-width: 500px; /* Полная ширина для поля описания */
+  max-width: 960px; /* Возвращаем адаптивную ширину */
+  min-width: 960px; /* Минимальная ширина равна максимальной для фиксации */
+  height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5); /* Фиксированная высота для 5 строк */
+  min-height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5); /* Фиксированная высота для 5 строк */
+  overflow: hidden; /* Предотвращаем расширение контейнера */
+  box-sizing: border-box; /* Контролируем размеры точно */
+  /* Убираем относительное позиционирование */
 }
 
 .textarea-field.focused {
   padding: 0;
   width: 100%;
-  max-width: 500px; /* Полная ширина для поля описания */
+  max-width: 960px; /* Возвращаем адаптивную ширину */
+  min-width: 960px; /* Минимальная ширина равна максимальной для фиксации */
   display: block;
-  min-height: 120px;
+  height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5); /* Фиксированная высота для 5 строк */
+  min-height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5); /* Фиксированная высота для 5 строк */
+  overflow: hidden; /* Предотвращаем расширение контейнера */
+  box-sizing: border-box; /* Контролируем размеры точно */
+  /* Убираем относительное позиционирование */
 }
 
 .textarea-content {
   line-height: 0.8; /* Максимально плотная высота строки для многострочного текста */
+  width: 100%; /* Фиксируем ширину как у textarea */
+  max-width: 960px; /* Такая же максимальная ширина */
+  box-sizing: border-box; /* Такой же box-sizing */
+  font-size: clamp(3rem, 8vw, 4rem); /* Тот же размер шрифта что у textarea */
+  font-weight: 400; /* Тот же вес шрифта */
+  font-family: var(--font-primary); /* Тот же шрифт */
+  letter-spacing: 0.05em; /* Тот же межбуквенный интервал */
+  text-transform: uppercase; /* Тот же регистр */
+  margin: 0; /* Убираем отступы */
+  padding: 0; /* Убираем внутренние отступы */
+  vertical-align: top; /* Выравниваем по верхнему краю как у textarea */
+  display: block; /* Тот же display */
+  /* Убираем абсолютное позиционирование */
 }
 
 .form-field input {
   border: none;
   background: transparent;
   padding: 0;
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
   font-weight: 400;
-  color: var(--text-primary);
+  color: black; /* Черный цвет вводимого текста */
   font-family: var(--font-primary);
   width: 100%;
   display: none;
@@ -97,7 +126,7 @@
   letter-spacing: 0.05em;
   line-height: 0.8; /* Точно такой же как у field-label */
   text-transform: uppercase;
-  height: calc(clamp(1.2rem, 3vw, 1.6rem) * 0.8); /* Принудительная высота */
+  height: calc(clamp(3rem, 8vw, 4rem) * 0.8); /* Обновляем высоту под новый размер шрифта */
   box-sizing: border-box;
 }
 
@@ -105,9 +134,9 @@
   border: none;
   background: transparent;
   padding: 0;
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
   font-weight: 400;
-  color: var(--text-primary);
+  color: black; /* Черный цвет вводимого текста */
   font-family: var(--font-primary);
   width: 100%;
   display: none;
@@ -124,22 +153,54 @@
 }
 
 .textarea-field textarea {
-  min-height: 120px; /* Фиксированная высота только для большого поля */
+  /* Полностью переопределяем все стили */
+  width: 100% !important;
+  height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5) !important;
+  min-height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5) !important;
+  max-height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5) !important;
+  
+  /* Полный сброс стилей браузера */
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  
+  /* Точно такие же стили как у текста заглушки */
+  font-size: clamp(3rem, 8vw, 4rem) !important;
+  font-weight: 400 !important;
+  font-family: var(--font-primary) !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  line-height: 0.8 !important;
+  color: black !important;
+  
+  /* Дополнительные сбросы */
+  vertical-align: top !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  resize: none !important;
+  overflow: hidden !important;
+  
+  /* Убираем browser defaults для textarea */
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
 }
 
 .submit-button {
-  background-color: var(--accent-primary);
-  color: var(--text-secondary);
+  background-color: var(--bg-secondary); /* Красный цвет фона */
+  color: white; /* Белый текст на красном фоне */
   border: none;
   padding: 0;
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
   font-weight: 400;
   letter-spacing: 0.05em;
   font-family: var(--font-primary);
   cursor: pointer;
   width: 100%;
-  max-width: 500px; /* Ширина как у поля описания */
-  margin-top: 1rem;
+  max-width: 960px; /* Увеличиваем ширину кнопки в 2 раза */
+
   text-transform: uppercase;
   line-height: 0.8; /* Максимально плотная высота строки */
   display: block;
@@ -147,7 +208,7 @@
 }
 
 .submit-button:hover {
-  background-color: var(--accent-secondary);
+  background-color: var(--accent-primary); /* При hover другой оттенок красного */
 }
 
 /* Разделитель */
@@ -157,7 +218,7 @@
 }
 
 .divider-text {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(4rem, 10vw, 6rem); /* Увеличиваем размер шрифта в 2 раза */
   font-weight: 400;
   color: var(--text-primary);
   letter-spacing: 0.1em;
@@ -176,7 +237,7 @@
 }
 
 .contact-action {
-  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
   font-weight: 400;
   color: var(--text-primary);
   letter-spacing: 0.05em;
@@ -189,7 +250,7 @@
   background-color: var(--accent-primary);
   color: var(--text-secondary);
   padding: 0;
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-size: clamp(2.4rem, 6vw, 3.2rem); /* Увеличиваем размер шрифта в 2 раза */
   font-weight: 400;
   letter-spacing: 0.05em;
   font-family: var(--font-primary);
@@ -199,12 +260,12 @@
 
 .contact-social {
   display: flex;
-  gap: 3rem;
-  margin-top: 1rem;
+  gap: 6rem; /* Увеличиваем промежутки в 2 раза */
+  margin-top: 2rem; /* Увеличиваем отступ сверху в 2 раза */
 }
 
 .social-link {
-  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
   font-weight: 400;
   color: var(--accent-primary);
   text-decoration: none;
