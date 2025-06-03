@@ -36,13 +36,13 @@
   height: 30px;
   left: var(--x);
   top: var(--y);
-  background: var(--text-primary, #333);
+  background: var(--text-primary, #000);
   clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%);
   transform-origin: center;
 }
 
 .animated .hexagon {
-  animation: hexagonPulse 4s infinite ease-in-out;
+  animation: hexagonPulse 2s infinite ease-in-out;
   animation-delay: var(--delay);
 }
 
@@ -75,18 +75,18 @@
 .triangle-up {
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-bottom: 26px solid var(--text-primary, #333);
+  border-bottom: 26px solid var(--text-primary, #000);
 }
 
 .triangle-down {
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-top: 26px solid var(--text-primary, #333);
+  border-top: 26px solid var(--text-primary, #000);
   transform: translateY(26px);
 }
 
 .animated .triangle {
-  animation: triangleFlip 3s infinite ease-in-out;
+  animation: triangleFlip 1.5s infinite ease-in-out;
   animation-delay: var(--delay);
 }
 
@@ -150,22 +150,22 @@
 }
 
 .cube-top {
-  background: var(--text-primary, #333);
+  background: var(--text-primary, #000);
   transform: rotateX(90deg) translateZ(20px);
 }
 
 .cube-left {
-  background: color-mix(in srgb, var(--text-primary, #333) 80%, black);
+  background: color-mix(in srgb, var(--text-primary, #000) 80%, black);
   transform: rotateY(-90deg) translateZ(20px);
 }
 
 .cube-right {
-  background: color-mix(in srgb, var(--text-primary, #333) 60%, black);
+  background: color-mix(in srgb, var(--text-primary, #000) 60%, black);
   transform: rotateY(90deg) translateZ(20px);
 }
 
 .animated .isometric-cube {
-  animation: cubeRise 5s infinite ease-in-out;
+  animation: cubeRise 2.5s infinite ease-in-out;
   animation-delay: var(--delay);
 }
 
@@ -191,13 +191,13 @@
   height: 20px;
   left: var(--x);
   top: var(--y);
-  background: var(--text-primary, #333);
+  background: var(--text-primary, #000);
   transform: rotate(45deg);
   transform-origin: center;
 }
 
 .animated .diamond {
-  animation: diamondSpin 6s infinite linear;
+  animation: diamondSpin 3s infinite linear;
   animation-delay: var(--delay);
 }
 
@@ -227,7 +227,7 @@
   position: absolute;
   left: var(--x);
   top: var(--y);
-  background: var(--text-primary, #333);
+  background: var(--text-primary, #000);
 }
 
 .textile-thread.horizontal {
@@ -241,7 +241,7 @@
 }
 
 .animated .textile-thread {
-  animation: weaveShimmer 2s infinite ease-in-out;
+  animation: weaveShimmer 1s infinite ease-in-out;
   animation-delay: var(--delay);
 }
 
@@ -271,7 +271,7 @@
 
 .circuit-track {
   position: absolute;
-  background: var(--text-primary, #333);
+  background: var(--text-primary, #000);
 }
 
 .circuit-track.horizontal {
@@ -294,17 +294,17 @@
   height: 8px;
   left: var(--x);
   top: var(--y);
-  background: var(--text-primary, #333);
+  background: var(--text-primary, #000);
   border-radius: 2px;
 }
 
 .animated .circuit-track {
-  animation: circuitFlow 3s infinite ease-in-out;
+  animation: circuitFlow 1.5s infinite ease-in-out;
   animation-delay: var(--delay);
 }
 
 .animated .circuit-component {
-  animation: componentBlink 4s infinite ease-in-out;
+  animation: componentBlink 2s infinite ease-in-out;
   animation-delay: var(--delay);
 }
 
@@ -315,7 +315,7 @@
   }
   50% {
     opacity: 0.8;
-    box-shadow: 0 0 4px var(--text-primary, #333);
+    box-shadow: 0 0 4px var(--text-primary, #000);
   }
 }
 
@@ -332,28 +332,28 @@
 
 /* Hover эффекты */
 .geometric-pattern-bg:hover .hexagon {
-  animation-duration: 2s;
+  animation-duration: 1s;
 }
 
 .geometric-pattern-bg:hover .triangle {
-  animation-duration: 1.5s;
+  animation-duration: 0.8s;
 }
 
 .geometric-pattern-bg:hover .isometric-cube {
-  animation-duration: 2.5s;
+  animation-duration: 1.2s;
 }
 
 .geometric-pattern-bg:hover .diamond {
-  animation-duration: 3s;
+  animation-duration: 1.5s;
 }
 
 .geometric-pattern-bg:hover .textile-thread {
-  animation-duration: 1s;
+  animation-duration: 0.5s;
 }
 
 .geometric-pattern-bg:hover .circuit-track,
 .geometric-pattern-bg:hover .circuit-component {
-  animation-duration: 1.5s;
+  animation-duration: 0.8s;
 }
 
 /* Адаптивность */

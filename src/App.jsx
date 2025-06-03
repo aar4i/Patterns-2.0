@@ -32,7 +32,7 @@ function App() {
     }
   }, [currentSection, isScrolling, sections.length])
 
-  useEffect(() => {
+    useEffect(() => {
     const handleWheel = (event) => {
       // Если сейчас в процессе скролла, игнорируем
       if (isScrolling) return

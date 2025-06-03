@@ -10,6 +10,79 @@
   overflow: hidden;
 }
 
+/* Контейнер для видео фона */
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Видео фон */
+.hero-video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  /* Резервный фон на случай проблем с видео */
+  background: var(--bg-primary);
+}
+
+/* Оверлей для улучшения читаемости текста */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+/* PM паттерн поверх видео */
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.pm-pattern {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  padding: 2rem;
+  height: 100%;
+  align-items: center;
+  justify-items: center;
+}
+
+.pm-text {
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 400;
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  padding: 0.2em 0.4em;
+  line-height: 1;
+  letter-spacing: 2px;
+  font-family: var(--font-primary);
+  transform: rotate(-5deg);
+  display: inline-block;
+}
+
+
 .hero-container {
   width: 100%;
   max-width: 1200px;
@@ -30,16 +103,26 @@
   line-height: 0.9;
   margin-bottom: 2rem;
   letter-spacing: 3px;
-  color: var(--text-primary);
+  color: #ffffff;
   font-family: var(--font-primary);
 }
 
 .hero-title .contrast-block {
   font-size: inherit;
-  padding: 0;
+  padding: 0rem 0rem; /* Базовый padding */
   margin-right: 1rem;
   display: inline-block;
-  line-height: 1;
+  line-height: .7;
+}
+
+/* PATTERNS - убираем отступ сверху */
+.hero-title .contrast-block:first-child {
+  padding-top: 0;
+}
+
+/* MANUFACTURING - убираем отступ снизу */  
+.hero-title .contrast-block:last-child {
+  padding-bottom: 0;
 }
 
 .hero-subtitle {
@@ -48,18 +131,22 @@
   gap: 2rem;
   font-size: clamp(1.2rem, 3vw, 1.8rem);
   margin-top: 3rem;
+  color: #ffffff;
 }
 
 .hero-subtitle .contrast-block {
   font-size: inherit;
-  padding: 0;
-  line-height: 1;
+  padding: 0; /* Убираем все отступы для Textile Production и 2025 */
+  line-height: .8;
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  font-weight: 400;
 }
 
 .hero-year {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 400;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.8);
   letter-spacing: 2px;
   font-family: var(--font-primary);
 }
@@ -207,7 +294,16 @@
 
   .hero-title .contrast-block {
     margin-right: 0.5rem;
-    padding: 0;
+    padding: 0rem 0rem; /* Базовый padding для мобильных */
+  }
+
+  /* Сохраняем специальные отступы для мобильных */
+  .hero-title .contrast-block:first-child {
+    padding-top: 0;
+  }
+
+  .hero-title .contrast-block:last-child {
+    padding-bottom: 0;
   }
 
   .hero-actions {
@@ -270,5 +366,10 @@
 
   .service-icon {
     font-size: 1.7rem;
+  }
+
+  /* Оптимизация видео для мобильных устройств */
+  .hero-overlay {
+    background: rgba(0, 0, 0, 0.5);
   }
 } 

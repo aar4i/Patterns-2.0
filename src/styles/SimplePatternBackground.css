@@ -34,11 +34,11 @@
   position: absolute;
   width: var(--size);
   height: var(--size);
-  background: var(--text-primary, #333);
+  background: var(--text-primary, #000);
   border-radius: 50%;
   left: var(--x);
   top: var(--y);
-  animation: dotFloat var(--delay, 3s) infinite ease-in-out;
+  animation: dotFloat var(--delay, 1.5s) infinite ease-in-out;
   animation-delay: var(--delay);
 }
 
@@ -67,14 +67,14 @@
   background: linear-gradient(
     to bottom,
     transparent,
-    var(--text-primary, #333) 50%,
+    var(--text-primary, #000) 50%,
     transparent
   );
   left: 50%;
   top: 0;
   transform-origin: center bottom;
   transform: translateX(-50%) rotate(var(--angle));
-  animation: lineWave 4s infinite ease-in-out;
+  animation: lineWave 2s infinite ease-in-out;
   animation-delay: var(--delay);
 }
 
@@ -107,9 +107,9 @@
     0deg,
     transparent,
     transparent 49px,
-    var(--text-primary, #333) 50px
+    var(--text-primary, #000) 50px
   );
-  animation: gridSlideH 8s infinite linear;
+  animation: gridSlideH 4s infinite linear;
 }
 
 .grid-lines.vertical {
@@ -117,9 +117,9 @@
     90deg,
     transparent,
     transparent 49px,
-    var(--text-primary, #333) 50px
+    var(--text-primary, #000) 50px
   );
-  animation: gridSlideV 6s infinite linear;
+  animation: gridSlideV 3s infinite linear;
 }
 
 @keyframes gridSlideH {
@@ -153,8 +153,8 @@
   height: 20px;
   left: var(--x);
   top: var(--y);
-  background: var(--text-primary, #333);
-  animation: geometricRotate 6s infinite ease-in-out;
+  background: var(--text-primary, #000);
+  animation: geometricRotate 3s infinite ease-in-out;
   animation-delay: var(--delay);
   transform-origin: center;
 }
@@ -194,23 +194,23 @@
 
 /* Hover эффекты */
 .pattern-background:hover .dot {
-  animation-duration: 1.5s;
+  animation-duration: 0.8s;
 }
 
 .pattern-background:hover .line {
-  animation-duration: 2s;
+  animation-duration: 1s;
 }
 
 .pattern-background:hover .grid-lines.horizontal {
-  animation-duration: 4s;
+  animation-duration: 2s;
 }
 
 .pattern-background:hover .grid-lines.vertical {
-  animation-duration: 3s;
+  animation-duration: 1.5s;
 }
 
 .pattern-background:hover .geometric-shape {
-  animation-duration: 3s;
+  animation-duration: 1.5s;
 }
 
 /* Адаптивность */
