@@ -5,7 +5,6 @@ A contemporary website showcasing innovative design patterns and creative soluti
 ## 🚀 Features
 
 - **Modern Design**: Clean, contemporary aesthetics with the ApfelGrotezk font
-- **Multilingual**: Support for English and German languages
 - **Responsive**: Fully responsive design for all devices
 - **Component-based**: Modular React components for easy maintenance
 - **Fast**: Built with Vite for lightning-fast development and builds
@@ -15,7 +14,7 @@ A contemporary website showcasing innovative design patterns and creative soluti
 ```
 src/
 ├── components/          # React components
-│   ├── Navigation.jsx   # Main navigation with language toggle
+│   ├── Navigation.jsx   # Main navigation
 │   ├── Hero.jsx         # Hero section with CTA
 │   ├── Services.jsx     # Services grid
 │   ├── Gallery.jsx      # Gallery with overlays
@@ -25,8 +24,6 @@ src/
 │   ├── fonts.css        # Font definitions
 │   ├── index.css        # Base styles
 │   └── [Component].css  # Component-specific styles
-├── data/                # Static data
-│   └── translations.js  # Multilingual content
 └── assets/              # Static assets
     ├── images/          # Image files
     └── icons/           # Icon files
@@ -72,7 +69,7 @@ public/
 
 ### Navigation
 - Fixed top navigation
-- Language switcher (EN/DE)
+- Theme toggle
 - Smooth scroll navigation
 
 ### Hero
@@ -94,14 +91,6 @@ public/
 - Contact form
 - Social media links
 - Alternative contact info
-
-## 🌐 Internationalization
-
-The project supports multiple languages through the `translations.js` file:
-- English (default)
-- German
-
-Add new languages by extending the translations object.
 
 ## 🚀 Deployment
 

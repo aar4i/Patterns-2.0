@@ -174,12 +174,6 @@ function Contact() {
               <a href="#" className="social-link">FB</a>
             </div>
           </div>
-
-          {/* Футер */}
-          <div className="contact-footer">
-            <div>© Patterns Manufacturing 2025</div>
-            <div>All rights reserved.</div>
-          </div>
         </div>
       </div>
     </section>

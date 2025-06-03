@@ -1,9 +1,9 @@
 /* Минималистичная секция Contact */
 .contact {
-  min-height: 100vh;
+  min-height: auto;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  padding: 4rem 0;
+  padding: 2rem 0;
 }
 
 .contact-container {
@@ -305,14 +305,59 @@
   font-family: var(--font-primary);
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
+/* Адаптивность - улучшенная версия */
+@media (max-width: 1024px) {
   .contact {
-    padding: 3rem 0;
+    padding: 4rem 0;
   }
 
   .contact-container {
-    padding: 0 1.5rem;
+    padding: 0 2rem;
+  }
+
+  .contact-content {
+    gap: 3rem;
+  }
+
+  .contact-form-section {
+    padding: 2.5rem 2rem;
+  }
+  
+  .submit-button {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    max-width: 800px;
+  }
+  
+  .divider-text {
+    font-size: clamp(3.5rem, 8vw, 5rem);
+  }
+  
+  .contact-action {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  }
+  
+  .contact-email {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+  }
+  
+  .social-link {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  }
+  
+  .contact-social {
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 3rem 0;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  .contact-container {
+    padding: 0 var(--mobile-padding);
   }
 
   .contact-content {
@@ -320,35 +365,156 @@
   }
 
   .contact-form-section {
-    padding: 2rem 1.5rem;
+    padding: 2rem var(--mobile-padding);
+    background-color: var(--bg-primary);
+    border-radius: 0;
   }
-
-  .contact-social {
-    gap: 2rem;
+  
+  .contact-form {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .form-field {
+    margin-bottom: 1.5rem;
+    width: 100%;
   }
 
   .field-label {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    max-width: 400px;
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    max-width: 100%;
+    min-height: 60px;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-tertiary);
+    cursor: pointer;
+    
+    /* Мобильные улучшения */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
   }
 
   .field-label.focused {
-    max-width: 400px;
+    max-width: 100%;
+    min-height: 60px;
+    border-color: var(--accent-primary);
+    background-color: var(--bg-secondary);
+  }
+  
+  .textarea-field {
+    min-height: 120px;
+  }
+  
+  .textarea-field.focused {
+    min-height: 140px;
   }
 
   .form-field input,
   .form-field textarea {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+    padding: 1rem;
+    width: 100%;
+    border: 2px solid var(--accent-primary);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 50px;
+    
+    /* Мобильные улучшения для input */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    outline: none;
+    resize: none;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  .form-field input:focus,
+  .form-field textarea:focus {
+    border-color: var(--accent-light);
+    box-shadow: 0 0 0 2px rgba(166, 38, 57, 0.3);
+  }
+  
+  .textarea-content {
+    line-height: 1.4;
+    color: var(--text-muted);
   }
 
-  .textarea-field.focused {
-    min-height: 100px;
+  .submit-button {
+    font-size: clamp(2rem, 6vw, 3rem);
+    max-width: 100%;
+    width: 100%;
+    padding: 1rem;
+    min-height: 80px;
+    
+    /* Мобильные улучшения для кнопки */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    cursor: pointer;
+  }
+  
+  .submit-button:active {
+    transform: scale(0.98);
+  }
+
+  .contact-divider {
+    padding: 1.5rem 0;
+  }
+  
+  .divider-text {
+    font-size: clamp(3rem, 8vw, 4.5rem);
+  }
+
+  .contact-info-section {
+    gap: 1.5rem;
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .contact-action {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  
+  .contact-email {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    padding: 0.5rem 1rem;
+    text-align: center;
+    word-break: break-all;
+  }
+
+  .contact-social {
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .social-link {
+    font-size: clamp(2rem, 6vw, 3rem);
+    padding: 0.5rem 1rem;
+    min-height: 60px;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Мобильные улучшения для ссылок */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .social-link:active {
+    transform: scale(0.95);
   }
 }
 
 @media (max-width: 480px) {
+  .contact {
+    padding: 2rem 0;
+  }
+
   .contact-container {
-    padding: 0 1rem;
+    padding: 0 var(--mobile-padding-sm);
   }
 
   .contact-content {
@@ -356,29 +522,214 @@
   }
 
   .contact-form-section {
-    padding: 1.5rem 1rem;
+    padding: 1.5rem var(--mobile-padding-sm);
+  }
+
+  .field-label {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    min-height: 55px;
+    padding: 0.8rem;
+  }
+  
+  .field-label.focused {
+    min-height: 55px;
+  }
+  
+  .textarea-field {
+    min-height: 100px;
+  }
+  
+  .textarea-field.focused {
+    min-height: 120px;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    padding: 0.8rem;
+    min-height: 45px;
+  }
+
+  .submit-button {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    min-height: 70px;
+    padding: 0.8rem;
+  }
+  
+  .divider-text {
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+  }
+  
+  .contact-action {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+  }
+  
+  .contact-email {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    padding: 0.4rem 0.8rem;
+    word-break: break-word;
+    hyphens: auto;
   }
 
   .contact-social {
     flex-direction: column;
     gap: 1rem;
+    align-items: center;
   }
-
-  .field-label {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-  }
-
-  .form-field input,
-  .form-field textarea {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-  }
-
-  .textarea-field.focused {
-    min-height: 90px;
+  
+  .social-link {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    padding: 0.8rem 1.5rem;
+    min-height: 55px;
+    min-width: 120px;
+    width: 100%;
+    max-width: 200px;
   }
 
   .contact-footer {
     margin-top: 2rem;
     padding-top: 1.5rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 360px) {
+  .contact-container {
+    padding: 0 0.5rem;
+  }
+  
+  .contact-form-section {
+    padding: 1rem 0.5rem;
+  }
+  
+  .field-label {
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+    min-height: 50px;
+    padding: 0.6rem;
+  }
+  
+  .form-field input,
+  .form-field textarea {
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+    padding: 0.6rem;
+    min-height: 40px;
+  }
+  
+  .submit-button {
+    font-size: clamp(1.5rem, 4.5vw, 2rem);
+    min-height: 60px;
+  }
+  
+  .divider-text {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  
+  .contact-action {
+    font-size: clamp(1.5rem, 4.5vw, 2rem);
+  }
+  
+  .contact-email {
+    font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+  }
+  
+  .social-link {
+    font-size: clamp(1.5rem, 4.5vw, 2rem);
+    min-height: 50px;
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* Ландшафтная ориентация для мобильных */
+@media (max-width: 812px) and (orientation: landscape) {
+  .contact {
+    padding: 1.5rem 0;
+    min-height: auto;
+  }
+  
+  .contact-content {
+    gap: 1.5rem;
+  }
+  
+  .contact-form-section {
+    padding: 1rem;
+  }
+  
+  .field-label,
+  .field-label.focused {
+    min-height: 45px;
+  }
+  
+  .textarea-field {
+    min-height: 80px;
+  }
+  
+  .textarea-field.focused {
+    min-height: 90px;
+  }
+  
+  .submit-button {
+    min-height: 60px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .contact-social {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+  
+  .social-link {
+    min-width: 80px;
+    width: auto;
+  }
+}
+
+/* Улучшения для устройств с Touch */
+@media (hover: none) and (pointer: coarse) {
+  .field-label,
+  .submit-button,
+  .social-link {
+    min-height: 48px; /* Минимальный размер для касания */
+  }
+  
+  .form-field input,
+  .form-field textarea {
+    font-size: 16px; /* Предотвращение зума в iOS */
+  }
+  
+  /* Убираем hover эффекты для touch устройств */
+  .submit-button:hover,
+  .social-link:hover {
+    background-color: inherit;
+    color: inherit;
+  }
+}
+
+/* Предпочтения пользователя */
+@media (prefers-reduced-motion: reduce) {
+  .field-label,
+  .submit-button,
+  .social-link,
+  .form-field input,
+  .form-field textarea {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Высокий контраст */
+@media (prefers-contrast: high) {
+  .field-label {
+    border-width: 3px;
+  }
+  
+  .field-label.focused {
+    border-width: 3px;
+    box-shadow: 0 0 0 3px var(--accent-primary);
+  }
+  
+  .form-field input:focus,
+  .form-field textarea:focus {
+    box-shadow: 0 0 0 3px rgba(166, 38, 57, 0.5);
   }
 } 

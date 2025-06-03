@@ -9,7 +9,7 @@ function Hero() {
       <div className="hero-background">
         {/* Используем новый профессиональный анализатор цветов с пикселизацией */}
         <VideoColorAnalyzer 
-          src="/videos/hero/PM.mp4"
+          src="/videos/hero/PM_new.mp4"
           className="hero-video-bg pixelated"
         />
         

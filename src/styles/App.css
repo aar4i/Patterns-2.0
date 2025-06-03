@@ -28,6 +28,12 @@
   --border-radius-sm: 0;
   --border-radius-md: 0;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Мобильные переменные */
+  --mobile-padding: 1rem;
+  --mobile-padding-sm: 0.75rem;
+  --mobile-gap: 1rem;
+  --mobile-gap-sm: 0.5rem;
 }
 
 /* Базовые стили */
@@ -39,7 +45,13 @@
 
 html, body {
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  /* Улучшенная прокрутка для мобильных */
+  -webkit-overflow-scrolling: touch;
+  
+  /* Убираем все отступы */
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -51,21 +63,49 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: var(--transition);
+  
+  /* Запрет зума при тапе на input */
+  -webkit-text-size-adjust: 100%;
+  /* Лучший рендеринг на мобильных */
+  text-rendering: optimizeLegibility;
+  
+  /* Убираем все отступы */
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 .App {
-  height: 100vh;
   width: 100%;
   background-color: var(--bg-primary);
-  will-change: transform;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 .section {
-  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Первая секция (Hero) должна начинаться сразу с самого верха */
+.section:first-child,
+#hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  position: relative;
+}
+
+/* Остальные секции */
+.section:not(:first-child) {
+  padding: 5rem 0;
 }
 
 /* Контейнер */
@@ -77,7 +117,112 @@ body {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 16px;
+    padding: 0 var(--mobile-padding);
+  }
+
+  /* Убираем отступы сверху для первой секции на мобильных */
+  .section:first-child,
+  #hero {
+    margin: 0;
+    padding: 0;
+    top: 0;
+  }
+
+  /* Остальные секции на мобильных */
+  .section:not(:first-child) {
+    padding: 3rem 0;
+  }
+
+  .btn {
+    padding: 14px 28px;
+    font-size: 0.95rem;
+    min-height: 52px;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .contrast-block {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .grid {
+    gap: var(--mobile-gap);
+  }
+  
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+    gap: var(--mobile-gap);
+  }
+  
+  .mobile-hidden {
+    display: none;
+  }
+  
+  .mobile-only {
+    display: block;
+  }
+  
+  /* Улучшения для касаний */
+  button, .btn, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--mobile-padding-sm);
+  }
+
+  /* Убираем отступы сверху для первой секции на маленьких экранах */
+  .section:first-child,
+  #hero {
+    margin: 0;
+    padding: 0;
+    top: 0;
+  }
+
+  /* Остальные секции на маленьких экранах */
+  .section:not(:first-child) {
+    padding: 2rem 0;
+  }
+
+  .section-title {
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    min-height: 48px;
+  }
+  
+  .grid {
+    gap: var(--mobile-gap-sm);
+  }
+  
+  /* Очень маленькие экраны */
+  h1 {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+  }
+  
+  h2 {
+    font-size: clamp(1.8rem, 4.5vw, 2.5rem);
+  }
+  
+  h3 {
+    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  }
+  
+  p {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 1.5;
   }
 }
 
@@ -107,8 +252,8 @@ h3 {
 }
 
 p {
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  line-height: 1.6;
   color: var(--text-primary);
   margin-bottom: 1rem;
   font-weight: 400;
@@ -134,7 +279,7 @@ p {
   border: 2px solid var(--text-primary);
 }
 
-/* Минималистичные кнопки */
+/* Улучшенные кнопки для мобильных */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -150,6 +295,11 @@ p {
   white-space: nowrap;
   min-height: 56px;
   letter-spacing: 1px;
+  
+  /* Мобильные улучшения */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .btn-primary {
@@ -201,8 +351,9 @@ p {
 
 /* Секции */
 section {
-  padding: 5rem 0;
   position: relative;
+  margin: 0;
+  padding: 0;
 }
 
 .section-title {
@@ -261,6 +412,15 @@ section {
   color: var(--text-inverse);
 }
 
+/* Скрытие на мобильных */
+.mobile-hidden {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
 /* Гротескные анимации */
 @keyframes glitch {
   0%, 90%, 100% { 
@@ -296,46 +456,46 @@ section {
   animation: glitch 0.3s ease-in-out;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
+/* Планшетная адаптивность */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 var(--mobile-padding);
+  }
+  
   section {
-    padding: 3rem 0;
+    padding: 4rem 0;
   }
-
-  .btn {
-    padding: 12px 24px;
-    font-size: 0.9rem;
-    min-height: 48px;
+  
+  .grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
-
-  .contrast-block {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
+  
+  .grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
-
-  .section-title {
-    margin-bottom: 3rem;
-  }
-
-  .grid {
-    gap: 0;
+  
+  .grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 0 12px;
-  }
-
+/* Ландшафтная ориентация мобильных */
+@media (max-width: 812px) and (orientation: landscape) {
   section {
     padding: 2rem 0;
+    min-height: auto;
   }
-
+  
   .section-title {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
+}
 
-  .grid-2, .grid-3, .grid-4 {
-    grid-template-columns: 1fr;
+/* Высокие плотности пикселей */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Оптимизации для Retina дисплеев */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }

@@ -319,24 +319,303 @@
   background-color: var(--accent-secondary);
 }
 
-/* Responsive Design - минимальные изменения для адаптивности */
-@media (max-width: 768px) {
+/* Responsive Design - улучшенная адаптивность */
+@media (max-width: 1024px) {
+  .all-techniques-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1px;
+  }
+  
+  .technique-banner {
+    min-width: 250px;
+    padding: 1.5rem;
+  }
+  
+  .technique-title {
+    font-size: clamp(1.3rem, 3.5vw, 2rem);
+    letter-spacing: 1.5px;
+  }
+  
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
   }
   
   .service-highlights {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .process-steps {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-showcase {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 0;
+  }
+  
+  .all-techniques-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2px;
+    height: 100%;
+  }
+  
+  .single-technique {
+    position: relative;
+    min-height: 25vh;
+    min-height: 25svh;
+  }
+  
+  .technique-banner {
+    min-width: 80vw;
+    max-width: 90vw;
+    padding: 1rem;
+    background-color: rgba(166, 38, 57, 0.95);
+    backdrop-filter: blur(5px);
+  }
+  
+  .technique-title {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  
+  .example-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    
+    /* Оптимизация для мобильных */
+    image-rendering: optimizeQuality;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .technique-examples {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  
+  /* Основные сервисы */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .service-card {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .service-highlights {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .highlight-item {
+    padding: 1.2rem;
+    text-align: center;
   }
   
   .process-steps {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .process-step {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  /* CTA секция */
+  .services-cta {
+    padding: 2rem var(--mobile-padding);
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 300px;
+    padding: 14px 24px;
+    font-size: 1rem;
+    
+    /* Мобильные улучшения */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 }
 
 @media (max-width: 480px) {
-  .service-highlights {
-    grid-template-columns: 1fr;
+  .services-showcase-container {
+    height: 100vh;
+    height: 100svh;
+  }
+  
+  .all-techniques-grid {
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1px;
+  }
+  
+  .single-technique {
+    min-height: 23vh;
+    min-height: 23svh;
+  }
+  
+  .technique-banner {
+    min-width: 85vw;
+    max-width: 95vw;
+    padding: 0.8rem;
+  }
+  
+  .technique-title {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    letter-spacing: 0.8px;
+    font-weight: 500;
+  }
+  
+  .example-image {
+    /* Более агрессивная оптимизация для слабых устройств */
+    image-rendering: optimizeSpeed;
+    transform: translateZ(0); /* Хак для GPU ускорения */
+  }
+  
+  /* Уменьшенные отступы для маленьких экранов */
+  .services-grid,
+  .service-highlights,
+  .process-steps {
+    padding: 0 var(--mobile-padding-sm);
+    gap: 0.8rem;
+  }
+  
+  .service-card,
+  .highlight-item,
+  .process-step {
+    padding: 1rem;
+  }
+  
+  .services-cta {
+    padding: 1.5rem var(--mobile-padding-sm);
+  }
+  
+  .cta-button {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+  
+  /* Оптимизация текста */
+  .service-card h3,
+  .highlight-item h4,
+  .process-step h4 {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+  }
+  
+  .service-card p,
+  .highlight-item p,
+  .process-step p {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 1.5;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 360px) {
+  .single-technique {
+    min-height: 20vh;
+    min-height: 20svh;
+  }
+  
+  .technique-banner {
+    min-width: 90vw;
+    padding: 0.6rem;
+  }
+  
+  .technique-title {
+    font-size: clamp(0.9rem, 2.8vw, 1.3rem);
+    letter-spacing: 0.6px;
+  }
+  
+  .services-grid,
+  .service-highlights,
+  .process-steps {
+    padding: 0 0.5rem;
+  }
+  
+  .service-card,
+  .highlight-item,
+  .process-step {
+    padding: 0.8rem;
+  }
+}
+
+/* Ландшафтная ориентация для мобильных */
+@media (max-width: 812px) and (orientation: landscape) {
+  .services-showcase {
+    min-height: 100vh;
+    min-height: 100lvh;
+  }
+  
+  .all-techniques-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1px;
+  }
+  
+  .single-technique {
+    min-height: 48vh;
+    min-height: 48lvh;
+  }
+  
+  .technique-banner {
+    min-width: 35vw;
+    max-width: 40vw;
+    padding: 0.8rem;
+  }
+  
+  .technique-title {
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+  }
+  
+  /* Скрываем лишние элементы в ландшафте */
+  .services-cta {
+    padding: 1rem var(--mobile-padding);
+  }
+}
+
+/* Оптимизация изображений для медленных соединений */
+@media (max-width: 768px) and (max-resolution: 1.5dppx) {
+  .example-image {
+    image-rendering: optimizeSpeed;
+    filter: contrast(1.1) brightness(1.05);
+  }
+}
+
+/* Предпочтения пользователя - снижение анимаций */
+@media (prefers-reduced-motion: reduce) {
+  .technique-banner,
+  .service-card,
+  .highlight-item,
+  .process-step {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Экономия трафика */
+@media (prefers-reduced-data: reduce) {
+  .example-image {
+    image-rendering: optimizeSpeed;
+    filter: blur(0.5px); /* Небольшое размытие для маскировки сжатия */
   }
 }
 
@@ -356,6 +635,132 @@
   margin: 0 auto;
   letter-spacing: 0.3px;
   opacity: 0.9;
+}
+
+/* Showcase стили для демонстрации техник */
+.services-showcase {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.services-showcase-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Новые стили для сетки всех техник */
+.all-techniques-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+  gap: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.single-technique {
+  position: relative;
+  overflow: hidden;
+}
+
+.single-example {
+  width: 100%;
+  height: 100%;
+}
+
+.technique-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.technique-banner {
+  background-color: var(--accent-primary);
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  min-width: 300px;
+}
+
+.technique-title {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.technique-examples {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  height: 100%;
+  gap: 0;
+}
+
+.example-item {
+  overflow: hidden;
+  position: relative;
+}
+
+.example-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .all-techniques-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+  }
+  
+  .technique-banner {
+    min-width: 80vw;
+    padding: 1rem;
+  }
+  
+  .technique-title {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    letter-spacing: 1px;
+  }
+  
+  .technique-examples {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .technique-banner {
+    min-width: 90vw;
+    padding: 0.8rem;
+  }
+  
+  .technique-title {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    letter-spacing: 1px;
+  }
 }
 
 /* Убираем все добавленные стили */

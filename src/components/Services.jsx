@@ -2,51 +2,50 @@ import React from 'react'
 import '../styles/Services.css'
 
 function Services() {
-  const services = [
-    {
-      id: "1",
-      title: "Embroidery—",
-      subtitle: "Durable & professional\nstitching."
-    },
-    {
-      id: "2", 
-      title: "Screen Printing—",
-      subtitle: "Bold & vibrant designs."
-    },
-    {
-      id: "3",
-      title: "DTF Printing—", 
-      subtitle: "Full-color, detailed\nprints."
-    },
-    {
-      id: "4",
-      title: "Heat Transfer—",
-      subtitle: "Perfect for small\nbatches."
-    }
-  ]
-
   return (
-    <section id="services" className="services">
-      <div className="services-container">
-        {services.map((service) => (
-          <div 
-            key={service.id}
-            className="service-item"
-          >
-            <div className="service-title">
-              <span className="service-number">{service.id}</span>
-              {service.title}
+    <section id="services" className="services-showcase">
+      <div className="services-showcase-container">
+        <div className="all-techniques-grid">
+          {/* Техника 1: Embroidery */}
+          <div className="single-technique">
+            <div className="technique-banner">
+              <h2 className="technique-title">EMBROIDERY</h2>
             </div>
-            <div className="service-subtitle">
-              {service.subtitle.split('\n').map((line, lineIndex) => (
-                <span key={lineIndex}>
-                  {line}
-                  {lineIndex < service.subtitle.split('\n').length - 1 && <br />}
-                </span>
-              ))}
+            <div className="single-example">
+              <img src="/public/Images/Frame 18.png" alt="Embroidery Example" className="example-image" />
             </div>
           </div>
-        ))}
+
+          {/* Техника 2: Screen Printing */}
+          <div className="single-technique">
+            <div className="technique-banner">
+              <h2 className="technique-title">SCREEN PRINTING</h2>
+            </div>
+            <div className="single-example">
+              <img src="public/Images/Frame 20.png" alt="Screen Printing Example" className="example-image" />
+            </div>
+          </div>
+
+          {/* Техника 3: DTF Printing */}
+          <div className="single-technique">
+            <div className="technique-banner">
+              <h2 className="technique-title">DTF PRINTING</h2>
+            </div>
+            <div className="single-example">
+              <img src="public/Images/Frame 19.png" alt="DTF Printing Example" className="example-image" />
+            </div>
+          </div>
+
+          {/* Техника 4: Heat Transfer */}
+          <div className="single-technique">
+            <div className="technique-banner">
+              <h2 className="technique-title">HEAT TRANSFER</h2>
+            </div>
+            <div className="single-example">
+              <img src="public/Images/Frame 21.png" alt="Heat Transfer Example" className="example-image" />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )
