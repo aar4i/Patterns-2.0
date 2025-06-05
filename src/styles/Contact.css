@@ -107,7 +107,7 @@
   text-transform: uppercase; /* Тот же регистр */
   margin: 0; /* Убираем отступы */
   padding: 0; /* Убираем внутренние отступы */
-  vertical-align: top; /* Выравниваем по верхнему краю как у textarea */
+  
   display: block; /* Тот же display */
   /* Убираем абсолютное позиционирование */
 }

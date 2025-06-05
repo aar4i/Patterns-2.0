@@ -129,11 +129,10 @@ function Contact() {
                 >
                   {!(focusedField === 'message' || formData.message) && (
                     <div className="textarea-content">
-                      DESCRIBE WHAT YOU WANT<br />
-                      TO DO LOREM IPSUM AHAHAH<br />
-                      3 ROW HERE<br />
-                      4 ROW<br />
-                      5TH ROW HERE
+                      DESCRIBE <br/>
+                      WHAT YOU WANT TO DO <br />
+                      
+                      
                     </div>
                   )}
                   <textarea
@@ -165,13 +164,13 @@ function Contact() {
             </div>
             
             <div className="contact-email">
-              GAYMANUFACTURING@PM.DE
+              MANUFACTURING@PM.DE
             </div>
 
             <div className="contact-social">
-              <a href="#" className="social-link">IG</a>
-              <a href="#" className="social-link">WHATSAPP</a>
-              <a href="#" className="social-link">FB</a>
+              <a href="https://www.instagram.com/patterns.agency/" className="social-link">IG</a>
+              <a href="https://wa.me/4915225899470" className="social-link" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
+              
             </div>
           </div>
         </div>

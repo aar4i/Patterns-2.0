@@ -461,19 +461,19 @@ section {
   .container {
     padding: 0 var(--mobile-padding);
   }
-  
+
   section {
     padding: 4rem 0;
   }
-  
+
   .grid-2 {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
-  
+
   .grid-3 {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
-  
+
   .grid-4 {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
@@ -485,7 +485,7 @@ section {
     padding: 2rem 0;
     min-height: auto;
   }
-  
+
   .section-title {
     margin-bottom: 1.5rem;
   }
