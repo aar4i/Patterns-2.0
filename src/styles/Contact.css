@@ -257,15 +257,28 @@
 }
 
 .contact-email {
-  background-color: var(--accent-primary);
-  color: var(--text-secondary);
-  padding: 0;
-  font-size: clamp(2.4rem, 6vw, 3.2rem); /* Увеличиваем размер шрифта в 2 раза */
+  font-size: clamp(3rem, 8vw, 4rem); /* Такой же размер как у social-link */
   font-weight: 400;
   letter-spacing: 0.05em;
   font-family: var(--font-primary);
-  line-height: 0.8; /* Максимально плотная высота строки */
+  line-height: 0.8;
   text-transform: uppercase;
+}
+
+.contact-email a {
+  color: var(--accent-primary); /* Красный цвет как у social-link */
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  transition: var(--transition);
+}
+
+.contact-email a:hover {
+  color: var(--text-primary); /* При наведении белый цвет как у social-link */
+  text-decoration: none;
 }
 
 .contact-social {

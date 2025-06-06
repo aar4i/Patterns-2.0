@@ -163,12 +163,12 @@ function Contact() {
               CONTACT US
             </div>
             
-            <div className="contact-email">
-              MANUFACTURING@PM.DE
+                        <div className="contact-email">
+              <a href="mailto:niko@patterns-agency.com">niko@patterns-agency.com</a>
             </div>
 
             <div className="contact-social">
-              <a href="https://www.instagram.com/patterns.agency/" className="social-link">IG</a>
+              <a href="https://www.instagram.com/patterns.agency/" className="social-link" target="_blank" rel="noopener noreferrer">IG</a>
               <a href="https://wa.me/4915225899470" className="social-link" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
               
             </div>
