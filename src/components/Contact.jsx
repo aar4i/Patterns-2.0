@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import emailjs from '@emailjs/browser'
 import '../styles/Contact.css'
 
 function Contact() {
@@ -10,7 +11,36 @@ function Contact() {
   })
 
   const [focusedField, setFocusedField] = useState(null)
-  const [isButtonAnimating, setIsButtonAnimating] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState('')
+
+  // Configuration for form fields
+  const formFields = [
+    {
+      name: 'name',
+      type: 'text',
+      label: 'YOUR NAME',
+      isTextarea: false
+    },
+    {
+      name: 'email',
+      type: 'email', 
+      label: 'EMAIL',
+      isTextarea: false
+    },
+    {
+      name: 'phone',
+      type: 'tel',
+      label: 'PHONE NUMBER', 
+      isTextarea: false
+    },
+    {
+      name: 'message',
+      type: 'text',
+      label: 'DESCRIBE\nWHAT YOU WANT TO DO',
+      isTextarea: true
+    }
+  ]
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -18,13 +48,10 @@ function Contact() {
       ...prev,
       [name]: value
     }))
-    
-    // Убираем автоматическое изменение высоты - размер теперь фиксированный
   }
 
   const handleFieldClick = (fieldName) => {
     setFocusedField(fieldName)
-    // Фокусируем input после клика
     setTimeout(() => {
       const input = document.querySelector(`input[name="${fieldName}"], textarea[name="${fieldName}"]`)
       if (input) input.focus()
@@ -33,8 +60,6 @@ function Contact() {
 
   const handleFocus = (fieldName) => {
     setFocusedField(fieldName)
-    
-    // Убираем изменение высоты - размер теперь фиксированный
   }
 
   const handleBlur = (fieldName) => {
@@ -43,134 +68,160 @@ function Contact() {
     }
   }
 
-  const handleButtonClick = () => {
-    // Запускаем анимацию кнопки независимо от валидации
-    console.log('Клик по кнопке - запускаем анимацию') // Отладка
-    setIsButtonAnimating(true)
-    
-    // Возвращаем кнопку в исходное состояние через время анимации
-    setTimeout(() => {
-      console.log('Завершаем анимацию кнопки') // Отладка
-      setIsButtonAnimating(false)
-    }, 1500) // Обновляем под новое время анимации 1.5 секунды
-  }
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     
-    console.log('Form submitted:', formData)
+    // Проверяем, что все поля заполнены
+    if (!formData.name || !formData.email || !formData.phone || !formData.message) {
+      setSubmitStatus('Please fill in all fields')
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitStatus('')
+
+    try {
+      // Конфигурация EmailJS (замените на ваши данные)
+      const serviceID = 'service_a6xf19k'
+      const templateID = 'template_wt8e3nm'  // Вставьте ID шаблона Contact Us
+      const publicKey = 'bJW23xxe84BurjT5W'
+
+      console.log('Sending email with params:', {
+        serviceID,
+        templateID,
+        publicKey,
+        formData
+      })
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        message: formData.message
+      }
+
+      console.log('Template params:', templateParams)
+
+      const response = await emailjs.send(serviceID, templateID, templateParams, publicKey)
+      console.log('EmailJS response:', response)
+      
+      setSubmitStatus('Message sent successfully!')
+      setFormData({ name: '', email: '', phone: '', message: '' })
+      setFocusedField(null)
+      
+    } catch (error) {
+      console.error('Detailed error:', error)
+      console.error('Error message:', error.message)
+      console.error('Error status:', error.status)
+      console.error('Error text:', error.text)
+      
+      let errorMessage = 'Error sending message. Please try again.'
+      
+      if (error.status === 400) {
+        errorMessage = 'Bad request. Please check form data.'
+      } else if (error.status === 401) {
+        errorMessage = 'Unauthorized. Please check EmailJS configuration.'
+      } else if (error.status === 404) {
+        errorMessage = 'Service or template not found.'
+      }
+      
+      setSubmitStatus(errorMessage)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const isFieldActive = (fieldName) => focusedField === fieldName || formData[fieldName]
+
+  const renderFormField = (field) => {
+    const { name, type, label, isTextarea } = field
+    const isActive = isFieldActive(name)
+
+    return (
+      <div key={name} className="form-field">
+        <div 
+          className={`field-label ${isTextarea ? 'textarea-field' : ''} ${isActive ? 'focused' : ''}`}
+          onClick={() => handleFieldClick(name)}
+        >
+          {!isActive && (
+            isTextarea ? (
+              <div className="textarea-content">
+                {label.split('\n').map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line} {index < label.split('\n').length - 1 && <br />}
+                  </React.Fragment>
+                ))}
+                <br />
+                <br />
+              </div>
+            ) : (
+              label
+            )
+          )}
+          
+          {isTextarea ? (
+            <textarea
+              name={name}
+              value={formData[name]}
+              onChange={handleInputChange}
+              onFocus={() => handleFocus(name)}
+              onBlur={() => handleBlur(name)}
+              style={{ display: isActive ? 'block' : 'none' }}
+            />
+          ) : (
+            <input
+              type={type}
+              name={name}
+              value={formData[name]}
+              onChange={handleInputChange}
+              onFocus={() => handleFocus(name)}
+              onBlur={() => handleBlur(name)}
+              style={{ display: isActive ? 'block' : 'none' }}
+            />
+          )}
+        </div>
+      </div>
+    )
   }
 
   return (
     <section id="contact" className="contact">
       <div className="contact-container">
         <div className="contact-content">
-          {/* Форма */}
           <div className="contact-form-section">
             <form onSubmit={handleSubmit} className="contact-form">
-              <div className="form-field">
-                <div 
-                  className={`field-label ${focusedField === 'name' || formData.name ? 'focused' : ''}`}
-                  onClick={() => handleFieldClick('name')}
-                >
-                  {!(focusedField === 'name' || formData.name) && 'YOUR NAME'}
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    onFocus={() => handleFocus('name')}
-                    onBlur={() => handleBlur('name')}
-                    style={{ display: focusedField === 'name' || formData.name ? 'block' : 'none' }}
-                  />
-                </div>
-              </div>
-
-              <div className="form-field">
-                <div 
-                  className={`field-label ${focusedField === 'email' || formData.email ? 'focused' : ''}`}
-                  onClick={() => handleFieldClick('email')}
-                >
-                  {!(focusedField === 'email' || formData.email) && 'EMAIL'}
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    onFocus={() => handleFocus('email')}
-                    onBlur={() => handleBlur('email')}
-                    style={{ display: focusedField === 'email' || formData.email ? 'block' : 'none' }}
-                  />
-                </div>
-              </div>
-
-              <div className="form-field">
-                <div 
-                  className={`field-label ${focusedField === 'phone' || formData.phone ? 'focused' : ''}`}
-                  onClick={() => handleFieldClick('phone')}
-                >
-                  {!(focusedField === 'phone' || formData.phone) && 'PHONE NUMBER'}
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    onFocus={() => handleFocus('phone')}
-                    onBlur={() => handleBlur('phone')}
-                    style={{ display: focusedField === 'phone' || formData.phone ? 'block' : 'none' }}
-                  />
-                </div>
-              </div>
-
-              <div className="form-field">
-                <div 
-                  className={`field-label textarea-field ${focusedField === 'message' || formData.message ? 'focused' : ''}`}
-                  onClick={() => handleFieldClick('message')}
-                >
-                  {!(focusedField === 'message' || formData.message) && (
-                    <div className="textarea-content">
-                      DESCRIBE <br/>
-                      WHAT YOU WANT TO DO <br />
-                      
-                      
-                    </div>
-                  )}
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    onFocus={() => handleFocus('message')}
-                    onBlur={() => handleBlur('message')}
-                    style={{ display: focusedField === 'message' || formData.message ? 'block' : 'none' }}
-                  />
-                </div>
-              </div>
-
-              <button type="submit" className={`submit-button ${isButtonAnimating ? 'animating' : ''}`} onClick={handleButtonClick}>
-                <span className="submit-text">SUBMIT</span>
+              {formFields.map(renderFormField)}
+              
+              <button type="submit" className="submit-button" disabled={isSubmitting}>
+                <span className="submit-text">
+                  {isSubmitting ? 'SENDING...' : 'SUBMIT'}
+                </span>
               </button>
+              
+              {submitStatus && (
+                <div className={`submit-status ${submitStatus.includes('successfully') ? 'success' : 'error'}`}>
+                  {submitStatus}
+                </div>
+              )}
             </form>
           </div>
 
-          {/* Разделитель */}
           <div className="contact-divider">
             <span className="divider-text">OR</span>
           </div>
 
-          {/* Контактная информация */}
           <div className="contact-info-section">
             <div className="contact-action">
               CONTACT US
             </div>
             
-                        <div className="contact-email">
+            <div className="contact-email">
               <a href="mailto:niko@patterns-agency.com">niko@patterns-agency.com</a>
             </div>
 
             <div className="contact-social">
               <a href="https://www.instagram.com/patterns.agency/" className="social-link" target="_blank" rel="noopener noreferrer">IG</a>
               <a href="https://wa.me/4915225899470" className="social-link" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
-              
             </div>
           </div>
         </div>

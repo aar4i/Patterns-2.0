@@ -6,7 +6,7 @@ function Services() {
     <section id="services" className="services-showcase">
       <div className="services-showcase-container">
         <div className="all-techniques-grid">
-          {/* Техника 1: Embroidery */}
+        
           <div className="single-technique">
             <div className="technique-banner">
               <h2 className="technique-title">EMBROIDERY</h2>
@@ -16,7 +16,7 @@ function Services() {
             </div>
           </div>
 
-          {/* Техника 2: Screen Printing */}
+         
           <div className="single-technique">
             <div className="technique-banner">
               <h2 className="technique-title">SCREEN PRINTING</h2>
@@ -26,7 +26,7 @@ function Services() {
             </div>
           </div>
 
-          {/* Техника 3: DTF Printing */}
+        
           <div className="single-technique">
             <div className="technique-banner">
               <h2 className="technique-title">DTF PRINTING</h2>
@@ -36,7 +36,7 @@ function Services() {
             </div>
           </div>
 
-          {/* Техника 4: Heat Transfer */}
+         
           <div className="single-technique">
             <div className="technique-banner">
               <h2 className="technique-title">HEAT TRANSFER</h2>

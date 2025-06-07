@@ -7,16 +7,12 @@ function Hero() {
   return (
     <section id="hero" className="hero">
       <div className="hero-background">
-        {/* Используем новый профессиональный анализатор цветов с пикселизацией */}
         <VideoColorAnalyzer 
           src="/videos/hero/PM_new.mp4"
           className="hero-video-bg pixelated"
         />
-        
-        {/* Полупрозрачное наложение */}
         <div className="hero-overlay"></div>
       </div>
-      
       <div className="hero-container">
         <div className="hero-content">
           <h1 className="hero-title">

@@ -176,7 +176,6 @@
   color: black !important;
   
   /* Дополнительные сбросы */
-  vertical-align: top !important;
   display: block !important;
   box-sizing: border-box !important;
   resize: none !important;
@@ -217,6 +216,30 @@
 .submit-text {
   display: inline-block;
   transition: all 0.3s ease;
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submit-status {
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 400;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.submit-status.success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.submit-status.error {
+  background-color: #f44336;
+  color: white;
 }
 
 /* Анимация кнопки отключена */

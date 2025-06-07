@@ -15,7 +15,6 @@ body {
   width: 100%;
   margin: 0 auto;
 }
-
 /* Минималистичная прокрутка */
 ::-webkit-scrollbar {
   width: 6px;
@@ -45,3 +44,4 @@ body {
   outline: 1px solid var(--accent-primary);
   outline-offset: 1px;
 }
+
