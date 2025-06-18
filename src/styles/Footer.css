@@ -6,9 +6,6 @@
   border-top: 1px solid var(--border-color);
   font-size: 0.9rem;
   line-height: 1.6;
-  
-  /* Мобильные улучшения */
-  -webkit-text-size-adjust: 100%;
 }
 
 .footer-content {
@@ -21,9 +18,19 @@
   letter-spacing: 0.3px;
 }
 
-.footer a {
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-link {
   color: var(--accent-primary);
   text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 400;
   transition: var(--transition);
   
   /* Мобильные улучшения для ссылок */
@@ -37,8 +44,14 @@
   padding: 0.5rem;
 }
 
-.footer a:hover {
+.footer-link:hover {
   color: var(--text-primary);
+}
+
+.footer-text {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 
 /* Планшетная адаптивность */
@@ -50,6 +63,11 @@
   
   .footer-content {
     padding: 0 2rem;
+  }
+  
+  .footer-links {
+    gap: 1.5rem;
+    margin-bottom: 1.2rem;
   }
 }
 
@@ -65,10 +83,20 @@
     letter-spacing: 0.2px;
   }
   
-  .footer a {
+  .footer-links {
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-link {
     min-height: 48px;
     min-width: 48px;
     padding: 0.6rem;
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+  }
+  
+  .footer-text {
+    font-size: clamp(0.75rem, 1.6vw, 0.85rem);
   }
 }
 
@@ -83,9 +111,19 @@
     line-height: 1.4;
   }
   
-  .footer a {
+  .footer-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-link {
     font-size: clamp(0.75rem, 1.8vw, 0.85rem);
     padding: 0.5rem;
+  }
+  
+  .footer-text {
+    font-size: clamp(0.7rem, 1.6vw, 0.8rem);
   }
 }
 

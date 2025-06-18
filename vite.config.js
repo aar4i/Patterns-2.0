@@ -4,6 +4,15 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    sourcemap: false, // Отключаем source maps в продакшене
+    target: 'esnext',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
   server: {
     allowedHosts: [
       '.ngrok-free.app',
@@ -11,5 +20,9 @@ export default defineConfig({
       'localhost',
       '127.0.0.1'
     ]
-  }
+  },
+  // Переменные окружения
+  define: {
+    __DEV__: JSON.stringify(true),
+  },
 })

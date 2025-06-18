@@ -21,27 +21,27 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: #a62639;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--text-muted);
+  background: #cccccc;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-primary);
+  background: #a62639;
 }
 
 /* Выделение текста */
 ::selection {
-  background: var(--accent-primary);
-  color: var(--text-inverse);
+  background: #a62639;
+  color: #161616;
 }
 
 /* Фокус */
 *:focus-visible {
-  outline: 1px solid var(--accent-primary);
+  outline: 1px solid #a62639;
   outline-offset: 1px;
 }
 

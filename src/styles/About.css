@@ -1,184 +1,158 @@
+/* Стильная многострочная бегущая строка для секции About */
 .about {
-  min-height: auto;
-  background-color: var(--bg-primary);
+  min-height: auto; /* Убираем фиксированную высоту */
+  height: fit-content;
+  background-color: var(--bg-primary); /* Черный фон */
   color: var(--text-primary);
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 4rem 0 2rem 4rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  padding: 0; /* Убираем все отступы */
 }
 
-.about-container {
+.marquee-container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Небольшой промежуток между строками */
 }
 
-.about-content {
-  text-align: left;
+.marquee-line {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.about-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+.marquee-content {
+  display: inline-flex;
+  animation: marquee 70s linear infinite;
+  will-change: transform;
+}
+
+/* Разные скорости для разных строк */
+.marquee-line:nth-child(1) .marquee-content {
+  animation-duration: 70s;
+}
+
+.marquee-line:nth-child(2) .marquee-content {
+  animation-duration: 75s;
+  animation-direction: reverse; /* Обратное направление для второй строки */
+}
+
+.marquee-line:nth-child(3) .marquee-content {
+  animation-duration: 80s;
+}
+
+.marquee-line:nth-child(4) .marquee-content {
+  animation-duration: 85s;
+}
+
+.marquee-text {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 400;
-  line-height: 1.2;
-  margin: 0;
-  font-family: var(--font-primary);
-}
-
-.company-name {
-  background-color: var(--accent-primary);
-  color: white;
-  padding: 0.5rem 1rem;
-  display: inline-block;
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
-  
-  /* Мобильные улучшения */
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-}
-
-.about-description {
   color: var(--text-primary);
-  display: block;
-  margin-top: 1rem;
-  letter-spacing: 0.5px;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  line-height: 1.6;
+  font-family: var(--font-primary);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  padding-right: 4rem;
+  text-transform: uppercase;
 }
 
-/* Планшетная адаптивность */
-@media (max-width: 1024px) {
-  .about {
-    padding: 3.5rem 0 2rem 2rem;
+/* Анимация бегущей строки */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
   }
-  
-  .about-container {
-    padding: 0 1rem;
-  }
-  
-  .about-title {
-    font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+  100% {
+    transform: translateX(-25%);
   }
 }
 
+/* Пауза анимации при наведении */
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
   .about {
-    padding: 3rem 0;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    padding: 0; /* Убираем все отступы на планшетах */
   }
   
-  .about-container {
-    padding: 0 var(--mobile-padding);
+  .marquee-container {
+    gap: 0.3rem;
   }
   
-  .about-content {
-    text-align: center;
-    max-width: 100%;
+  .marquee-text {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    padding-right: 3rem;
   }
   
-  .about-title {
-    font-size: clamp(2rem, 5vw, 3rem);
-    line-height: 1.3;
-    margin-bottom: 1.5rem;
+  .marquee-line:nth-child(1) .marquee-content {
+    animation-duration: 50s;
   }
-  
-  .company-name {
-    padding: 0.4rem 0.8rem;
-    margin-bottom: 1rem;
-    font-size: clamp(1rem, 2.5vw, 1.1rem);
-    letter-spacing: 0.8px;
+
+  .marquee-line:nth-child(2) .marquee-content {
+    animation-duration: 55s;
   }
-  
-  .about-description {
-    font-size: clamp(1rem, 2.5vw, 1.1rem);
-    line-height: 1.7;
-    margin-top: 1.2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+
+  .marquee-line:nth-child(3) .marquee-content {
+    animation-duration: 60s;
+  }
+
+  .marquee-line:nth-child(4) .marquee-content {
+    animation-duration: 65s;
   }
 }
 
 @media (max-width: 480px) {
   .about {
-    padding: 2.5rem 0;
+    padding: 0; /* Убираем все отступы на мобильных */
   }
   
-  .about-container {
-    padding: 0 var(--mobile-padding-sm);
+  .marquee-container {
+    gap: 0.2rem;
   }
   
-  .about-title {
+  .marquee-text {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
-    line-height: 1.4;
-    margin-bottom: 1.2rem;
+    padding-right: 2rem;
   }
   
-  .company-name {
-    padding: 0.3rem 0.6rem;
-    margin-bottom: 0.8rem;
-    font-size: clamp(0.9rem, 2.2vw, 1rem);
-    letter-spacing: 0.6px;
+  .marquee-line:nth-child(1) .marquee-content {
+    animation-duration: 35s;
   }
-  
-  .about-description {
-    font-size: clamp(0.9rem, 2.2vw, 1rem);
-    line-height: 1.6;
-    margin-top: 1rem;
-    letter-spacing: 0.3px;
+
+  .marquee-line:nth-child(2) .marquee-content {
+    animation-duration: 40s;
   }
-  
-  /* Специальная обработка переносов строк для мобильных */
-  .about-description br {
-    display: none;
+
+  .marquee-line:nth-child(3) .marquee-content {
+    animation-duration: 45s;
+  }
+
+  .marquee-line:nth-child(4) .marquee-content {
+    animation-duration: 50s;
   }
 }
 
-/* Очень маленькие экраны */
-@media (max-width: 360px) {
-  .about {
-    padding: 2rem 0;
+/* Оптимизация производительности */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-content {
+    animation: none;
   }
   
-  .about-title {
-    font-size: clamp(1.3rem, 3.5vw, 2rem);
-    margin-bottom: 1rem;
+  .marquee-line {
+    overflow-x: auto;
   }
   
-  .company-name {
-    padding: 0.25rem 0.5rem;
-    margin-bottom: 0.6rem;
-  }
-  
-  .about-description {
-    font-size: clamp(0.85rem, 2vw, 0.95rem);
-    margin-top: 0.8rem;
-  }
-}
-
-/* Ландшафтная ориентация для мобильных */
-@media (max-width: 812px) and (orientation: landscape) {
-  .about {
-    padding: 2rem 0;
-    min-height: auto;
-  }
-  
-  .about-container {
-    padding: 0 2rem;
-  }
-  
-  .about-title {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    margin-bottom: 1rem;
-  }
-  
-  .about-description {
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    margin-top: 0.8rem;
+  .marquee-text {
+    white-space: normal;
+    text-align: center;
+    padding: 1rem;
+    font-size: clamp(1.2rem, 3vw, 2rem);
   }
 } 

@@ -65,126 +65,92 @@
   display: block;
 }
 
-.textarea-field {
-  background-color: white; /* Белый фон для большого поля */
-  color: black; /* Черный текст */
-  padding: 0;
-  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
-  line-height: 0.8; /* Максимально плотная высота строки */
-  display: block;
+.field-label input,
+.field-label textarea {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: inherit;
   width: 100%;
-  max-width: 960px; /* Возвращаем адаптивную ширину */
-  min-width: 960px; /* Минимальная ширина равна максимальной для фиксации */
-  height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5); /* Фиксированная высота для 5 строк */
-  min-height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5); /* Фиксированная высота для 5 строк */
-  overflow: hidden; /* Предотвращаем расширение контейнера */
-  box-sizing: border-box; /* Контролируем размеры точно */
-  /* Убираем относительное позиционирование */
+  resize: none;
+  line-height: inherit;
+  text-transform: inherit;
 }
 
-.textarea-field.focused {
-  padding: 0;
-  width: 100%;
-  max-width: 960px; /* Возвращаем адаптивную ширину */
-  min-width: 960px; /* Минимальная ширина равна максимальной для фиксации */
-  display: block;
-  height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5); /* Фиксированная высота для 5 строк */
-  min-height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5); /* Фиксированная высота для 5 строк */
-  overflow: hidden; /* Предотвращаем расширение контейнера */
-  box-sizing: border-box; /* Контролируем размеры точно */
-  /* Убираем относительное позиционирование */
+.field-label textarea {
+  min-height: 200px;
+}
+
+.textarea-field {
+  min-height: 200px;
 }
 
 .textarea-content {
-  line-height: 0.8; /* Максимально плотная высота строки для многострочного текста */
-  width: 100%; /* Фиксируем ширину как у textarea */
-  max-width: 960px; /* Такая же максимальная ширина */
-  box-sizing: border-box; /* Такой же box-sizing */
-  font-size: clamp(3rem, 8vw, 4rem); /* Тот же размер шрифта что у textarea */
-  font-weight: 400; /* Тот же вес шрифта */
-  font-family: var(--font-primary); /* Тот же шрифт */
-  letter-spacing: 0.05em; /* Тот же межбуквенный интервал */
-  text-transform: uppercase; /* Тот же регистр */
-  margin: 0; /* Убираем отступы */
-  padding: 0; /* Убираем внутренние отступы */
-  
-  display: block; /* Тот же display */
-  /* Убираем абсолютное позиционирование */
+  white-space: pre-line;
 }
 
-.form-field input {
-  border: none;
-  background: transparent;
-  padding: 0;
-  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
-  font-weight: 400;
-  color: black; /* Черный цвет вводимого текста */
-  font-family: var(--font-primary);
-  width: 100%;
+/* Privacy Policy Checkbox */
+.privacy-checkbox {
+  margin: 2rem 0;
+  max-width: 530px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox-input {
   display: none;
-  outline: none;
-  letter-spacing: 0.05em;
-  line-height: 0.8; /* Точно такой же как у field-label */
-  text-transform: uppercase;
-  height: calc(clamp(3rem, 8vw, 4rem) * 0.8); /* Обновляем высоту под новый размер шрифта */
-  box-sizing: border-box;
 }
 
-.form-field textarea {
-  border: none;
-  background: transparent;
-  padding: 0;
-  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
-  font-weight: 400;
-  color: black; /* Черный цвет вводимого текста */
+.checkmark {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--text-primary);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  transition: all 0.3s ease;
+}
+
+.checkbox-input:checked + .checkmark {
+  background-color: var(--text-primary);
+}
+
+.checkbox-input:checked + .checkmark::after {
+  content: '✓';
+  color: var(--bg-primary);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.checkbox-text {
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
   font-family: var(--font-primary);
-  width: 100%;
-  display: none;
-  outline: none;
-  resize: none;
-  letter-spacing: 0.05em;
-  line-height: 0.8;
-  text-transform: uppercase;
-  box-sizing: border-box;
+  color: var(--text-primary);
+  line-height: 1.4;
+  font-weight: 400;
 }
 
-.form-field textarea {
-  line-height: 0.8; /* Максимально плотная высота строки */
+.privacy-link {
+  color: var(--text-primary);
+  text-decoration: underline;
+  transition: var(--transition);
 }
 
-.textarea-field textarea {
-  /* Полностью переопределяем все стили */
-  width: 100% !important;
-  height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5) !important;
-  min-height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5) !important;
-  max-height: calc(clamp(3rem, 8vw, 4rem) * 0.8 * 5) !important;
-  
-  /* Полный сброс стилей браузера */
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  outline: none !important;
-  background: transparent !important;
-  
-  /* Точно такие же стили как у текста заглушки */
-  font-size: clamp(3rem, 8vw, 4rem) !important;
-  font-weight: 400 !important;
-  font-family: var(--font-primary) !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
-  line-height: 0.8 !important;
-  color: black !important;
-  
-  /* Дополнительные сбросы */
-  display: block !important;
-  box-sizing: border-box !important;
-  resize: none !important;
-  overflow: hidden !important;
-  
-  /* Убираем browser defaults для textarea */
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
+.privacy-link:hover {
+  color: var(--bg-secondary);
 }
 
 .submit-button {
@@ -327,18 +293,77 @@
 }
 
 /* Футер */
-.contact-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.3rem;
+.footer {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 2rem 0;
   text-align: center;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-link {
+  color: var(--text-secondary);
+  text-decoration: none;
   font-size: 1rem;
-  color: var(--text-muted);
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-color);
-  font-family: var(--font-primary);
+  transition: var(--transition);
+}
+
+.footer-link:hover {
+  color: var(--bg-accent);
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 0 1rem;
+  }
+  
+  .privacy-checkbox {
+    margin: 1.5rem 0;
+  }
+  
+  .checkbox-text {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+  }
+  
+  .checkmark {
+    width: 20px;
+    height: 20px;
+    margin-top: 0.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacy-checkbox {
+    margin: 1rem 0;
+  }
+  
+  .checkbox-container {
+    gap: 0.8rem;
+  }
+  
+  .checkbox-text {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    line-height: 1.3;
+  }
+  
+  .checkmark {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 /* Адаптивность - улучшенная версия */
@@ -422,7 +447,8 @@
     min-height: 60px;
     padding: 1rem;
     border: 2px solid var(--border-color);
-    background-color: var(--bg-tertiary);
+    background-color: white;
+    color: black;
     cursor: pointer;
     
     /* Мобильные улучшения */
@@ -435,15 +461,20 @@
     max-width: 100%;
     min-height: 60px;
     border-color: var(--accent-primary);
-    background-color: var(--bg-secondary);
+    background-color: white;
+    color: black;
   }
   
   .textarea-field {
     min-height: 120px;
+    min-width: auto;
+    max-width: 100%;
   }
   
   .textarea-field.focused {
     min-height: 140px;
+    min-width: auto;
+    max-width: 100%;
   }
 
   .form-field input,
@@ -452,8 +483,8 @@
     padding: 1rem;
     width: 100%;
     border: 2px solid var(--accent-primary);
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: white;
+    color: black;
     min-height: 50px;
     
     /* Мобильные улучшения для input */
@@ -463,7 +494,6 @@
     border-radius: 0;
     outline: none;
     resize: none;
-    -webkit-text-size-adjust: 100%;
   }
   
   .form-field input:focus,
@@ -474,7 +504,9 @@
   
   .textarea-content {
     line-height: 1.4;
-    color: var(--text-muted);
+    color: black;
+    max-width: 100%;
+    width: 100%;
   }
 
   .submit-button {
@@ -565,18 +597,26 @@
     font-size: clamp(1rem, 2.5vw, 1.3rem);
     min-height: 55px;
     padding: 0.8rem;
+    background-color: white;
+    color: black;
   }
   
   .field-label.focused {
     min-height: 55px;
+    background-color: white;
+    color: black;
   }
   
   .textarea-field {
     min-height: 100px;
+    min-width: auto;
+    max-width: 100%;
   }
   
   .textarea-field.focused {
     min-height: 120px;
+    min-width: auto;
+    max-width: 100%;
   }
 
   .form-field input,
@@ -584,6 +624,8 @@
     font-size: clamp(1rem, 2.5vw, 1.2rem);
     padding: 0.8rem;
     min-height: 45px;
+    background-color: white;
+    color: black;
   }
 
   .submit-button {
@@ -608,9 +650,10 @@
   }
 
   .contact-social {
-    flex-direction: column;
-    gap: 1rem;
+    flex-direction: row;
+    gap: 2rem;
     align-items: center;
+    justify-content: center;
   }
   
   .social-link {
@@ -618,8 +661,7 @@
     padding: 0.8rem 1.5rem;
     min-height: 55px;
     min-width: 120px;
-    width: 100%;
-    max-width: 200px;
+    width: auto;
   }
 
   .contact-footer {
@@ -643,6 +685,8 @@
     font-size: clamp(0.9rem, 2.2vw, 1.1rem);
     min-height: 50px;
     padding: 0.6rem;
+    background-color: white;
+    color: black;
   }
   
   .form-field input,
@@ -650,6 +694,8 @@
     font-size: clamp(0.9rem, 2.2vw, 1.1rem);
     padding: 0.6rem;
     min-height: 40px;
+    background-color: white;
+    color: black;
   }
   
   .submit-button {
@@ -669,10 +715,17 @@
     font-size: clamp(1.2rem, 3.5vw, 1.7rem);
   }
   
+  .contact-social {
+    flex-direction: row;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
   .social-link {
     font-size: clamp(1.5rem, 4.5vw, 2rem);
     min-height: 50px;
     padding: 0.6rem 1rem;
+    width: auto;
   }
 }
 
@@ -694,14 +747,20 @@
   .field-label,
   .field-label.focused {
     min-height: 45px;
+    background-color: white;
+    color: black;
   }
   
   .textarea-field {
     min-height: 80px;
+    min-width: auto;
+    max-width: 100%;
   }
   
   .textarea-field.focused {
     min-height: 90px;
+    min-width: auto;
+    max-width: 100%;
   }
   
   .submit-button {

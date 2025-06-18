@@ -1,0 +1,16 @@
+{
+  "name": "Patterns Manufacturing",
+  "short_name": "Patterns",
+  "description": "Premium textile and fabric manufacturing solutions",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#a62639",
+  "background_color": "#161616",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+} 

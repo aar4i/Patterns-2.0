@@ -13,6 +13,7 @@ function Contact() {
   const [focusedField, setFocusedField] = useState(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState('')
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
 
   // Configuration for form fields
   const formFields = [
@@ -50,6 +51,10 @@ function Contact() {
     }))
   }
 
+  const handlePrivacyChange = (e) => {
+    setPrivacyAccepted(e.target.checked)
+  }
+
   const handleFieldClick = (fieldName) => {
     setFocusedField(fieldName)
     setTimeout(() => {
@@ -74,6 +79,12 @@ function Contact() {
     // Проверяем, что все поля заполнены
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       setSubmitStatus('Please fill in all fields')
+      return
+    }
+
+    // Проверяем согласие с Privacy Policy
+    if (!privacyAccepted) {
+      setSubmitStatus('Please accept the Privacy Policy to continue')
       return
     }
 
@@ -107,6 +118,7 @@ function Contact() {
       
       setSubmitStatus('Message sent successfully!')
       setFormData({ name: '', email: '', phone: '', message: '' })
+      setPrivacyAccepted(false)
       setFocusedField(null)
       
     } catch (error) {
@@ -192,6 +204,22 @@ function Contact() {
             <form onSubmit={handleSubmit} className="contact-form">
               {formFields.map(renderFormField)}
               
+              <div className="privacy-checkbox">
+                <label className="checkbox-container">
+                  <input 
+                    type="checkbox" 
+                    checked={privacyAccepted}
+                    onChange={handlePrivacyChange}
+                    className="checkbox-input"
+                  />
+                  <span className="checkmark"></span>
+                  <span className="checkbox-text">
+                    I agree to the processing of my data in accordance with the{' '}
+                    <a href="#privacy-policy" className="privacy-link">Privacy Policy</a>.
+                  </span>
+                </label>
+              </div>
+              
               <button type="submit" className="submit-button" disabled={isSubmitting}>
                 <span className="submit-text">
                   {isSubmitting ? 'SENDING...' : 'SUBMIT'}
@@ -199,7 +227,7 @@ function Contact() {
               </button>
               
               {submitStatus && (
-                <div className={`submit-status ${submitStatus.includes('successfully') ? 'success' : 'error'}`}>
+                <div className={`submit-status ${submitStatus.includes('success') ? 'success' : 'error'}`}>
                   {submitStatus}
                 </div>
               )}
@@ -207,21 +235,17 @@ function Contact() {
           </div>
 
           <div className="contact-divider">
-            <span className="divider-text">OR</span>
+            <p className="divider-text">OR</p>
           </div>
 
           <div className="contact-info-section">
-            <div className="contact-action">
-              CONTACT US
-            </div>
-            
+            <div className="contact-action">GET IN TOUCH</div>
             <div className="contact-email">
               <a href="mailto:niko@patterns-agency.com">niko@patterns-agency.com</a>
             </div>
-
             <div className="contact-social">
-              <a href="https://www.instagram.com/patterns.agency/" className="social-link" target="_blank" rel="noopener noreferrer">IG</a>
               <a href="https://wa.me/4915225899470" className="social-link" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
+              <a href="https://instagram.com" className="social-link">INSTAGRAM</a>
             </div>
           </div>
         </div>
