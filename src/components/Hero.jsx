@@ -62,9 +62,9 @@ function Hero() {
           </h1>
           
           <ul className="hero-features">
-            <li>Sign up for free</li>
-            <li>Premium materials</li>
-            <li>No minimum order quantity</li>
+            <li>Top-tier materials</li>
+            <li>No minimum order required</li>
+            <li>Tailored solutions for every client</li>
           </ul>
           
           <button className="hero-cta" onClick={scrollToServices}>
