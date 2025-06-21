@@ -241,7 +241,7 @@ function Contact() {
           <div className="contact-info-section">
             <div className="contact-action">GET IN TOUCH</div>
             <div className="contact-email">
-              <a href="mailto:niko@patterns-agency.com">niko@patterns-agency.com</a>
+              <a href="mailto:contact@patterns-agency.com">contact@patterns-agency.com</a>
             </div>
             <div className="contact-social">
               <a href="https://wa.me/4915225899470" className="social-link" target="_blank" rel="noopener noreferrer">WHATSAPP</a>

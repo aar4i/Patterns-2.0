@@ -55,7 +55,7 @@ const publicKey = 'YOUR_PUBLIC_KEY'      // Вставьте ваш Public Key
 
 1. Запустите проект: `npm start`
 2. Заполните и отправьте форму
-3. Проверьте email на `niko@patterns-agency.com`
+3. Проверьте email на `contact@patterns-agency.com`
 
 ## Лимиты бесплатного плана
 
