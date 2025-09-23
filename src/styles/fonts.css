@@ -25,11 +25,31 @@
   font-display: swap;
 }
 
+/* PM_mod Font for PA Elements */
+@font-face {
+  font-family: 'PM_mod';
+  src: url('/fonts/PM_Mod.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ApfelPA Font with Circle Number Glyphs */
+@font-face {
+  font-family: 'ApfelPA';
+  src: url('/fonts/ApfelPA.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  /* Основной шрифт - ApfelGrotezk */
-  --font-primary: 'ApfelGrotezk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  --font-custom: 'ApfelGrotezk', sans-serif;
+  /* Основной шрифт - ApfelPA с глифами кружочков */
+  --font-primary: 'ApfelPA', 'ApfelGrotezk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-custom: 'ApfelPA', 'ApfelGrotezk', sans-serif;
   --font-fallback: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  /* Шрифт для PA элементов */
+  --font-pa-elements: 'PM_mod', Arial, sans-serif;
 }
 
 /* Основные настройки рендеринга шрифтов перенесены в App.css */ 

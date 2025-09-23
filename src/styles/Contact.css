@@ -1,8 +1,8 @@
 /* Минималистичная секция Contact */
 .contact {
   min-height: auto;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: #eee8e7; /* Белый фон как в сервисах */
+  color: #161616; /* Черный текст */
   padding: 2rem 0;
 }
 
@@ -38,11 +38,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  position: relative;
 }
 
 .field-label {
-  background-color: white; /* Белый фон для полей */
-  color: black; /* Черный текст */
+  background-color: #d1d4db; /* Светло-серый фон как в Figma */
+  color: #000000; /* Черный текст как в Figma */
   padding: 0;
   font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
   font-weight: 400;
@@ -52,17 +53,32 @@
   width: 100%;
   max-width: 530px; /* Увеличиваем ширину в 2 раза */
   line-height: 0.8; /* Максимально плотная высота строки */
-  cursor: pointer;
+  cursor: url('/logos/CursorPM.svg') 20 13, auto !important;
   transition: all 0.3s ease;
   position: relative;
   text-transform: uppercase;
+  min-height: 59px; /* Фиксированная высота как у кнопки SUBMIT */
+  display: flex;
+  align-items: center;
 }
 
 .field-label.focused {
   padding: 0;
   width: 100%;
   max-width: 530px; /* Увеличиваем ширину в 2 раза */
-  display: block;
+  display: flex;
+  align-items: center;
+  background-color: #d1d4db; /* Светло-серый фон как в Figma */
+  color: #000000; /* Черный текст как в Figma */
+  min-height: 59px; /* Фиксированная высота как у кнопки SUBMIT */
+}
+
+.field-label.textarea-field.focused {
+  max-width: 842px; /* Для textarea делаем шире */
+  height: 250px !important;
+  min-height: 250px !important;
+  max-height: 250px !important;
+  overflow: hidden;
 }
 
 .field-label input,
@@ -79,74 +95,157 @@
   resize: none;
   line-height: inherit;
   text-transform: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.field-label.focused input,
+.field-label.focused textarea {
+  opacity: 1;
 }
 
 .field-label textarea {
-  min-height: 200px;
+  height: 250px !important;
+  min-height: 250px !important;
+  max-height: 250px !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  resize: none !important;
+  line-height: inherit;
+  text-transform: inherit;
+  transition: opacity 0.3s ease;
+  text-align: left;
+  vertical-align: top;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .textarea-field {
-  min-height: 200px;
+  height: 250px !important; /* Фиксированная высота как в Figma - 250px */
+  min-height: 250px !important;
+  max-height: 250px !important;
+  max-width: 842px; /* Ширина как в Figma - 842px (шире чем обычные поля) */
+  display: block;
+  align-items: flex-start;
+  overflow: hidden;
 }
 
 .textarea-content {
   white-space: pre-line;
+  line-height: 0.8;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  text-transform: inherit;
+  text-align: left;
+  vertical-align: top;
 }
 
 /* Privacy Policy Checkbox */
 .privacy-checkbox {
   margin: 2rem 0;
-  max-width: 530px;
+  max-width: 842px; /* Расширяем как textarea */
 }
 
 .checkbox-container {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  cursor: pointer;
+  align-items: center; /* Центрируем по высоте */
+  gap: 24px; /* Отступ между чекбоксом и текстом */
   position: relative;
+  width: 842px; /* Полная ширина как у textarea */
+  cursor: default; /* Убираем курсор по умолчанию */
 }
 
 .checkbox-input {
   display: none;
 }
 
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: url('/logos/CursorPM.svg') 20 13, auto !important;
+  flex-shrink: 0;
+  width: 65px; /* Точно такой же размер как у checkmark */
+  height: 65px; /* Точно такой же размер как у checkmark */
+  margin: 0; /* Убираем все отступы */
+  padding: 0; /* Убираем все отступы */
+}
+
 .checkmark {
-  width: 24px;
-  height: 24px;
-  border: 2px solid var(--text-primary);
-  background-color: transparent;
+  width: 65px; /* Размер как в Figma */
+  height: 65px; /* Размер как в Figma */
+  border: none;
+  background-color: #d1d4db; /* Светло-серый фон как в Figma */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-top: 0.2rem;
+  margin: 0; /* Убираем отступ */
   transition: all 0.3s ease;
 }
 
 .checkbox-input:checked + .checkmark {
-  background-color: var(--text-primary);
+  background-color: #d1d4db; /* Оставляем серый фон */
 }
 
 .checkbox-input:checked + .checkmark::after {
-  content: '✓';
-  color: var(--bg-primary);
-  font-size: 14px;
-  font-weight: bold;
+  content: '';
+  width: 80px;
+  height: 80px;
+  background-image: url('/logos/CursorPM-white.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotate(var(--random-rotation, 0deg));
+  transition: transform 0.3s ease;
+  position: absolute;
+  top: -7.5px;
+  left: -7.5px;
 }
 
 .checkbox-text {
-  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
-  font-family: var(--font-primary);
-  color: var(--text-primary);
-  line-height: 1.4;
-  font-weight: 400;
+  flex: 1; /* Занимает оставшееся место */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Выравнивание по правому краю */
+  padding: 0; /* Убираем padding */
+  cursor: default; /* Убираем курсор */
 }
 
 .privacy-link {
-  color: var(--text-primary);
-  text-decoration: underline;
+  color: #000000; /* Черный цвет как в Figma */
+  text-decoration: underline; /* Добавляем подчеркивание */
+  text-decoration-thickness: 4px; /* Делаем подчеркивание еще толще */
+  font-size: 64px; /* Размер как в Figma */
+  font-family: var(--font-primary);
+  font-weight: 400;
+  letter-spacing: 3.2px; /* Letter spacing как в Figma */
+  text-transform: uppercase;
   transition: var(--transition);
+  background-color: #d1d4db; /* Серый фон только под текстом */
+  padding: 0 8px; /* Уменьшенные отступы слева и справа */
+  display: inline-flex; /* Flexbox для лучшего выравнивания */
+  align-items: center; /* Центрируем по вертикали */
+  height: 65px; /* Полная высота как у блока */
 }
 
 .privacy-link:hover {
@@ -164,15 +263,17 @@
   font-family: var(--font-primary);
   cursor: pointer;
   width: 100%;
-  max-width: 960px; /* Увеличиваем ширину кнопки в 2 раза */
+  max-width: 842px; /* Делаем ширину как у textarea */
 
   text-transform: uppercase;
   line-height: 0.8; /* Максимально плотная высота строки */
-  display: block;
   text-align: left;
   position: relative;
   overflow: hidden; /* Обязательно скрываем выходящий за границы контент */
   transition: background-color 0.3s ease;
+  height: 59px; /* Высота как в Figma */
+  display: flex;
+  align-items: center;
 }
 
 .submit-button:hover {
@@ -190,22 +291,29 @@
 }
 
 .submit-status {
-  margin-top: 1rem;
-  padding: 1rem;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  margin-top: 1rem; /* Уменьшенный отступ от кнопки SUBMIT */
+  font-size: 43px; /* Размер в полтора раза меньше (64px / 1.5 ≈ 43px) */
   font-weight: 400;
-  text-align: center;
-  border-radius: 4px;
+  font-family: var(--font-primary);
+  letter-spacing: 2.1px; /* Letter spacing пропорционально уменьшен */
+  text-transform: uppercase;
+  background-color: #a62639; /* Красный фон как у кнопки SUBMIT */
+  color: #eee8e7; /* Белый текст */
+  height: auto; /* Высота по содержимому текста */
+  display: inline-flex; /* inline-flex чтобы фон был впритык к тексту */
+  align-items: center;
+  padding: 0; /* Убираем все отступы - фон впритык к тексту */
+  width: fit-content; /* Ширина по содержимому */
 }
 
 .submit-status.success {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #a62639; /* Красный фон */
+  color: #eee8e7; /* Белый текст */
 }
 
 .submit-status.error {
-  background-color: #f44336;
-  color: white;
+  background-color: #a62639; /* Красный фон */
+  color: #eee8e7; /* Белый текст */
 }
 
 /* Анимация кнопки отключена */
@@ -219,7 +327,7 @@
 .divider-text {
   font-size: clamp(4rem, 10vw, 6rem); /* Увеличиваем размер шрифта в 2 раза */
   font-weight: 400;
-  color: var(--text-primary);
+  color: #161616; /* Меняем на черный текст */
   letter-spacing: 0.1em;
   font-family: var(--font-primary);
   text-transform: uppercase;
@@ -238,7 +346,7 @@
 .contact-action {
   font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
   font-weight: 400;
-  color: var(--text-primary);
+  color: #161616; /* Меняем на черный текст */
   letter-spacing: 0.05em;
   font-family: var(--font-primary);
   text-transform: uppercase;
@@ -294,11 +402,13 @@
 
 /* Футер */
 .footer {
-  background-color: var(--bg-secondary);
-  color: var(--text-secondary);
-  padding: 2rem 0;
+  background-color: #eee8e7; /* Белый фон как в сервисах */
+  color: #161616; /* Черный текст */
+  padding: 2rem 0 1rem;
   text-align: center;
-  margin-top: 4rem;
+  border-top: 1px solid #a62639; /* Красная граница сверху */
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .footer-content {
@@ -322,7 +432,13 @@
 }
 
 .footer-link:hover {
-  color: var(--bg-accent);
+  color: #161616; /* Черный цвет при наведении */
+}
+
+.footer-text {
+  color: #161616; /* Черный текст */
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 
 /* Мобильная адаптивность */
@@ -336,13 +452,39 @@
   }
   
   .checkbox-text {
+    width: 100%; /* На мобильных растягиваем на всю ширину */
+    height: auto;
+    padding: 1rem;
+    background-color: #d1d4db; /* Светло-серый фон как в Figma */
+  }
+  
+  .privacy-link {
     font-size: clamp(1rem, 2.2vw, 1.2rem);
+    color: #000000; /* Черный текст как в Figma */
+    text-decoration: none;
+    letter-spacing: 0.1rem;
   }
   
   .checkmark {
     width: 20px;
     height: 20px;
-    margin-top: 0.1rem;
+    margin: 0;
+    border-color: #161616; /* Черная граница */
+  }
+  
+  .checkbox-label {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .submit-status {
+    font-size: clamp(1.2rem, 3vw, 1.6rem); /* Мобильный размер шрифта */
+    max-width: 100%;
+    min-height: 60px;
+    padding: 1rem;
+    letter-spacing: 0.1rem;
   }
 }
 
@@ -353,6 +495,7 @@
   
   .checkbox-container {
     gap: 0.8rem;
+    cursor: default;
   }
   
   .checkbox-text {
@@ -363,6 +506,14 @@
   .checkmark {
     width: 18px;
     height: 18px;
+    margin: 0;
+  }
+  
+  .checkbox-label {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
   }
 }
 
@@ -446,10 +597,12 @@
     max-width: 100%;
     min-height: 60px;
     padding: 1rem;
-    border: 2px solid var(--border-color);
-    background-color: white;
-    color: black;
+    border: none;
+    background-color: #d1d4db; /* Светло-серый фон как в Figma */
+    color: #000000; /* Черный текст как в Figma */
     cursor: pointer;
+    display: flex;
+    align-items: center;
     
     /* Мобильные улучшения */
     -webkit-tap-highlight-color: transparent;
@@ -460,21 +613,30 @@
   .field-label.focused {
     max-width: 100%;
     min-height: 60px;
-    border-color: var(--accent-primary);
-    background-color: white;
-    color: black;
+    background-color: #d1d4db; /* Светло-серый фон как в Figma */
+    color: #000000; /* Черный текст как в Figma */
+    display: flex;
+    align-items: center;
   }
   
   .textarea-field {
-    min-height: 120px;
+    height: 120px !important;
+    min-height: 120px !important;
+    max-height: 120px !important;
     min-width: auto;
     max-width: 100%;
+    display: block;
+    align-items: flex-start;
+    overflow: hidden;
   }
   
   .textarea-field.focused {
-    min-height: 140px;
+    height: 120px !important;
+    min-height: 120px !important;
+    max-height: 120px !important;
     min-width: auto;
     max-width: 100%;
+    overflow: hidden;
   }
 
   .form-field input,
@@ -482,10 +644,16 @@
     font-size: clamp(1.1rem, 2.8vw, 1.4rem);
     padding: 1rem;
     width: 100%;
-    border: 2px solid var(--accent-primary);
-    background-color: white;
-    color: black;
+    border: none;
+    background-color: transparent;
+    color: #000000; /* Черный текст как в Figma */
     min-height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
     
     /* Мобильные улучшения для input */
     -webkit-appearance: none;
@@ -493,7 +661,19 @@
     appearance: none;
     border-radius: 0;
     outline: none;
-    resize: none;
+    resize: none !important;
+  }
+  
+  .form-field textarea {
+    height: 120px !important;
+    min-height: 120px !important;
+    max-height: 120px !important;
+    overflow: hidden;
+  }
+  
+  .field-label.focused input,
+  .field-label.focused textarea {
+    opacity: 1;
   }
   
   .form-field input:focus,
@@ -504,7 +684,7 @@
   
   .textarea-content {
     line-height: 1.4;
-    color: black;
+    color: #161616;
     max-width: 100%;
     width: 100%;
   }
@@ -597,26 +777,36 @@
     font-size: clamp(1rem, 2.5vw, 1.3rem);
     min-height: 55px;
     padding: 0.8rem;
-    background-color: white;
-    color: black;
+    background-color: #d1d4db; /* Светло-серый фон как в Figma */
+    color: #000000; /* Черный текст как в Figma */
+    display: flex;
+    align-items: center;
   }
   
   .field-label.focused {
     min-height: 55px;
-    background-color: white;
-    color: black;
+    background-color: #d1d4db; /* Светло-серый фон как в Figma */
+    color: #000000; /* Черный текст как в Figma */
+    display: flex;
+    align-items: center;
   }
   
   .textarea-field {
-    min-height: 100px;
+    height: 100px !important;
+    min-height: 100px !important;
+    max-height: 100px !important;
     min-width: auto;
     max-width: 100%;
+    overflow: hidden;
   }
   
   .textarea-field.focused {
-    min-height: 120px;
+    height: 100px !important;
+    min-height: 100px !important;
+    max-height: 100px !important;
     min-width: auto;
     max-width: 100%;
+    overflow: hidden;
   }
 
   .form-field input,
@@ -624,8 +814,27 @@
     font-size: clamp(1rem, 2.5vw, 1.2rem);
     padding: 0.8rem;
     min-height: 45px;
-    background-color: white;
-    color: black;
+    background-color: transparent;
+    color: #000000; /* Черный текст как в Figma */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    resize: none !important;
+  }
+  
+  .form-field textarea {
+    height: 100px !important;
+    min-height: 100px !important;
+    max-height: 100px !important;
+    overflow: hidden;
+  }
+  
+  .field-label.focused input,
+  .field-label.focused textarea {
+    opacity: 1;
   }
 
   .submit-button {
@@ -685,8 +894,10 @@
     font-size: clamp(0.9rem, 2.2vw, 1.1rem);
     min-height: 50px;
     padding: 0.6rem;
-    background-color: white;
-    color: black;
+    background-color: #d1d4db; /* Светло-серый фон как в Figma */
+    color: #000000; /* Черный текст как в Figma */
+    display: flex;
+    align-items: center;
   }
   
   .form-field input,
@@ -694,8 +905,19 @@
     font-size: clamp(0.9rem, 2.2vw, 1.1rem);
     padding: 0.6rem;
     min-height: 40px;
-    background-color: white;
-    color: black;
+    background-color: transparent;
+    color: #000000; /* Черный текст как в Figma */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .field-label.focused input,
+  .field-label.focused textarea {
+    opacity: 1;
   }
   
   .submit-button {
@@ -747,8 +969,10 @@
   .field-label,
   .field-label.focused {
     min-height: 45px;
-    background-color: white;
-    color: black;
+    background-color: #d1d4db; /* Светло-серый фон как в Figma */
+    color: #000000; /* Черный текст как в Figma */
+    display: flex;
+    align-items: center;
   }
   
   .textarea-field {

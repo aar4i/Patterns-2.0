@@ -1,263 +1,300 @@
-/* Минималистичная секция Services в стиле дизайна */
+/* Services - новый дизайн с улучшенными изображениями */
+
+/* Секция services main */
 .services {
-  min-height: 100vh;
-  background-color: var(--bg-secondary); /* Красный фон как на изображении */
-  color: var(--text-secondary);
-  padding: 4rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #eee8e7;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  padding-top: 85.75px;
+  padding-bottom: 85.75px;
 }
 
 .services-container {
-  width: 100%;
-  max-width: 1000px;
+  width: 1914px;
   margin: 0 auto;
-  padding: 0 2rem;
+  position: relative;
 }
 
-.service-item {
-  margin-bottom: 2rem; /* Увеличиваем промежуток между элементами */
+/* Container основной */
+.services-main-container {
+  width: 1000px;
+  min-height: 835px;
+  margin-left: 200px;
   position: relative;
+}
+
+/* Container каждого сервиса */
+.service-item {
+  width: 936px;
+  min-height: 177px;
+  height: 177px;
+  position: relative;
+  left: 32px;
+  margin-bottom: 0;
 }
 
 .service-item:last-child {
   margin-bottom: 0;
 }
 
+/* Container заголовка */
+.service-title-row {
+  width: 936px;
+  height: 67px;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+/* Heading 2 - красный фон */
 .service-header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #a62639;
+  height: 67px;
+  cursor: crosshair;
   display: flex;
   align-items: flex-start;
-  gap: 1.5rem;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.service-header:hover {
-  transform: translateX(10px);
-}
-
-.service-number {
-  background-color: transparent;
-  color: var(--bg-accent); /* Белый цвет для номера */
-  border: 2px solid var(--bg-accent);
-  font-size: 1.2rem;
-  font-weight: 400;
-  font-family: var(--font-primary);
-  line-height: 1;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  padding: 8px 4px 12px 4px;
+  width: fit-content;
   box-sizing: border-box;
-  flex-shrink: 0;
-  transition: var(--transition);
+  z-index: 6;
 }
 
-.service-header:hover .service-number {
-  background-color: var(--bg-accent);
-  color: var(--bg-secondary);
-}
-
+/* Text заголовка с глифами кружочков */
 .service-title {
-  background-color: var(--bg-primary); /* Черный фон для заголовка */
-  color: var(--bg-accent); /* Белый текст */
-  padding: 0.2rem 0.8rem;
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1;
+  color: #161616;
   font-family: var(--font-primary);
-  display: inline-block;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 47px;
+  letter-spacing: -0.5px;
   margin: 0;
-  text-transform: uppercase;
-  transition: var(--transition);
+  padding: 0;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-color: #161616;
+  text-underline-offset: 0.1em;
+  text-decoration-thickness: 0.08em;
+  font-feature-settings: "ss01" 1;
+  font-variant-alternates: stylistic(circled-numbers);
 }
 
-.service-header:hover .service-title {
-  background-color: var(--bg-accent);
-  color: var(--bg-primary);
+/* Container субтитра */
+.service-subtitle-row {
+  width: 936px;
+  height: 110px;
+  position: absolute;
+  left: 0;
+  top: 67px;
+  z-index: 10;
 }
 
+/* Text субтитра */
 .service-subtitle {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 400;
-  color: var(--text-secondary); /* Белый текст на красном фоне */
-  line-height: 1;
-  margin: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 936px;
+  height: 110px;
+  color: #161616;
   font-family: var(--font-primary);
-  text-transform: capitalize;
-  margin-bottom: 1rem;
+  font-weight: 400;
+  font-size: 69px;
+  line-height: 50px;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0;
+  white-space: pre-line;
+  z-index: 11;
 }
 
-/* Выпадающие панели */
+/* Выпадающая панель */
 .service-panel {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  background-color: var(--bg-primary);
-  margin-top: 1rem;
+  transition: max-height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background-color: transparent;
+  opacity: 0;
+  transition: max-height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              opacity 0.4s ease 0.1s;
+  position: relative;
+  left: 32px;
+  width: 150%;
+  margin-bottom: 32px;
 }
 
 .service-panel.open {
-  max-height: 800px; /* Достаточно большое значение для контента */
+  max-height: 800px;
+  opacity: 1;
 }
 
 .service-panel-content {
-  padding: 2rem;
-  /* Убираем белую полоску слева */
+  padding: 16px 0;
+  background-color: #eee8e7;
+  position: relative;
+}
+
+.service-panel-inner {
+  width: 100%;
+  position: relative;
+  padding: 0 32px;
 }
 
 .service-info {
   display: grid;
-  grid-template-columns: 1fr 400px; /* Увеличиваем размер для изображения */
-  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
   align-items: start;
 }
 
 .service-text {
-  color: var(--text-primary);
+  padding-left: 40px;
+  width: 75%;
 }
 
-.service-description {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  color: var(--text-primary);
-  font-family: var(--font-primary);
-  font-weight: 400;
-}
-
-.service-features {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.service-features li {
-  padding: 0.5rem 0;
-  font-size: clamp(0.9rem, 1.8vw, 1rem);
-  color: var(--text-primary);
-  position: relative;
-  padding-left: 1.5rem;
-  font-family: var(--font-primary);
-}
-
-.service-features li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--bg-secondary);
-  font-weight: bold;
+/* Новый контейнер для изображения */
+.service-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .service-image {
   width: 100%;
-  height: 350px; /* Увеличиваем высоту изображения */
+  height: 100%;
+  position: relative;
+  background-color: #a62639;
   overflow: hidden;
-  border-radius: 0; /* Убираем закругления */
-  border: none; /* Убираем рамку */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0;
 }
 
 .service-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: var(--transition);
+  width: calc(100% - 32px);
+  height: calc(100% - 32px);
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.3s ease;
+  filter: grayscale(20%) contrast(1.1);
+  margin: 16px;
 }
 
-.service-image:hover img {
-  transform: scale(1.05);
+.service-description {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  color: #161616;
+  font-family: var(--font-primary);
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
-  .services {
-    padding: 2rem 0; /* Уменьшаем отступы для планшетов */
-    min-height: auto; /* Убираем фиксированную высоту */
-  }
-  
+/* Стили для цифр в кружочках в тексте */
+.feature-number-inline {
+  color: #a62639;
+  font-family: 'ApfelPA', var(--font-primary);
+  font-weight: 400;
+  font-size: inherit;
+  line-height: 0.8;
+  font-feature-settings: "ss01" 1;
+  font-variant-alternates: stylistic(circled-numbers);
+  vertical-align: baseline;
+}
+
+/* Hover эффект - изменение цвета текста и подчеркивания */
+.service-header:hover .service-title {
+  color: #ffffff;
+  text-decoration-color: #ffffff;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+/* Белый цвет заголовка когда панель открыта */
+.service-header.active .service-title {
+  color: #ffffff !important;
+  text-decoration-color: #ffffff !important;
+}
+
+.service-title {
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 1920px) {
   .services-container {
-    padding: 0 1.5rem;
+    width: 100%;
+    max-width: 1914px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .services-main-container {
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .service-item {
-    margin-bottom: 1.5rem; /* Уменьшаем промежутки между услугами */
+    width: 100%;
+    max-width: 936px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
-  .service-title {
-    font-size: clamp(2rem, 5vw, 3rem);
-  }
-  
-  .service-subtitle {
-    font-size: clamp(2rem, 5vw, 3rem);
-  }
-  
-  .service-number {
-    width: 30px;
-    height: 30px;
-    font-size: 1rem;
-  }
-
   .service-info {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 40px;
   }
-
+  
+  .service-text {
+    padding-left: 0;
+  }
+  
+  .service-image-container {
+    min-height: 300px;
+  }
+  
   .service-image {
-    height: 280px; /* Увеличиваем высоту на планшетах */
-  }
-
-  .service-panel-content {
-    padding: 1.5rem;
+    max-width: 600px;
+    height: 500px;
   }
 }
 
-@media (max-width: 480px) {
-  .services {
-    padding: 1rem 0; /* Еще больше уменьшаем отступы для мобильных */
-  }
-  
-  .services-container {
-    padding: 0 1rem;
+@media (max-width: 768px) {
+  .services-main-container {
+    margin-left: 16px;
+    margin-right: 16px;
   }
   
   .service-item {
-    margin-bottom: 1rem; /* Минимальные промежутки между услугами */
+    left: 0;
   }
   
-  .service-header {
-    gap: 1rem;
+  .service-panel {
+    left: 0;
+    width: 100%;
   }
   
-  .service-title {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    padding: 0.1rem 0.5rem;
+  .service-panel-inner {
+    padding: 0 16px;
   }
   
-  .service-subtitle {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-  }
-  
-  .service-number {
-    width: 25px;
-    height: 25px;
-    font-size: 0.9rem;
-  }
-
   .service-image {
-    height: 220px; /* Увеличиваем высоту на мобильных */
+    max-width: 100%;
+    height: 400px;
   }
-
-  .service-panel-content {
-    padding: 1rem;
+  
+  .service-description {
+    font-size: 16px;
+    line-height: 1.5;
   }
-
-  .service-header:hover {
-    transform: translateX(5px);
-  }
-} 
+}

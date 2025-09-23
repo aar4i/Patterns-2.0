@@ -1,28 +1,88 @@
 /* Стильная многострочная бегущая строка для секции About */
 .about {
-  min-height: auto; /* Убираем фиксированную высоту */
   height: fit-content;
-  background-color: var(--bg-primary); /* Черный фон */
-  color: var(--text-primary);
+  background-color: #eee8e7; /* Белый фон как в сервисах */
+  color: #161616; /* Черный текст */
   display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow: hidden; /* Обрезаем все что выходит за края */
   position: relative;
-  padding: 0; /* Убираем все отступы */
+  padding: 0 0 2rem 0; /* Добавляем отступ снизу для PA элементов */
+}
+
+.about-content-wrapper {
+  width: 100%;
+  max-width: 1914px; /* Такая же ширина как у футера */
+  margin: 0 auto;
+  padding: 0 32px; /* Такие же отступы как у футера */
+  overflow: hidden; /* Обрезаем содержимое */
+  position: relative;
+}
+
+/* Граница с бегущими линиями только по бокам */
+.about-content-wrapper::before,
+.about-content-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 32px; /* Толщина границы */
+  background: 
+    linear-gradient(90deg, transparent 0%, transparent 2px, #eee8e7 2px, #eee8e7 4px, transparent 4px, transparent 100%);
+  background-size: 20px 100%;
+  background-repeat: repeat-y;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.about-content-wrapper::before {
+  left: 0;
+  animation: runningBorderLeft 3s linear infinite;
+}
+
+.about-content-wrapper::after {
+  right: 0;
+  animation: runningBorderRight 3s linear infinite;
+}
+
+/* Анимация бегущих линий для левой границы */
+@keyframes runningBorderLeft {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+/* Анимация бегущих линий для правой границы */
+@keyframes runningBorderRight {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
 
 .marquee-container {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem; /* Небольшой промежуток между строками */
+  gap: 0.2rem; /* Уменьшаем расстояние между строками */
 }
 
 .marquee-line {
   width: 100%;
-  overflow: hidden;
+  overflow: hidden; /* Обрезаем содержимое */
   white-space: nowrap;
+  line-height: 0.8; /* Устанавливаем такой же line-height как у текста */
+  margin: 0; /* Убираем margin */
+  height: clamp(2.2rem, 4.5vw, 3.5rem); /* Фиксированная высота для всех строк */
+  display: flex; /* Используем flex для выравнивания */
+  align-items: center; /* Центрируем содержимое по вертикали */
+  background-color: #a62639; /* Красный фон как у PA элементов */
 }
 
 .marquee-content {
@@ -52,13 +112,15 @@
 .marquee-text {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 400;
-  color: var(--text-primary);
+  color: #161616; /* Черный текст */
   font-family: var(--font-primary);
   letter-spacing: 0.02em;
-  line-height: 1;
+  line-height: 0.8; /* Устанавливаем line-height 0.8 */
   white-space: nowrap;
-  padding-right: 4rem;
+  padding-right: 1rem; /* Минимальный отступ только для бесшовности анимации */
   text-transform: uppercase;
+  display: inline-block;
+
 }
 
 /* Анимация бегущей строки */
@@ -76,19 +138,39 @@
   animation-play-state: paused;
 }
 
+/* Пауза анимации когда секция не видна (для оптимизации) */
+.about.not-visible .marquee-content,
+.about.not-visible .pa-element-marquee {
+  animation-play-state: paused;
+}
+
 /* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
   .about {
-    padding: 0; /* Убираем все отступы на планшетах */
+    padding: 0 0 1.5rem 0; /* Меньший отступ снизу на планшетах */
+  }
+  
+  /* Адаптивная граница для планшетов */
+  .about-content-wrapper::before,
+  .about-content-wrapper::after {
+    width: 24px; /* Меньшая толщина границы */
+    background-size: 16px 100%;
   }
   
   .marquee-container {
-    gap: 0.3rem;
+    gap: 0.15rem; /* Уменьшаем отступы для планшетов */
+  }
+  
+  .marquee-line {
+    height: clamp(2.2rem, 4.5vw, 3.5rem); /* Одинаковая высота как на десктопе */
+    background-color: #a62639; /* Красный фон */
   }
   
   .marquee-text {
     font-size: clamp(2rem, 5vw, 3.5rem);
-    padding-right: 3rem;
+    padding-right: 0.5rem; /* Минимальный отступ */
+    line-height: 1;
+    color: #eee8e7; /* Белый текст на красном фоне */
   }
   
   .marquee-line:nth-child(1) .marquee-content {
@@ -110,16 +192,30 @@
 
 @media (max-width: 480px) {
   .about {
-    padding: 0; /* Убираем все отступы на мобильных */
+    padding: 0 0 1rem 0; /* Минимальный отступ снизу на мобильных */
+  }
+  
+  /* Адаптивная граница для мобильных */
+  .about-content-wrapper::before,
+  .about-content-wrapper::after {
+    width: 16px; /* Еще меньшая толщина границы */
+    background-size: 12px 100%;
   }
   
   .marquee-container {
-    gap: 0.2rem;
+    gap: 0.1rem; /* Минимальные отступы для мобильных */
+  }
+  
+  .marquee-line {
+    height: clamp(2.2rem, 4.5vw, 3.5rem); /* Одинаковая высота как на десктопе */
+    background-color: #a62639; /* Красный фон */
   }
   
   .marquee-text {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
-    padding-right: 2rem;
+    padding-right: 0.3rem; /* Минимальный отступ */
+    line-height: 1;
+    color: #eee8e7; /* Белый текст на красном фоне */
   }
   
   .marquee-line:nth-child(1) .marquee-content {
@@ -139,6 +235,186 @@
   }
 }
 
+/* PA элементы в бегущих строках - простое центрирование */
+.pa-element-marquee {
+  display: inline-block;
+  margin: 0 1rem;
+  line-height: 0.8;
+  vertical-align: baseline;
+  animation: paAppearSmooth 15s linear infinite;
+  animation-delay: var(--random-delay, 0s);
+  transform-origin: center;
+  will-change: opacity, width, margin, transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pa-marquee-svg {
+  height: 0.76em; /* Уменьшаем на 5% (0.8 * 0.95 = 0.76) */
+  width: auto;
+  display: block;
+  filter: brightness(1);
+}
+
+/* Стабильная анимация сжатия PA элементов */
+@keyframes paAppearSmooth {
+  0% {
+    opacity: 0;
+    width: 0;
+    margin-left: 0;
+    margin-right: 0;
+    transform: scaleX(0) translateZ(0); /* Добавляем translateZ для стабилизации */
+  }
+      15% {
+      opacity: 1;
+      width: calc(0.8em + 2rem);
+      margin-left: 1rem;
+      margin-right: 1rem;
+      transform: scaleX(1) translateZ(0);
+    }
+    85% {
+      opacity: 1;
+      width: calc(0.8em + 2rem);
+      margin-left: 1rem;
+      margin-right: 1rem;
+      transform: scaleX(1) translateZ(0);
+    }
+  100% {
+    opacity: 0;
+    width: 0;
+    margin-left: 0;
+    margin-right: 0;
+    transform: scaleX(0) translateZ(0);
+  }
+}
+
+
+
+/* Адаптивность PA элементов */
+@media (max-width: 768px) {
+  @keyframes paAppearSmoothTablet {
+    0% {
+      opacity: 0;
+      width: 0;
+      margin-left: 0;
+      margin-right: 0;
+      transform: scaleX(0);
+    }
+    15% {
+      opacity: 1;
+      width: calc(0.8em + 0.3rem);
+      margin-left: 0.15rem;
+      margin-right: 0.15rem;
+      transform: scaleX(1);
+    }
+    85% {
+      opacity: 1;
+      width: calc(0.8em + 0.3rem);
+      margin-left: 0.15rem;
+      margin-right: 0.15rem;
+      transform: scaleX(1);
+    }
+    100% {
+      opacity: 0;
+      width: 0;
+      margin-left: 0;
+      margin-right: 0;
+      transform: scaleX(0);
+    }
+  }
+
+  .pa-element-marquee {
+    animation: paAppearSmoothTablet 15s linear infinite;
+    margin: 0 0.15rem;
+    transform-origin: center;
+    will-change: opacity, width, margin, transform;
+  }
+  
+  .pa-marquee-svg {
+    height: 0.8em;
+    filter: brightness(1); /* Нормальный фильтр */
+  }
+}
+
+@media (max-width: 480px) {
+  @keyframes paAppearPopMobile {
+    0% {
+      opacity: 0;
+      width: 0;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    15% {
+      opacity: 1;
+      width: calc(0.7em + 0.2rem);
+      margin-left: 0.1rem;
+      margin-right: 0.1rem;
+    }
+    85% {
+      opacity: 1;
+      width: calc(0.7em + 0.2rem);
+      margin-left: 0.1rem;
+      margin-right: 0.1rem;
+    }
+    95% {
+      opacity: 0; /* Быстрое исчезновение как лопнувший шарик */
+      width: calc(0.7em + 0.2rem);
+      margin-left: 0.1rem;
+      margin-right: 0.1rem;
+    }
+    100% {
+      opacity: 0;
+      width: 0;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  @keyframes paAppearSqueezeMobile {
+    0% {
+      opacity: 0;
+      width: 0;
+      margin-left: 0;
+      margin-right: 0;
+      transform: scaleX(0);
+    }
+    15% {
+      opacity: 1;
+      width: calc(0.7em + 0.2rem);
+      margin-left: 0.1rem;
+      margin-right: 0.1rem;
+      transform: scaleX(1);
+    }
+    85% {
+      opacity: 1;
+      width: calc(0.7em + 0.2rem);
+      margin-left: 0.1rem;
+      margin-right: 0.1rem;
+      transform: scaleX(1);
+    }
+    100% {
+      opacity: 0;
+      width: 0;
+      margin-left: 0;
+      margin-right: 0;
+      transform: scaleX(0);
+    }
+  }
+
+  .pa-element-marquee {
+    animation: paAppearSmoothMobile 15s ease-in-out infinite;
+    margin: 0 0.1rem; /* Минимальные отступы на мобильном */
+  }
+  
+  .pa-marquee-svg {
+    height: 0.7em;
+    filter: brightness(1); /* Нормальный фильтр */
+  }
+}
+
 /* Оптимизация производительности */
 @media (prefers-reduced-motion: reduce) {
   .marquee-content {
@@ -152,7 +428,19 @@
   .marquee-text {
     white-space: normal;
     text-align: center;
-    padding: 1rem;
+    padding: 0.5rem; /* Минимальный отступ */
     font-size: clamp(1.2rem, 3vw, 2rem);
+    line-height: 1.2; /* Оптимальный line-height для статичного текста */
+    color: #eee8e7; /* Белый текст на красном фоне */
+  }
+  
+  /* Отключаем анимацию границ */
+  .about-content-wrapper::before,
+  .about-content-wrapper::after {
+    animation: none;
+    background: 
+      linear-gradient(90deg, transparent 0%, transparent 2px, #eee8e7 2px, #eee8e7 4px, transparent 4px, transparent 100%);
+    background-size: 20px 100%;
+    background-repeat: repeat-y;
   }
 } 

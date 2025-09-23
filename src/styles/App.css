@@ -1,22 +1,101 @@
 @import './fonts.css';
 
+/* Убираем отступ снизу - footer остается absolute */
+.App {
+  padding-bottom: 0;
+}
+
+/* Стильная многострочная бегущая строка для секции About */
+.about {
+  height: fit-content;
+  background-color: #eee8e7; /* Белый фон как в сервисах */
+  color: #161616; /* Черный текст */
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow: visible; /* Разрешаем выход PA элементов за границы */
+  position: relative;
+  padding: 0 0 2rem 0; /* Добавляем отступ снизу для PA элементов */
+}
+
+.marquee-text {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 400;
+  color: #161616; /* Черный текст */
+  font-family: var(--font-primary);
+  letter-spacing: 0.02em;
+  line-height: inherit; /* Наследуем line-height от родителя */
+  white-space: nowrap;
+  padding-right: 1rem; /* Минимальный отступ только для бесшовности анимации */
+  text-transform: uppercase;
+  display: inline-block;
+  vertical-align: -0.05em; /* Слегка опускаем для баланса отступов */
+
+}
+
+/* Минималистичная секция Contact */
+.contact {
+  min-height: auto;
+  background-color: #eee8e7; /* Белый фон как в сервисах */
+  color: #161616; /* Черный текст */
+  padding: 2rem 0;
+}
+
+.field-label {
+  background-color: #eee8e7; /* Точный белый цвет из SVG PA */
+  color: #161616; /* Черный текст */
+  padding: 0;
+  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  font-family: var(--font-primary);
+  display: block;
+  width: 100%;
+  max-width: 530px; /* Увеличиваем ширину в 2 раза */
+  line-height: 0.8; /* Максимально плотная высота строки */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.footer {
+  background-color: #eee8e7; /* Белый фон как в сервисах */
+  color: #161616; /* Черный текст */
+  padding: 2rem 0 1rem;
+  text-align: center;
+  border-top: 1px solid #a62639; /* Красная граница сверху */
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer-link:hover {
+  color: #161616; /* Черный цвет при наведении */
+}
+
+.footer-text {
+  color: #161616; /* Черный текст */
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
 /* Гротескная красно-черно-белая цветовая схема */
 :root {
   /* Основная палитра */
-  --bg-primary: #161616;        /* Новый Черный фон */
+  --bg-primary: #eee8e7;        /* Белый фон как в сервисах */
   --bg-secondary: #a62639;      /* Красный акцент (уже был) */
   --bg-tertiary: #1a1a1a;      /* Темно-серый (можно оставить или подобрать новый на основе #161616) */
-  --bg-accent: #eee8e7;         /* Новый Белый контраст */
+  --bg-accent: #eee8e7;         /* Точный белый цвет из SVG PA */
   
-  --text-primary: #eee8e7;      /* Новый Белый текст (для черного фона) */
-  --text-secondary: #eee8e7;    /* Новый Белый текст на красном */
-  --text-muted: #cccccc;        /* Светло-серый (можно будет подобрать новый на основе #eee8e7) */
-  --text-inverse: #161616;      /* Новый Черный текст на белом */
+  --text-primary: #161616;      /* Черный текст на белом фоне */
+  --text-secondary: #eee8e7;    /* Белый текст на красном */
+  --text-muted: #161616;        /* Черный текст */
+  --text-inverse: #eee8e7;      /* Белый текст на черном */
   --text-red: #a62639;          /* Красный текст (теперь совпадает с bg-secondary) */
   
   --accent-primary: #a62639;    /* Красный акцент (теперь совпадает с bg-secondary) */
-  --accent-secondary: #8a1f2e;  /* Более темный красный (подберу на основе #a62639) */
-  --accent-light: #eee8e7;      /* Новый Белый */
+  --accent-secondary: #a62639;  /* Более темный красный (подберу на основе #a62639) */
+  --accent-light: #eee8e7;      /* Точный белый цвет из SVG PA */
   
   --border-color: #333333;    /* Можно будет подобрать новый */
   --border-light: #444444;    /* Можно будет подобрать новый */
@@ -43,8 +122,61 @@
   box-sizing: border-box;
 }
 
+/* PA курсор - используем готовый CursorPM.svg */
+button,
+a,
+.clickable,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+input[type="text"],
+input[type="email"],
+input[type="checkbox"],
+input[type="tel"],
+textarea,
+select,
+.service-header,
+.service-feature-item,
+.service-features li,
+.footer-link-small,
+.marquee-text,
+.contrast-block,
+.field-label,
+.checkmark,
+.privacy-link,
+.social-link,
+.contact-email a {
+  cursor: url('/logos/CursorPM.svg') 20 13, auto !important;
+}
+
+/* Белый курсор при клике/зажатии */
+button:active,
+a:active,
+.clickable:active,
+[role="button"]:active,
+input[type="submit"]:active,
+input[type="button"]:active,
+input[type="text"]:active,
+input[type="email"]:active,
+input[type="checkbox"]:active,
+input[type="tel"]:active,
+textarea:active,
+select:active,
+.service-header:active,
+.service-feature-item:active,
+.service-features li:active,
+.footer-link-small:active,
+.marquee-text:active,
+.contrast-block:active,
+.field-label:active,
+.checkmark:active,
+.privacy-link:active,
+.social-link:active,
+.contact-email a:active {
+  cursor: url('/logos/CursorPM-white.svg') 20 13, auto !important;
+}
+
 html, body {
-  height: 100%;
   overflow-x: hidden;
   /* Улучшенная прокрутка для мобильных */
   -webkit-overflow-scrolling: touch;
@@ -62,7 +194,6 @@ body {
   background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: var(--transition);
   
   /* Запрет зума при тапе на input */
   -webkit-text-size-adjust: 100%;

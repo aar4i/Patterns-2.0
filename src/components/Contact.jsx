@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
 import '../styles/Contact.css'
+import { useServices } from '../context/ServicesContext'
 
 function Contact() {
+  const { getServicesText, selectedServices, clearServices } = useServices()
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,6 +46,20 @@ function Contact() {
     }
   ]
 
+  // Автоматически добавляем выбранные услуги в поле сообщения
+  useEffect(() => {
+    if (selectedServices.length > 0) {
+      const servicesText = getServicesText()
+      setFormData(prev => ({
+        ...prev,
+        message: servicesText
+      }))
+      
+      // Фокусируемся на поле сообщения
+      setFocusedField('message')
+    }
+  }, [selectedServices, getServicesText])
+
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({
@@ -53,6 +70,15 @@ function Contact() {
 
   const handlePrivacyChange = (e) => {
     setPrivacyAccepted(e.target.checked)
+    
+    // Генерируем рандомный поворот для PA SVG при отметке чекбокса
+    if (e.target.checked) {
+      const randomRotation = Math.floor(Math.random() * 360); // от 0 до 360 градусов
+      const checkmark = e.target.nextElementSibling; // получаем .checkmark
+      if (checkmark) {
+        checkmark.style.setProperty('--random-rotation', `${randomRotation}deg`);
+      }
+    }
   }
 
   const handleFieldClick = (fieldName) => {
@@ -79,6 +105,13 @@ function Contact() {
     // Проверяем, что все поля заполнены
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       setSubmitStatus('Please fill in all fields')
+      return
+    }
+
+    // Кастомная валидация email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      setSubmitStatus('Please enter a valid email address')
       return
     }
 
@@ -119,6 +152,12 @@ function Contact() {
       setSubmitStatus('Message sent successfully!')
       setFormData({ name: '', email: '', phone: '', message: '' })
       setPrivacyAccepted(false)
+      clearServices() // Очищаем выбранные услуги после отправки
+      
+      // Автоматически скрываем успешное сообщение через 3 секунды
+      setTimeout(() => {
+        setSubmitStatus('')
+      }, 3000)
       setFocusedField(null)
       
     } catch (error) {
@@ -178,7 +217,6 @@ function Contact() {
               onChange={handleInputChange}
               onFocus={() => handleFocus(name)}
               onBlur={() => handleBlur(name)}
-              style={{ display: isActive ? 'block' : 'none' }}
             />
           ) : (
             <input
@@ -188,7 +226,6 @@ function Contact() {
               onChange={handleInputChange}
               onFocus={() => handleFocus(name)}
               onBlur={() => handleBlur(name)}
-              style={{ display: isActive ? 'block' : 'none' }}
             />
           )}
         </div>
@@ -201,23 +238,24 @@ function Contact() {
       <div className="contact-container">
         <div className="contact-content">
           <div className="contact-form-section">
-            <form onSubmit={handleSubmit} className="contact-form">
+            <form onSubmit={handleSubmit} className="contact-form" noValidate>
               {formFields.map(renderFormField)}
               
               <div className="privacy-checkbox">
-                <label className="checkbox-container">
-                  <input 
-                    type="checkbox" 
-                    checked={privacyAccepted}
-                    onChange={handlePrivacyChange}
-                    className="checkbox-input"
-                  />
-                  <span className="checkmark"></span>
+                <div className="checkbox-container">
+                  <label className="checkbox-label">
+                    <input 
+                      type="checkbox" 
+                      checked={privacyAccepted}
+                      onChange={handlePrivacyChange}
+                      className="checkbox-input"
+                    />
+                    <span className="checkmark"></span>
+                  </label>
                   <span className="checkbox-text">
-                    I agree to the processing of my data in accordance with the{' '}
-                    <a href="#privacy-policy" className="privacy-link">Privacy Policy</a>.
+                    <a href="#privacy-policy" className="privacy-link">Privacy Policy</a>
                   </span>
-                </label>
+                </div>
               </div>
               
               <button type="submit" className="submit-button" disabled={isSubmitting}>
