@@ -1,4 +1,4 @@
-/* === БАЗОВАЯ СЕКЦИЯ === */
+/* === HERO SECTION === */
 .hero {
   min-height: 100svh;
   height: 100svh;
@@ -15,7 +15,7 @@
   user-select: none;
 }
 
-/* === ВИДЕО ФОН === */
+/* === Video BG === */
 .hero-background {
   position: absolute;
   inset: 0;
@@ -43,7 +43,7 @@
   z-index: 2;
 }
 
-/* === КОНТЕЙНЕР === */
+/* === HERO CONTENT === */
 .hero-container {
   width: 100%;
   margin: 0 auto;
@@ -66,7 +66,7 @@
   align-items: center;
 }
 
-/* === ЛОГОТИП ВВЕРХУ СЛЕВА === */
+/* === LOGO IN TOP LEFT === */
 .hero-top-left-logo {
   position: absolute;
   top: 1rem;
@@ -80,7 +80,7 @@
   filter: brightness(0.9);
 }
 
-/* === PA ЭЛЕМЕНТЫ СПРАВА === */
+/* === PA ELEMENTS IN TOP RIGHT === */
 .hero-pa-elements {
   position: absolute;
   top: 1rem;
@@ -90,7 +90,7 @@
   z-index: 15;
 }
 
-/* Общие стили для кнопок */
+/* General styles for buttons */
 .pa-element.large,
 .pause-button,
 .camera-button {
@@ -112,7 +112,7 @@
   cursor: url('/logos/CursorPM-white.svg') 20 13, pointer !important;
 }
 
-/* SVG PA элемент */
+/* SVG PA element */
 .pa-element.large[src*="CursorPM"] {
   height: calc(clamp(1.2rem, 2.5vw, 2rem) + 0.4rem);
   width: auto;
@@ -122,55 +122,6 @@
   object-fit: contain;
 }
 
-/* Кнопка плей/пауза */
-.pause-button {
-  position: relative;
-  min-width: clamp(4rem, 8vw, 6rem);
-  height: calc(clamp(1.2rem, 2.5vw, 2rem) + 0.4rem);
-  padding: 0 !important;
-}
-
-.pause-button-icon {
-  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-primary);
-  letter-spacing: -0.1em;
-  text-transform: lowercase;
-}
-
-.pause-button-icon.pause-icon {
-  font-weight: 300;
-  transform: translate(-50%, -50%) scaleX(0.8);
-}
-
-/* Кнопка камеры */
-.camera-button {
-  position: relative;
-  min-width: clamp(3rem, 6vw, 4.5rem);
-  height: calc(clamp(1.2rem, 2.5vw, 2rem) + 0.4rem);
-  padding: 0 !important;
-}
-
-.camera-button-icon {
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.camera-button-icon svg {
-  width: 100%;
-  height: 100%;
-  max-width: clamp(1.2rem, 2.5vw, 1.8rem);
-  max-height: clamp(1.2rem, 2.5vw, 1.8rem);
-}
 
 /* === SCROLL ARROW === */
 .hero-scroll-arrow {

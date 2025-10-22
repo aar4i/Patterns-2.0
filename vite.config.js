@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    sourcemap: false, // Отключаем source maps в продакшене
+    sourcemap: false,
     target: 'esnext',
     rollupOptions: {
       output: {
