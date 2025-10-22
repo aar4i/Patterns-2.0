@@ -1,80 +1,57 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
-    <meta name="description" content="Patterns manufacturing - Premium textile and fabric manufacturing solutions. Quality patterns and innovative manufacturing processes." />
-    <meta name="keywords" content="patterns, manufacturing, textile, fabric, quality, production" />
-    <meta name="author" content="Patterns Manufacturing" />
-    
-    <!-- Мобильные оптимизации -->
-    <meta name="theme-color" content="#a62639" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Patterns" />
-    <meta name="format-detection" content="telephone=no" />
-    
-    <!-- Preload критических ресурсов -->
-    <link rel="preload" href="/fonts/ApfelGrotezk-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/ApfelGrotezk-Fett.woff2" as="font" type="font/woff2" crossorigin />
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate icon" href="/favicon.ico" />
-    <link rel="manifest" href="/manifest.json" />
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Patterns manufacturing" />
-    <meta property="og:description" content="Premium textile and fabric manufacturing solutions." />
-    
-    <title>Patterns manufacturing</title>
-    
-    <!-- Критические inline стили для предотвращения FOUC -->
-    <style>
-      /* Предотвращаем моргание фона */
-      html, body {
-        margin: 0;
-        padding: 0;
-        background-color: #eee8e7; /* Белый фон как в сервисах */
-        color: #161616; /* Черный текст */
-        overflow-x: hidden;
-      }
-      
-      /* Предотвращаем неправильный рендеринг текста до загрузки шрифтов */
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-      
-      #root {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        background-color: #eee8e7; /* Белый фон как в сервисах */
-      }
-      
-      /* Критические стили для hero заголовка */
-      .hero-title {
-        font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
-        font-weight: 400 !important;
-        line-height: 1 !important;
-        margin: 0 !important;
-        white-space: nowrap !important;
-        color: #eee8e7 !important;
-        background-color: #a62639 !important;
-        padding: 0.02rem 0.3rem !important;
-        display: inline-block !important;
-        vertical-align: baseline !important;
-        text-align: center !important;
-        overflow: hidden !important;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="description" content="Patterns manufacturing - Premium textile and fabric manufacturing solutions. Quality patterns and innovative manufacturing processes." />
+<meta name="keywords" content="patterns, manufacturing, textile, fabric, quality, production" />
+<meta name="author" content="Patterns Manufacturing" />
+
+<!-- Мобильные оптимизации -->
+<meta name="theme-color" content="#a62639" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Patterns" />
+<meta name="format-detection" content="telephone=no" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="alternate icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json" />
+
+<!-- Open Graph / Social Media -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Patterns manufacturing" />
+<meta property="og:description" content="Premium textile and fabric manufacturing solutions." />
+
+<title>Patterns manufacturing</title>
+
+<!-- Критические inline стили -->
+<style>
+html, body {
+margin: 0;
+padding: 0;
+background-color: #eee8e7;
+color: #161616;
+overflow-x: hidden;
+}
+
+body {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+width: 100%;
+margin: 0;
+padding: 0;
+background-color: #eee8e7;
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
+</body>
 </html>
