@@ -25,102 +25,94 @@ A contemporary website showcasing innovative design patterns and creative soluti
    npm run build
    ```
 
-## 🚀 Features
-
-- **Modern Design**: Clean, contemporary aesthetics with the ApfelGrotezk font
-- **Responsive**: Fully responsive design for all devices
-- **Component-based**: Modular React components for easy maintenance
-- **Fast**: Built with Vite for lightning-fast development and builds
-
 ## 📁 Project Structure
 
 ```
 src/
-├── components/          # React components
-│   ├── Navigation.jsx   # Main navigation
-│   ├── Hero.jsx         # Hero section with CTA
-│   ├── Services.jsx     # Services grid
-│   ├── Gallery.jsx      # Gallery with overlays
-│   └── Contact.jsx      # Contact form and info
-├── styles/              # CSS stylesheets
-│   ├── App.css          # Global styles
-│   ├── fonts.css        # Font definitions
-│   ├── index.css        # Base styles
-│   └── [Component].css  # Component-specific styles
-└── assets/              # Static assets
-    ├── images/          # Image files
-    └── icons/           # Icon files
-
-public/
-└── fonts/               # Custom font files
-    └── ApfelGrotezk-Regular.woff
-```
-
----
-
-# Настройка EmailJS для отправки писем
-
-## 1. Регистрация на EmailJS
-
-1. Перейдите на [EmailJS.com](https://www.emailjs.com/)
-2. Нажмите "Sign Up" и создайте бесплатный аккаунт
-3. Подтвердите email
-
-## 2. Подключение email сервиса
-
-1. В панели управления EmailJS нажмите "Add New Service"
-2. Выберите ваш email провайдер (Gmail, Outlook, Yahoo и т.д.)
-3. Следуйте инструкциям для подключения
-4. Скопируйте **Service ID**
-
-## 3. Создание email шаблона
-
-1. Перейдите в раздел "Email Templates"
-2. Нажмите "Create New Template"
-3. Создайте шаблон со следующими переменными:
+├── components/              
+│   ├── About.jsx            
+│   ├── Contact.jsx          
+│   ├── FooterCopyright.jsx  
+│   ├── Hero.jsx             
+│   ├── PrivacyPolicy.jsx    
+│   ├── Services.jsx         
+│   ├── TermsOfService.jsx   
+│   └── VideoColorAnalyzer.jsx
+│
+├── styles/                  
+│   ├── About.css            
+│   ├── App.css              
+│   ├── Contact.css          
+│   ├── FooterCopyright.css  
+│   ├── Hero.css             
+│   ├── Modal.css            
+│   ├── Services.css         
+│   ├── fonts.css            
+│   └── index.css            
+│
+├── App.jsx                  
+└── main.jsx                 
 
 ```
-Subject: Новая заявка с сайта Patterns Agency
 
-Имя: {{from_name}}
+# EmailJS Setup for Sending Emails
+
+## 1. Register on EmailJS
+
+1. Go to [EmailJS.com](https://www.emailjs.com/)
+2. Click "Sign Up" and create a free account
+3. Verify your email
+
+## 2. Connect an Email Service
+
+1. In your EmailJS dashboard, click "Add New Service"
+2. Select your email provider (Gmail, Outlook, Yahoo, etc.)
+3. Follow the setup instructions
+4. Copy your **Service ID**
+
+## 3. Create an Email Template
+
+1. Go to the "Email Templates" section
+2. Click "Create New Template"
+3. Create a template with the following variables:
+
+```
+Subject: New request from Patterns Agency website
+
+Name: {{from_name}}
 Email: {{from_email}}
-Телефон: {{phone}}
+Phone: {{phone}}
 
-Сообщение:
+Message:
 {{message}}
 
 ---
-Отправлено с сайта patterns-agency.com
+Sent from patterns-agency.com
 ```
 
-4. Скопируйте **Template ID**
+4. Copy your **Template ID**
 
-## 4. Получение Public Key
+## 4. Get Your Public Key
 
-1. Перейдите в "Account" → "General"
-2. Найдите раздел "Public Key"
-3. Скопируйте **Public Key**
+1. Go to "Account" → "General"
+2. Find the "Public Key" section
+3. Copy your Public Key
 
-## 5. Настройка в проекте
+## 5. Configure in the Project
 
-Откройте файл `src/components/Contact.jsx` и замените:
+Open src/components/Contact.jsx and replace the following:
 
 ```javascript
-const serviceID = 'YOUR_SERVICE_ID'      // Вставьте ваш Service ID
-const templateID = 'YOUR_TEMPLATE_ID'    // Вставьте ваш Template ID  
-const publicKey = 'YOUR_PUBLIC_KEY'      // Вставьте ваш Public Key
+const serviceID = 'YOUR_SERVICE_ID'      // Insert your Service ID
+const templateID = 'YOUR_TEMPLATE_ID'    // Insert your Template ID  
+const publicKey = 'YOUR_PUBLIC_KEY'      // Insert your Public Key
 ```
 
-## 6. Тестирование
+## 6. Testing
 
-1. Запустите проект: `npm start`
-2. Заполните и отправьте форму
-3. Проверьте email на `contact@patterns-agency.com`
+1. Run the project: `npm start`
+2. Fill out and submit the form
+3. Check your email
 
-## Лимиты бесплатного плана
-
-- 200 писем в месяц
-- Достаточно для большинства сайтов
-
-
-**Patterns Studio** 
+## Free Plan Limits
+200 emails per month
