@@ -102,7 +102,7 @@
   color: #161616;
   font-family: var(--font-primary);
   font-weight: 400;
-  font-size: 69px;
+  font-size: 64px;
   line-height: 50px;
   letter-spacing: 0;
   margin: 0;
@@ -271,10 +271,17 @@
   .services-main-container {
     margin-left: 16px;
     margin-right: 16px;
+    display: block;
   }
   
   .service-item {
     left: 0;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    height: auto;
+    min-height: 0;
   }
   
   .service-panel {
@@ -285,14 +292,81 @@
   .service-panel-inner {
     padding: 0 16px;
   }
-  
+  /* Improve readability and avoid overflow on phones */
+  /* tighten gap between subtitle and content */
+  .service-panel-content {
+    padding-top: 8px;
+    padding-bottom: 12px;
+  }
+
+  .service-title {
+    font-size: 34px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .service-title-row {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .service-header {
+    position: relative;
+    left: 0;
+    top: auto;
+    width: fit-content;
+  }
+
+  .service-subtitle {
+    position: static;
+    height: auto;
+    width: 100%;
+    font-size: 26px;
+    line-height: 1.1;
+    white-space: normal;
+    text-align: left;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .service-subtitle-row {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+
   .service-image {
     max-width: 100%;
-    height: 400px;
+    width: 100%;
+    height: auto;
+    margin: 0;
   }
-  
+
+  .service-image img {
+    width: 100%;
+    height: auto;
+    margin: 8px 0;
+    object-fit: contain;
+    display: block;
+  }
+
   .service-description {
     font-size: 16px;
     line-height: 1.5;
+    text-align: left;
+    margin: 10px 0 14px 0;
+  }
+
+  .service-info {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .service-image-container {
+    justify-content: center;
+    align-items: center;
   }
 }
