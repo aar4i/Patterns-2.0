@@ -23,7 +23,7 @@ const FooterCopyright = () => {
             <span onClick={() => setIsTermsOpen(true)} className="footer-link-small">
               Terms of Service
             </span>
-            <span className="powered-by-text">Powered by GAY AGENCY</span>
+            <span className="powered-by-text">Powered by PATTERNS AGENCY</span>
           </div>
         </div>
       </div>

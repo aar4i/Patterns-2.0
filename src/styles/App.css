@@ -1,187 +1,39 @@
 @import './fonts.css';
 
-/* Убираем отступ снизу - footer остается absolute */
-.App {
-  padding-bottom: 0;
-}
-
-/* Стильная многострочная бегущая строка для секции About */
-.about {
-  height: fit-content;
-  background-color: #eee8e7; /* Белый фон как в сервисах */
-  color: #161616; /* Черный текст */
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  overflow: visible; /* Разрешаем выход PA элементов за границы */
-  position: relative;
-  padding: 0 0 2rem 0; /* Добавляем отступ снизу для PA элементов */
-}
-
-.marquee-text {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 400;
-  color: #161616; /* Черный текст */
-  font-family: var(--font-primary);
-  letter-spacing: 0.02em;
-  line-height: inherit; /* Наследуем line-height от родителя */
-  white-space: nowrap;
-  padding-right: 1rem; /* Минимальный отступ только для бесшовности анимации */
-  text-transform: uppercase;
-  display: inline-block;
-  vertical-align: -0.05em; /* Слегка опускаем для баланса отступов */
-
-}
-
-/* Минималистичная секция Contact */
-.contact {
-  min-height: auto;
-  background-color: #eee8e7; /* Белый фон как в сервисах */
-  color: #161616; /* Черный текст */
-  padding: 2rem 0;
-}
-
-.field-label {
-  background-color: #eee8e7; /* Точный белый цвет из SVG PA */
-  color: #161616; /* Черный текст */
-  padding: 0;
-  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  font-family: var(--font-primary);
-  display: block;
-  width: 100%;
-  max-width: 530px; /* Увеличиваем ширину в 2 раза */
-  line-height: 0.8; /* Максимально плотная высота строки */
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  text-transform: uppercase;
-}
-
-.footer {
-  background-color: #eee8e7; /* Белый фон как в сервисах */
-  color: #161616; /* Черный текст */
-  padding: 2rem 0 1rem;
-  text-align: center;
-  border-top: 1px solid #a62639; /* Красная граница сверху */
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.footer-link:hover {
-  color: #161616; /* Черный цвет при наведении */
-}
-
-.footer-text {
-  color: #161616; /* Черный текст */
-  font-size: 0.85rem;
-  line-height: 1.5;
-}
-
-/* Гротескная красно-черно-белая цветовая схема */
+/* === CSS ПЕРЕМЕННЫЕ (упрощенные) === */
 :root {
-  /* Основная палитра */
-  --bg-primary: #eee8e7;        /* Белый фон как в сервисах */
-  --bg-secondary: #a62639;      /* Красный акцент (уже был) */
-  --bg-tertiary: #1a1a1a;      /* Темно-серый (можно оставить или подобрать новый на основе #161616) */
-  --bg-accent: #eee8e7;         /* Точный белый цвет из SVG PA */
+  /* Цвета */
+  --bg-primary: #eee8e7;
+  --bg-secondary: #a62639;
+  --text-primary: #161616;
+  --text-secondary: #eee8e7;
+  --accent-primary: #a62639;
   
-  --text-primary: #161616;      /* Черный текст на белом фоне */
-  --text-secondary: #eee8e7;    /* Белый текст на красном */
-  --text-muted: #161616;        /* Черный текст */
-  --text-inverse: #eee8e7;      /* Белый текст на черном */
-  --text-red: #a62639;          /* Красный текст (теперь совпадает с bg-secondary) */
+  /* Шрифты */
+  --font-primary: 'ApfelGrotezk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   
-  --accent-primary: #a62639;    /* Красный акцент (теперь совпадает с bg-secondary) */
-  --accent-secondary: #a62639;  /* Более темный красный (подберу на основе #a62639) */
-  --accent-light: #eee8e7;      /* Точный белый цвет из SVG PA */
-  
-  --border-color: #333333;    /* Можно будет подобрать новый */
-  --border-light: #444444;    /* Можно будет подобрать новый */
-  --shadow-light: 0 2px 8px rgba(166, 38, 57, 0.3); /* Обновлю цвет тени */
+  /* Тени */
+  --shadow-light: 0 2px 8px rgba(166, 38, 57, 0.3);
   --shadow-medium: 0 4px 16px rgba(166, 38, 57, 0.4);
-  --shadow-dark: 0 8px 32px rgba(166, 38, 57, 0.5);
   
-  --border-radius: 0;
-  --border-radius-sm: 0;
-  --border-radius-md: 0;
+  /* Переходы */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
-  /* Мобильные переменные */
+  /* Мобильные отступы */
   --mobile-padding: 1rem;
   --mobile-padding-sm: 0.75rem;
-  --mobile-gap: 1rem;
-  --mobile-gap-sm: 0.5rem;
 }
 
-/* Базовые стили */
+/* === БАЗОВЫЕ СТИЛИ === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* PA курсор - используем готовый CursorPM.svg */
-button,
-a,
-.clickable,
-[role="button"],
-input[type="submit"],
-input[type="button"],
-input[type="text"],
-input[type="email"],
-input[type="checkbox"],
-input[type="tel"],
-textarea,
-select,
-.service-header,
-.service-feature-item,
-.service-features li,
-.footer-link-small,
-.marquee-text,
-.contrast-block,
-.field-label,
-.checkmark,
-.privacy-link,
-.social-link,
-.contact-email a {
-  cursor: url('/logos/CursorPM.svg') 20 13, auto !important;
-}
-
-/* Белый курсор при клике/зажатии */
-button:active,
-a:active,
-.clickable:active,
-[role="button"]:active,
-input[type="submit"]:active,
-input[type="button"]:active,
-input[type="text"]:active,
-input[type="email"]:active,
-input[type="checkbox"]:active,
-input[type="tel"]:active,
-textarea:active,
-select:active,
-.service-header:active,
-.service-feature-item:active,
-.service-features li:active,
-.footer-link-small:active,
-.marquee-text:active,
-.contrast-block:active,
-.field-label:active,
-.checkmark:active,
-.privacy-link:active,
-.social-link:active,
-.contact-email a:active {
-  cursor: url('/logos/CursorPM-white.svg') 20 13, auto !important;
-}
-
 html, body {
   overflow-x: hidden;
-  /* Улучшенная прокрутка для мобильных */
   -webkit-overflow-scrolling: touch;
-  
-  /* Убираем все отступы */
   margin: 0;
   padding: 0;
 }
@@ -194,439 +46,55 @@ body {
   background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  /* Запрет зума при тапе на input */
   -webkit-text-size-adjust: 100%;
-  /* Лучший рендеринг на мобильных */
-  text-rendering: optimizeLegibility;
-  
-  /* Убираем все отступы */
-  margin: 0;
-  padding: 0;
-  position: relative;
 }
 
 .App {
-  width: 100%;
-  background-color: var(--bg-primary);
-  margin: 0;
-  padding: 0;
-  position: relative;
+  padding-bottom: 0;
 }
 
-.section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin: 0;
-  padding: 0;
+
+
+/* === УТИЛИТЫ === */
+/* Скрытие скроллбара */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
-/* Первая секция (Hero) должна начинаться сразу с самого верха */
-.section:first-child,
-#hero {
-  min-height: 100vh;
-  min-height: 100svh;
-  margin: 0;
-  padding: 0;
-  top: 0;
-  position: relative;
+/* Выделение текста */
+::selection {
+  background-color: var(--accent-primary);
+  color: var(--text-secondary);
 }
 
-/* Остальные секции */
-.section:not(:first-child) {
-  /* padding: 5rem 0; */
+::-moz-selection {
+  background-color: var(--accent-primary);
+  color: var(--text-secondary);
 }
 
-/* Контейнер */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* Отключение tap highlight на мобильных */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
+/* === АДАПТИВНОСТЬ === */
 @media (max-width: 768px) {
-  .container {
-    padding: 0 var(--mobile-padding);
-  }
-
-  /* Убираем отступы сверху для первой секции на мобильных */
-  .section:first-child,
-  #hero {
-    margin: 0;
-    padding: 0;
-    top: 0;
-  }
-
-  /* Остальные секции на мобильных */
-  .section:not(:first-child) {
-    padding: 3rem 0;
-  }
-
-  .btn {
-    padding: 14px 28px;
-    font-size: 0.95rem;
-    min-height: 52px;
-    width: 100%;
-    max-width: 280px;
-  }
-
-  .contrast-block {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.9rem;
-  }
-
-  .section-title {
-    margin-bottom: 2.5rem;
-    text-align: center;
-  }
-
-  .grid {
-    gap: var(--mobile-gap);
-  }
-  
-  .grid-2, .grid-3, .grid-4 {
-    grid-template-columns: 1fr;
-    gap: var(--mobile-gap);
-  }
-  
-  .mobile-hidden {
-    display: none;
-  }
-  
-  .mobile-only {
-    display: block;
-  }
-  
-  /* Улучшения для касаний */
-  button, .btn, a {
-    min-height: 44px;
-    min-width: 44px;
+  body {
+    font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding: 0 var(--mobile-padding-sm);
-  }
-
-  /* Убираем отступы сверху для первой секции на маленьких экранах */
-  .section:first-child,
-  #hero {
-    margin: 0;
-    padding: 0;
-    top: 0;
-  }
-
-  /* Остальные секции на маленьких экранах */
-  .section:not(:first-child) {
-    padding: 2rem 0;
-  }
-
-  .section-title {
-    margin-bottom: 1.5rem;
-  }
-  
-  .btn {
-    padding: 12px 24px;
-    font-size: 0.9rem;
-    min-height: 48px;
-  }
-  
-  .grid {
-    gap: var(--mobile-gap-sm);
-  }
-  
-  /* Очень маленькие экраны */
-  h1 {
-    font-size: clamp(2.5rem, 7vw, 4rem);
-  }
-  
-  h2 {
-    font-size: clamp(1.8rem, 4.5vw, 2.5rem);
-  }
-  
-  h3 {
-    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-  }
-  
-  p {
-    font-size: clamp(0.9rem, 2.2vw, 1rem);
-    line-height: 1.5;
-  }
-}
-
-/* Гротескная типографика */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
-  line-height: 1.1;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-  letter-spacing: 2px;
-}
-
-h1 {
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 400;
-  color: var(--text-primary);
-}
-
-h2 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 400;
-}
-
-h3 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 400;
-}
-
-p {
-  font-size: clamp(1rem, 2.5vw, 1.1rem);
-  line-height: 1.6;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-  font-weight: 400;
-}
-
-/* Контрастные блоки как на скриншотах */
-.contrast-block {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  padding: 0.1rem 0.3rem;
-  display: inline-block;
-  line-height: 1;
-}
-
-.contrast-block.white {
-  background-color: var(--bg-accent);
-  color: var(--text-inverse);
-}
-
-.contrast-block.black {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  border: 2px solid var(--text-primary);
-}
-
-/* Улучшенные кнопки для мобильных */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 32px;
-  font-size: 1rem;
-  font-weight: 400;
-  text-decoration: none;
-  border: 2px solid transparent;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: var(--transition);
-  white-space: nowrap;
-  min-height: 56px;
-  letter-spacing: 1px;
-  
-  /* Мобильные улучшения */
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  user-select: none;
-}
-
-.btn-primary {
-  background-color: var(--accent-primary);
-  color: var(--text-secondary);
-  border-color: var(--accent-primary);
-}
-
-.btn-primary:hover {
-  background-color: var(--accent-secondary);
-  border-color: var(--accent-secondary);
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: var(--accent-primary);
-  border: 2px solid var(--accent-primary);
-}
-
-.btn-outline:hover {
-  background-color: var(--accent-primary);
-  color: var(--text-secondary);
-}
-
-.btn-white {
-  background-color: var(--bg-accent);
-  color: var(--text-inverse);
-  border-color: var(--bg-accent);
-}
-
-.btn-white:hover {
-  background-color: var(--text-primary);
-  color: var(--bg-primary);
-}
-
-/* Минималистичные карточки */
-.card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-md);
-  padding: 2rem;
-  transition: var(--transition);
-}
-
-.card:hover {
-  box-shadow: var(--shadow-light);
-  border-color: var(--accent-primary);
-}
-
-/* Секции */
-section {
-  position: relative;
-  margin: 0;
-  padding: 0;
-}
-
-.section-title {
-  text-align: left;
-  margin-bottom: 4rem;
-}
-
-.section-title h2 {
-  font-weight: 400;
-  margin-bottom: 1rem;
-  letter-spacing: 3px;
-}
-
-.section-title .subtitle {
-  font-size: 1.2rem;
-  color: var(--text-muted);
-  font-weight: 400;
-  letter-spacing: 1px;
-}
-
-/* Сетка */
-.grid {
-  display: grid;
-  gap: 0;
-}
-
-.grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-.grid-4 {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-/* Утилиты */
-.text-red {
-  color: var(--accent-primary);
-}
-
-.bg-red {
-  background-color: var(--bg-secondary);
-  color: var(--text-secondary);
-}
-
-.bg-black {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-}
-
-.bg-white {
-  background-color: var(--bg-accent);
-  color: var(--text-inverse);
-}
-
-/* Скрытие на мобильных */
-.mobile-hidden {
-  display: block;
-}
-
-.mobile-only {
-  display: none;
-}
-
-/* Гротескные анимации */
-@keyframes glitch {
-  0%, 90%, 100% { 
-    transform: translate(0);
-  }
-  10% { 
-    transform: translate(-2px, 2px);
-  }
-  20% { 
-    transform: translate(2px, -2px);
-  }
-  30% { 
-    transform: translate(-2px, -2px);
-  }
-  40% { 
-    transform: translate(2px, 2px);
-  }
-  50% { 
-    transform: translate(-2px, 2px);
-  }
-  60% { 
-    transform: translate(2px, -2px);
-  }
-  70% { 
-    transform: translate(-2px, -2px);
-  }
-  80% { 
-    transform: translate(2px, 2px);
-  }
-}
-
-.glitch:hover {
-  animation: glitch 0.3s ease-in-out;
-}
-
-/* Планшетная адаптивность */
-@media (max-width: 1024px) {
-  .container {
-    padding: 0 var(--mobile-padding);
-  }
-
-  section {
-    padding: 4rem 0;
-  }
-
-  .grid-2 {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-
-  .grid-3 {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  }
-
-  .grid-4 {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  }
-}
-
-/* Ландшафтная ориентация мобильных */
-@media (max-width: 812px) and (orientation: landscape) {
-  section {
-    padding: 2rem 0;
-    min-height: auto;
-  }
-
-  .section-title {
-    margin-bottom: 1.5rem;
-  }
-}
-
-/* Высокие плотности пикселей */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* Оптимизации для Retina дисплеев */
   body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-size: 13px;
+  }
+}
+
+/* Уменьшенная анимация */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }

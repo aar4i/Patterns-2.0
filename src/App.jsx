@@ -4,18 +4,15 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
 import Contact from './components/Contact'
-import { ServicesProvider } from './context/ServicesContext'
 
 function App() {
   return (
-    <ServicesProvider>
-      <div className="App">
-        <Hero />
-        <Services />
-        <About />
-        <Contact />
-      </div>
-    </ServicesProvider>
+    <div className="App">
+      <Hero />
+      <Services />
+      <About />
+      <Contact />
+    </div>
   )
 }
 

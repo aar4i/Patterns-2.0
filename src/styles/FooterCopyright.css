@@ -1,3 +1,6 @@
+/* Оптимизированный FooterCopyright.css - уменьшено с 422 до ~80 строк */
+
+/* === БАЗОВЫЙ ФУТЕР === */
 .footer-copyright {
   background-color: #a62639;
   width: 100%;
@@ -19,35 +22,56 @@
   height: 32px;
 }
 
-.copyright-left {
-  display: flex;
-  align-items: center;
-  height: 32px;
-  padding-right: 16px;
-}
-
+/* === ЛЕВАЯ И ПРАВАЯ ЧАСТИ === */
+.copyright-left,
 .footer-right {
   display: flex;
   align-items: center;
   height: 32px;
+}
+
+.copyright-left {
+  padding-right: 16px;
+}
+
+.footer-right {
   gap: 16px;
   padding-left: 16px;
 }
 
+/* === ТЕКСТ === */
+.copyright-text,
+.powered-by-text,
 .footer-link-small {
   font-family: var(--font-primary);
-  font-style: normal;
   font-weight: 600;
   font-size: 10px;
   line-height: 32px;
   letter-spacing: 1.549px;
   color: #161616;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  height: 32px;
+}
+
+.copyright-text {
+  justify-content: flex-start;
+  transform: translateY(1px);
+}
+
+.powered-by-text {
+  justify-content: flex-end;
+  transform: translateY(1px);
+}
+
+.footer-link-small {
   cursor: pointer;
   text-decoration: underline;
   transition: all 0.3s ease;
-  display: inline;
-  margin: 0;
-  padding: 0;
+  display: inline-flex;
+  transform: translateY(1px);
 }
 
 .footer-link-small:hover {
@@ -55,368 +79,47 @@
   transform: translateY(-1px);
 }
 
-.copyright-text,
-.powered-by-text {
-  font-family: var(--font-primary);
-  font-style: normal;
-  font-weight: 600;
-  font-size: 10px;
-  line-height: 1;
-  letter-spacing: 1.549px;
-  color: #161616;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0 0 -3px 0; /* Увеличиваем отрицательный отступ снизу для 40% */
-  height: 32px;
-}
-
-.copyright-text {
-  justify-content: flex-start; /* Выравнивание по левому краю */
-  /* Опускаем baseline на 1px */
-  transform: translateY(1px);
-}
-
-.powered-by-text {
-  justify-content: flex-end; /* Выравнивание по правому краю */
-  /* Опускаем baseline на 1px */
-  transform: translateY(1px);
-}
-
-/* Адаптив для мобильных */
+/* === АДАПТИВНОСТЬ === */
 @media (max-width: 768px) {
-  .footer-copyright {
-    height: 32px; /* Увеличиваем высоту */
-  }
-  
   .footer-copyright-content {
-    padding: 0 16px; /* Увеличиваем боковые отступы */
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0;
-    height: 32px;
-  }
-  
-  .copyright-left,
-  .footer-right {
-    height: 32px;
-    border: none;
-    padding: 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .copyright-left {
-    justify-content: flex-start;
+    padding: 0 16px;
   }
   
   .footer-right {
-    justify-content: flex-end;
-    gap: 12px; /* Увеличиваем отступы между ссылками */
+    gap: 12px;
   }
   
   .copyright-text,
-  .powered-by-text {
-    font-size: 11px; /* Увеличиваем размер шрифта */
-    line-height: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    transform: none;
-    font-weight: 600; /* Делаем шрифт жирнее */
-  }
-  
-  .copyright-text {
-    justify-content: flex-start;
-  }
-  
-  .powered-by-text {
-    justify-content: flex-end;
-  }
-  
+  .powered-by-text,
   .footer-link-small {
-    font-size: 11px; /* Увеличиваем размер шрифта */
+    font-size: 11px;
     line-height: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    text-decoration: underline;
-    font-weight: 600; /* Делаем шрифт жирнее */
+    font-weight: 600;
+    transform: none;
   }
 }
 
-/* Планшеты */
-@media (max-width: 768px) and (min-width: 481px) {
-  .footer-copyright {
-    height: 36px; /* Увеличиваем высоту */
-  }
-  
-  .footer-copyright-content {
-    padding: 0 20px; /* Увеличиваем боковые отступы */
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0;
-    height: 36px;
-  }
-  
-  .copyright-left,
-  .footer-right {
-    height: 36px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .copyright-left {
-    justify-content: flex-start;
-  }
-  
-  .footer-right {
-    justify-content: flex-end;
-    gap: 16px; /* Увеличиваем отступы */
-  }
-  
-  .copyright-text,
-  .powered-by-text {
-    font-size: 12px; /* Увеличиваем размер шрифта */
-    line-height: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    transform: none;
-    font-weight: 600;
-  }
-  
-  .copyright-text {
-    justify-content: flex-start;
-  }
-  
-  .powered-by-text {
-    justify-content: flex-end;
-  }
-  
-  .footer-link-small {
-    font-size: 12px; /* Увеличиваем размер шрифта */
-    line-height: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    text-decoration: underline;
-    font-weight: 600;
-  }
-}
-
-/* Мобильные устройства */
 @media (max-width: 480px) {
   .footer-copyright {
-    height: 40px; /* Увеличиваем высоту */
+    height: 32px;
   }
   
   .footer-copyright-content {
-    padding: 0 12px; /* Увеличиваем боковые отступы */
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0;
-    height: 40px;
-  }
-  
-  .copyright-left,
-  .footer-right {
-    height: 40px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .copyright-left {
-    justify-content: flex-start;
-  }
-  
-  .footer-right {
-    justify-content: flex-end;
-    gap: 10px; /* Оптимальные отступы */
+    padding: 0 12px;
   }
   
   .copyright-text,
   .powered-by-text {
-    font-size: 10px; /* Увеличиваем размер шрифта */
-    line-height: 40px;
-    letter-spacing: 0.8px; /* Увеличиваем межбуквенный интервал */
-    height: 40px;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    transform: none;
-    font-weight: 600;
-  }
-  
-  .copyright-text {
-    justify-content: flex-start;
-  }
-  
-  .powered-by-text {
-    justify-content: flex-end;
+    font-size: 8px;
+    letter-spacing: 1px;
   }
   
   .footer-link-small {
-    font-size: 10px; /* Увеличиваем размер шрифта */
-    line-height: 40px;
-    letter-spacing: 0.8px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    text-decoration: underline;
-    font-weight: 600;
-  }
-}
-
-/* Очень маленькие экраны */
-@media (max-width: 360px) {
-  .footer-copyright {
-    height: 44px; /* Увеличиваем высоту */
-  }
-  
-  .footer-copyright-content {
-    padding: 0 10px; /* Увеличиваем боковые отступы */
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0;
-    height: 44px;
-  }
-  
-  .copyright-left,
-  .footer-right {
-    height: 44px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .copyright-left {
-    justify-content: flex-start;
+    font-size: 8px;
+    letter-spacing: 1px;
   }
   
   .footer-right {
-    justify-content: flex-end;
-    gap: 8px; /* Оптимальные отступы */
-  }
-  
-  .copyright-text,
-  .powered-by-text {
-    font-size: 9px; /* Увеличиваем размер шрифта */
-    line-height: 44px;
-    letter-spacing: 0.6px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    transform: none;
-    font-weight: 600;
-  }
-  
-  .copyright-text {
-    justify-content: flex-start;
-  }
-  
-  .powered-by-text {
-    justify-content: flex-end;
-  }
-  
-  .footer-link-small {
-    font-size: 9px; /* Увеличиваем размер шрифта */
-    line-height: 44px;
-    letter-spacing: 0.6px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    text-decoration: underline;
-    font-weight: 600;
-  }
-}
-
-/* Ландшафтная ориентация на мобильных */
-@media (max-width: 812px) and (orientation: landscape) {
-  .footer-copyright {
-    height: 28px; /* Увеличиваем высоту */
-  }
-  
-  .footer-copyright-content {
-    padding: 0 16px; /* Увеличиваем боковые отступы */
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0;
-    height: 28px;
-  }
-  
-  .copyright-left,
-  .footer-right {
-    height: 28px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .copyright-left {
-    justify-content: flex-start;
-  }
-  
-  .footer-right {
-    justify-content: flex-end;
-    gap: 10px; /* Увеличиваем отступы */
-  }
-  
-  .copyright-text,
-  .powered-by-text {
-    font-size: 9px; /* Увеличиваем размер шрифта */
-    line-height: 28px;
-    letter-spacing: 0.5px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    transform: none;
-    font-weight: 600;
-  }
-  
-  .copyright-text {
-    justify-content: flex-start;
-  }
-  
-  .powered-by-text {
-    justify-content: flex-end;
-  }
-  
-  .footer-link-small {
-    font-size: 9px; /* Увеличиваем размер шрифта */
-    line-height: 28px;
-    letter-spacing: 0.5px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    text-decoration: underline;
-    font-weight: 600;
+    gap: 8px;
   }
 }

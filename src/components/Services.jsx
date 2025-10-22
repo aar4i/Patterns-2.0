@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import '../styles/Services.css'
-import { useServices } from '../context/ServicesContext'
 
 function Services() {
   const [openServices, setOpenServices] = useState([])
-  const { addService } = useServices()
 
   const services = [
     {
@@ -111,4 +109,4 @@ function Services() {
   )
 }
 
-export default Services 
+export default Services

@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import '../styles/Contact.css'
-import { useServices } from '../context/ServicesContext'
+import PrivacyPolicy from './PrivacyPolicy'
 
 function Contact() {
-  const { getServicesText, selectedServices, clearServices } = useServices()
-  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,6 +15,7 @@ function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState('')
   const [privacyAccepted, setPrivacyAccepted] = useState(false)
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false)
 
   // Configuration for form fields
   const formFields = [
@@ -46,20 +45,6 @@ function Contact() {
     }
   ]
 
-  // Автоматически добавляем выбранные услуги в поле сообщения
-  useEffect(() => {
-    if (selectedServices.length > 0) {
-      const servicesText = getServicesText()
-      setFormData(prev => ({
-        ...prev,
-        message: servicesText
-      }))
-      
-      // Фокусируемся на поле сообщения
-      setFocusedField('message')
-    }
-  }, [selectedServices, getServicesText])
-
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({
@@ -71,12 +56,11 @@ function Contact() {
   const handlePrivacyChange = (e) => {
     setPrivacyAccepted(e.target.checked)
     
-    // Генерируем рандомный поворот для PA SVG при отметке чекбокса
     if (e.target.checked) {
-      const randomRotation = Math.floor(Math.random() * 360); // от 0 до 360 градусов
-      const checkmark = e.target.nextElementSibling; // получаем .checkmark
+      const randomRotation = Math.floor(Math.random() * 360)
+      const checkmark = e.target.nextElementSibling
       if (checkmark) {
-        checkmark.style.setProperty('--random-rotation', `${randomRotation}deg`);
+        checkmark.style.setProperty('--random-rotation', `${randomRotation}deg`)
       }
     }
   }
@@ -102,20 +86,17 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     
-    // Проверяем, что все поля заполнены
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       setSubmitStatus('Please fill in all fields')
       return
     }
 
-    // Кастомная валидация email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) {
       setSubmitStatus('Please enter a valid email address')
       return
     }
 
-    // Проверяем согласие с Privacy Policy
     if (!privacyAccepted) {
       setSubmitStatus('Please accept the Privacy Policy to continue')
       return
@@ -125,17 +106,9 @@ function Contact() {
     setSubmitStatus('')
 
     try {
-      // Конфигурация EmailJS (замените на ваши данные)
       const serviceID = 'service_a6xf19k'
-      const templateID = 'template_wt8e3nm'  // Вставьте ID шаблона Contact Us
+      const templateID = 'template_wt8e3nm'
       const publicKey = 'bJW23xxe84BurjT5W'
-
-      console.log('Sending email with params:', {
-        serviceID,
-        templateID,
-        publicKey,
-        formData
-      })
 
       const templateParams = {
         from_name: formData.name,
@@ -144,28 +117,18 @@ function Contact() {
         message: formData.message
       }
 
-      console.log('Template params:', templateParams)
-
       const response = await emailjs.send(serviceID, templateID, templateParams, publicKey)
-      console.log('EmailJS response:', response)
       
       setSubmitStatus('Message sent successfully!')
       setFormData({ name: '', email: '', phone: '', message: '' })
       setPrivacyAccepted(false)
-      clearServices() // Очищаем выбранные услуги после отправки
       
-      // Автоматически скрываем успешное сообщение через 3 секунды
       setTimeout(() => {
         setSubmitStatus('')
       }, 3000)
       setFocusedField(null)
       
     } catch (error) {
-      console.error('Detailed error:', error)
-      console.error('Error message:', error.message)
-      console.error('Error status:', error.status)
-      console.error('Error text:', error.text)
-      
       let errorMessage = 'Error sending message. Please try again.'
       
       if (error.status === 400) {
@@ -234,7 +197,8 @@ function Contact() {
   }
 
   return (
-    <section id="contact" className="contact">
+    <>
+      <section id="contact" className="contact">
       <div className="contact-container">
         <div className="contact-content">
           <div className="contact-form-section">
@@ -253,7 +217,7 @@ function Contact() {
                     <span className="checkmark"></span>
                   </label>
                   <span className="checkbox-text">
-                    <a href="#privacy-policy" className="privacy-link">Privacy Policy</a>
+                    <span onClick={() => setIsPrivacyOpen(true)} className="privacy-link">Privacy Policy</span>
                   </span>
                 </div>
               </div>
@@ -288,8 +252,10 @@ function Contact() {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+      {isPrivacyOpen && <PrivacyPolicy onClose={() => setIsPrivacyOpen(false)} />}
+    </>
   )
 }
 
-export default Contact 
+export default Contact

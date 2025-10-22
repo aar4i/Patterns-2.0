@@ -1,14 +1,14 @@
-/* Минималистичная секция Contact */
+/* === БАЗОВАЯ СЕКЦИЯ === */
 .contact {
   min-height: auto;
-  background-color: #eee8e7; /* Белый фон как в сервисах */
-  color: #161616; /* Черный текст */
+  background-color: #eee8e7;
+  color: #161616;
   padding: 2rem 0;
 }
 
 .contact-container {
   width: 100%;
-  max-width: 2000px; /* Увеличиваем ширину контейнера для большой формы */
+  max-width: 2000px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -19,81 +19,58 @@
   gap: 3rem;
 }
 
-/* Форма */
 .contact-form-section {
-  background-color: transparent; /* Убираем белый фон */
-  color: var(--text-primary);
+  background-color: transparent;
   padding: 3rem 2rem;
   display: flex;
-  justify-content: center; /* Центрируем форму */
+  justify-content: center;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1.4rem; /* Увеличиваем промежутки в 2 раза */
+  gap: 1.4rem;
 }
 
-.form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  position: relative;
-}
-
+/* === ПОЛЯ ВВОДА (объединенные стили) === */
 .field-label {
-  background-color: #d1d4db; /* Светло-серый фон как в Figma */
-  color: #000000; /* Черный текст как в Figma */
-  padding: 0;
-  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
+  background-color: #d1d4db;
+  color: #000000;
+  font-size: clamp(3rem, 8vw, 4rem);
   font-weight: 400;
   letter-spacing: 0.05em;
   font-family: var(--font-primary);
-  display: block;
   width: 100%;
-  max-width: 530px; /* Увеличиваем ширину в 2 раза */
-  line-height: 0.8; /* Максимально плотная высота строки */
+  max-width: 530px;
+  line-height: 0.8;
   cursor: url('/logos/CursorPM.svg') 20 13, auto !important;
   transition: all 0.3s ease;
-  position: relative;
   text-transform: uppercase;
-  min-height: 59px; /* Фиксированная высота как у кнопки SUBMIT */
+  min-height: 59px;
   display: flex;
   align-items: center;
-}
-
-.field-label.focused {
+  position: relative;
   padding: 0;
-  width: 100%;
-  max-width: 530px; /* Увеличиваем ширину в 2 раза */
-  display: flex;
-  align-items: center;
-  background-color: #d1d4db; /* Светло-серый фон как в Figma */
-  color: #000000; /* Черный текст как в Figma */
-  min-height: 59px; /* Фиксированная высота как у кнопки SUBMIT */
 }
 
-.field-label.textarea-field.focused {
-  max-width: 842px; /* Для textarea делаем шире */
+.field-label.textarea-field {
+  max-width: 842px;
   height: 250px !important;
-  min-height: 250px !important;
-  max-height: 250px !important;
+  align-items: flex-start;
   overflow: hidden;
 }
 
+/* Input и Textarea - общие стили */
 .field-label input,
 .field-label textarea {
   background: transparent;
   border: none;
   outline: none;
-  font-size: inherit;
-  font-family: inherit;
-  font-weight: inherit;
+  font: inherit;
   letter-spacing: inherit;
   color: inherit;
   width: 100%;
   resize: none;
-  line-height: inherit;
   text-transform: inherit;
   position: absolute;
   top: 0;
@@ -101,6 +78,7 @@
   height: 100%;
   opacity: 0;
   transition: opacity 0.3s ease;
+  padding: 0;
 }
 
 .field-label.focused input,
@@ -110,68 +88,28 @@
 
 .field-label textarea {
   height: 250px !important;
-  min-height: 250px !important;
-  max-height: 250px !important;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  font-size: inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  color: inherit;
-  resize: none !important;
-  line-height: inherit;
-  text-transform: inherit;
-  transition: opacity 0.3s ease;
   text-align: left;
-  vertical-align: top;
-  padding: 0;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.textarea-field {
-  height: 250px !important; /* Фиксированная высота как в Figma - 250px */
-  min-height: 250px !important;
-  max-height: 250px !important;
-  max-width: 842px; /* Ширина как в Figma - 842px (шире чем обычные поля) */
-  display: block;
-  align-items: flex-start;
-  overflow: hidden;
 }
 
 .textarea-content {
   white-space: pre-line;
   line-height: 0.8;
-  font-size: inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  color: inherit;
-  text-transform: inherit;
+  font: inherit;
   text-align: left;
-  vertical-align: top;
 }
 
-/* Privacy Policy Checkbox */
+/* === PRIVACY CHECKBOX === */
 .privacy-checkbox {
   margin: 2rem 0;
-  max-width: 842px; /* Расширяем как textarea */
+  max-width: 842px;
 }
 
 .checkbox-container {
   display: flex;
-  align-items: center; /* Центрируем по высоте */
-  gap: 24px; /* Отступ между чекбоксом и текстом */
+  align-items: center;
+  gap: 24px;
   position: relative;
-  width: 842px; /* Полная ширина как у textarea */
-  cursor: default; /* Убираем курсор по умолчанию */
+  width: 842px;
 }
 
 .checkbox-input {
@@ -183,38 +121,27 @@
   align-items: center;
   justify-content: center;
   cursor: url('/logos/CursorPM.svg') 20 13, auto !important;
-  flex-shrink: 0;
-  width: 65px; /* Точно такой же размер как у checkmark */
-  height: 65px; /* Точно такой же размер как у checkmark */
-  margin: 0; /* Убираем все отступы */
-  padding: 0; /* Убираем все отступы */
+  width: 65px;
+  height: 65px;
+  margin: 0;
+  padding: 0;
 }
 
 .checkmark {
-  width: 65px; /* Размер как в Figma */
-  height: 65px; /* Размер как в Figma */
-  border: none;
-  background-color: #d1d4db; /* Светло-серый фон как в Figma */
+  width: 65px;
+  height: 65px;
+  background-color: #d1d4db;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  margin: 0; /* Убираем отступ */
   transition: all 0.3s ease;
-}
-
-.checkbox-input:checked + .checkmark {
-  background-color: #d1d4db; /* Оставляем серый фон */
 }
 
 .checkbox-input:checked + .checkmark::after {
   content: '';
   width: 80px;
   height: 80px;
-  background-image: url('/logos/CursorPM-white.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  background: url('/logos/CursorPM-white.svg') center/contain no-repeat;
   transform: rotate(var(--random-rotation, 0deg));
   transition: transform 0.3s ease;
   position: absolute;
@@ -222,67 +149,55 @@
   left: -7.5px;
 }
 
-.checkbox-text {
-  flex: 1; /* Занимает оставшееся место */
-  display: flex;
-  align-items: center;
-  justify-content: flex-end; /* Выравнивание по правому краю */
-  padding: 0; /* Убираем padding */
-  cursor: default; /* Убираем курсор */
-}
-
 .privacy-link {
-  color: #000000; /* Черный цвет как в Figma */
-  text-decoration: underline; /* Добавляем подчеркивание */
-  text-decoration-thickness: 4px; /* Делаем подчеркивание еще толще */
-  font-size: 64px; /* Размер как в Figma */
+  color: #000000;
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  font-size: 64px;
   font-family: var(--font-primary);
   font-weight: 400;
-  letter-spacing: 3.2px; /* Letter spacing как в Figma */
+  letter-spacing: 3.2px;
   text-transform: uppercase;
   transition: var(--transition);
-  background-color: #d1d4db; /* Серый фон только под текстом */
-  padding: 0 8px; /* Уменьшенные отступы слева и справа */
-  display: inline-flex; /* Flexbox для лучшего выравнивания */
-  align-items: center; /* Центрируем по вертикали */
-  height: 65px; /* Полная высота как у блока */
+  background-color: #d1d4db;
+  padding: 0 8px;
+  height: 65px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .privacy-link:hover {
   color: var(--bg-secondary);
 }
 
-.submit-button {
-  background-color: var(--bg-secondary); /* Красный цвет фона */
-  color: white; /* Белый текст на красном фоне */
+/* === КНОПКИ (Submit + Social Links) === */
+.submit-button,
+.social-link {
+  background-color: var(--bg-secondary);
+  color: white;
   border: none;
-  padding: 0;
-  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
+  font-family: var(--font-primary);
   font-weight: 400;
   letter-spacing: 0.05em;
-  font-family: var(--font-primary);
-  cursor: pointer;
-  width: 100%;
-  max-width: 842px; /* Делаем ширину как у textarea */
-
   text-transform: uppercase;
-  line-height: 0.8; /* Максимально плотная высота строки */
-  text-align: left;
-  position: relative;
-  overflow: hidden; /* Обязательно скрываем выходящий за границы контент */
+  cursor: pointer;
   transition: background-color 0.3s ease;
-  height: 59px; /* Высота как в Figma */
-  display: flex;
+  line-height: 0.8;
+  display: inline-flex;
   align-items: center;
 }
 
-.submit-button:hover {
-  background-color: var(--accent-primary); /* При hover другой оттенок красного */
+.submit-button {
+  font-size: clamp(3rem, 8vw, 4rem);
+  max-width: 842px;
+  width: 100%;
+  height: 59px;
+  padding: 0;
 }
 
-.submit-text {
-  display: inline-block;
-  transition: all 0.3s ease;
+.submit-button:hover,
+.social-link:hover {
+  background-color: var(--accent-primary);
 }
 
 .submit-button:disabled {
@@ -291,50 +206,32 @@
 }
 
 .submit-status {
-  margin-top: 1rem; /* Уменьшенный отступ от кнопки SUBMIT */
-  font-size: 43px; /* Размер в полтора раза меньше (64px / 1.5 ≈ 43px) */
+  margin-top: 1rem;
+  font-size: 43px;
   font-weight: 400;
   font-family: var(--font-primary);
-  letter-spacing: 2.1px; /* Letter spacing пропорционально уменьшен */
+  letter-spacing: 2.1px;
   text-transform: uppercase;
-  background-color: #a62639; /* Красный фон как у кнопки SUBMIT */
-  color: #eee8e7; /* Белый текст */
-  height: auto; /* Высота по содержимому текста */
-  display: inline-flex; /* inline-flex чтобы фон был впритык к тексту */
-  align-items: center;
-  padding: 0; /* Убираем все отступы - фон впритык к тексту */
-  width: fit-content; /* Ширина по содержимому */
+  background-color: #a62639;
+  color: #eee8e7;
+  padding: 0;
+  width: fit-content;
 }
 
-.submit-status.success {
-  background-color: #a62639; /* Красный фон */
-  color: #eee8e7; /* Белый текст */
-}
-
-.submit-status.error {
-  background-color: #a62639; /* Красный фон */
-  color: #eee8e7; /* Белый текст */
-}
-
-/* Анимация кнопки отключена */
-
-/* Разделитель */
-.contact-divider {
+/* === РАЗДЕЛИТЕЛЬ === */
+.divider-text {
+  font-size: clamp(4rem, 10vw, 6rem);
+  font-weight: 400;
+  color: #161616;
+  letter-spacing: 0.1em;
+  font-family: var(--font-primary);
+  text-transform: uppercase;
+  line-height: 0.8;
   text-align: center;
   padding: 2rem 0;
 }
 
-.divider-text {
-  font-size: clamp(4rem, 10vw, 6rem); /* Увеличиваем размер шрифта в 2 раза */
-  font-weight: 400;
-  color: #161616; /* Меняем на черный текст */
-  letter-spacing: 0.1em;
-  font-family: var(--font-primary);
-  text-transform: uppercase;
-  line-height: 0.8; /* Максимально плотная высота строки */
-}
-
-/* Контактная информация */
+/* === КОНТАКТНАЯ ИНФОРМАЦИЯ === */
 .contact-info-section {
   display: flex;
   flex-direction: column;
@@ -343,426 +240,79 @@
   text-align: center;
 }
 
-.contact-action {
-  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
-  font-weight: 400;
-  color: #161616; /* Меняем на черный текст */
-  letter-spacing: 0.05em;
+.contact-action,
+.contact-email a {
   font-family: var(--font-primary);
+  font-weight: 400;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  line-height: 0.8; /* Максимально плотная высота строки */
+  line-height: 0.8;
 }
 
-.contact-email {
-  font-size: clamp(3rem, 8vw, 4rem); /* Такой же размер как у social-link */
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  font-family: var(--font-primary);
-  line-height: 0.8;
-  text-transform: uppercase;
+.contact-action {
+  font-size: clamp(3rem, 8vw, 4rem);
+  color: #161616;
 }
 
 .contact-email a {
-  color: var(--accent-primary); /* Красный цвет как у social-link */
-  text-decoration: none;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  transition: var(--transition);
+  font-size: clamp(2.5rem, 7vw, 3.5rem);
+  background-color: var(--bg-secondary);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
 .contact-email a:hover {
-  color: var(--text-primary); /* При наведении белый цвет как у social-link */
-  text-decoration: none;
+  background-color: var(--accent-primary);
 }
 
 .contact-social {
   display: flex;
-  gap: 6rem; /* Увеличиваем промежутки в 2 раза */
-  margin-top: 2rem; /* Увеличиваем отступ сверху в 2 раза */
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .social-link {
-  font-size: clamp(3rem, 8vw, 4rem); /* Увеличиваем размер шрифта в 2 раза */
-  font-weight: 400;
-  color: var(--accent-primary);
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  font-family: var(--font-primary);
-  transition: var(--transition);
-  text-transform: uppercase;
-  line-height: 0.8; /* Максимально плотная высота строки */
+  font-size: clamp(2rem, 6vw, 3rem);
+  padding: 0.5rem 1.5rem;
 }
 
-.social-link:hover {
-  color: var(--text-primary);
-}
+/* === АДАПТИВНОСТЬ === */
 
-/* Футер */
-.footer {
-  background-color: #eee8e7; /* Белый фон как в сервисах */
-  color: #161616; /* Черный текст */
-  padding: 2rem 0 1rem;
-  text-align: center;
-  border-top: 1px solid #a62639; /* Красная граница сверху */
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 1rem;
-}
-
-.footer-link {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 1rem;
-  transition: var(--transition);
-}
-
-.footer-link:hover {
-  color: #161616; /* Черный цвет при наведении */
-}
-
-.footer-text {
-  color: #161616; /* Черный текст */
-  font-size: 0.85rem;
-  line-height: 1.5;
-}
-
-/* Мобильная адаптивность */
+/* Планшеты */
 @media (max-width: 768px) {
   .contact-container {
-    padding: 0 1rem;
-  }
-  
-  .privacy-checkbox {
-    margin: 1.5rem 0;
-  }
-  
-  .checkbox-text {
-    width: 100%; /* На мобильных растягиваем на всю ширину */
-    height: auto;
-    padding: 1rem;
-    background-color: #d1d4db; /* Светло-серый фон как в Figma */
-  }
-  
-  .privacy-link {
-    font-size: clamp(1rem, 2.2vw, 1.2rem);
-    color: #000000; /* Черный текст как в Figma */
-    text-decoration: none;
-    letter-spacing: 0.1rem;
-  }
-  
-  .checkmark {
-    width: 20px;
-    height: 20px;
-    margin: 0;
-    border-color: #161616; /* Черная граница */
-  }
-  
-  .checkbox-label {
-    width: 20px;
-    height: 20px;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .submit-status {
-    font-size: clamp(1.2rem, 3vw, 1.6rem); /* Мобильный размер шрифта */
-    max-width: 100%;
-    min-height: 60px;
-    padding: 1rem;
-    letter-spacing: 0.1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .privacy-checkbox {
-    margin: 1rem 0;
-  }
-  
-  .checkbox-container {
-    gap: 0.8rem;
-    cursor: default;
-  }
-  
-  .checkbox-text {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    line-height: 1.3;
-  }
-  
-  .checkmark {
-    width: 18px;
-    height: 18px;
-    margin: 0;
-  }
-  
-  .checkbox-label {
-    width: 18px;
-    height: 18px;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-/* Адаптивность - улучшенная версия */
-@media (max-width: 1024px) {
-  .contact {
-    padding: 4rem 0;
+    padding: 0 1.5rem;
   }
 
-  .contact-container {
-    padding: 0 2rem;
-  }
-
-  .contact-content {
-    gap: 3rem;
-  }
-
-  .contact-form-section {
-    padding: 2.5rem 2rem;
-  }
-  
+  .field-label,
+  .field-label.textarea-field,
+  .checkbox-container,
   .submit-button {
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
-    max-width: 800px;
-  }
-  
-  .divider-text {
-    font-size: clamp(3.5rem, 8vw, 5rem);
-  }
-  
-  .contact-action {
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
-  }
-  
-  .contact-email {
-    font-size: clamp(2rem, 5vw, 2.8rem);
-  }
-  
-  .social-link {
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
-  }
-  
-  .contact-social {
-    gap: 4rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .contact {
-    padding: 3rem 0;
-    min-height: 100vh;
-    min-height: 100svh;
-  }
-
-  .contact-container {
-    padding: 0 var(--mobile-padding);
-  }
-
-  .contact-content {
-    gap: 2.5rem;
-  }
-
-  .contact-form-section {
-    padding: 2rem var(--mobile-padding);
-    background-color: var(--bg-primary);
-    border-radius: 0;
-  }
-  
-  .contact-form {
-    width: 100%;
     max-width: 100%;
-  }
-  
-  .form-field {
-    margin-bottom: 1.5rem;
-    width: 100%;
   }
 
   .field-label {
-    font-size: clamp(1.2rem, 3vw, 1.6rem);
-    max-width: 100%;
-    min-height: 60px;
-    padding: 1rem;
-    border: none;
-    background-color: #d1d4db; /* Светло-серый фон как в Figma */
-    color: #000000; /* Черный текст как в Figma */
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    
-    /* Мобильные улучшения */
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-    user-select: none;
+    min-height: 55px;
   }
 
-  .field-label.focused {
-    max-width: 100%;
-    min-height: 60px;
-    background-color: #d1d4db; /* Светло-серый фон как в Figma */
-    color: #000000; /* Черный текст как в Figma */
-    display: flex;
-    align-items: center;
-  }
-  
-  .textarea-field {
-    height: 120px !important;
-    min-height: 120px !important;
-    max-height: 120px !important;
-    min-width: auto;
-    max-width: 100%;
-    display: block;
-    align-items: flex-start;
-    overflow: hidden;
-  }
-  
-  .textarea-field.focused {
-    height: 120px !important;
-    min-height: 120px !important;
-    max-height: 120px !important;
-    min-width: auto;
-    max-width: 100%;
-    overflow: hidden;
+  .field-label.textarea-field,
+  .field-label textarea {
+    height: 150px !important;
   }
 
-  .form-field input,
-  .form-field textarea {
-    font-size: clamp(1.1rem, 2.8vw, 1.4rem);
-    padding: 1rem;
-    width: 100%;
-    border: none;
-    background-color: transparent;
-    color: #000000; /* Черный текст как в Figma */
-    min-height: 50px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    
-    /* Мобильные улучшения для input */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 0;
-    outline: none;
-    resize: none !important;
-  }
-  
-  .form-field textarea {
-    height: 120px !important;
-    min-height: 120px !important;
-    max-height: 120px !important;
-    overflow: hidden;
-  }
-  
-  .field-label.focused input,
-  .field-label.focused textarea {
-    opacity: 1;
-  }
-  
-  .form-field input:focus,
-  .form-field textarea:focus {
-    border-color: var(--accent-light);
-    box-shadow: 0 0 0 2px rgba(166, 38, 57, 0.3);
-  }
-  
-  .textarea-content {
-    line-height: 1.4;
-    color: #161616;
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .submit-button {
-    font-size: clamp(2rem, 6vw, 3rem);
-    max-width: 100%;
-    width: 100%;
-    padding: 1rem;
-    min-height: 80px;
-    
-    /* Мобильные улучшения для кнопки */
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-    user-select: none;
-    cursor: pointer;
-  }
-  
-  .submit-button:active {
-    transform: scale(0.98);
-  }
-
-  .contact-divider {
-    padding: 1.5rem 0;
-  }
-  
-  .divider-text {
-    font-size: clamp(3rem, 8vw, 4.5rem);
-  }
-
-  .contact-info-section {
-    gap: 1.5rem;
-    padding: 0 var(--mobile-padding);
-  }
-  
-  .contact-action {
-    font-size: clamp(2rem, 6vw, 3rem);
-  }
-  
-  .contact-email {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    padding: 0.5rem 1rem;
-    text-align: center;
-    word-break: break-all;
-  }
-
-  .contact-social {
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .social-link {
-    font-size: clamp(2rem, 6vw, 3rem);
-    padding: 0.5rem 1rem;
-    min-height: 60px;
-    min-width: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    /* Мобильные улучшения для ссылок */
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-  }
-  
-  .social-link:active {
-    transform: scale(0.95);
+  .privacy-link {
+    font-size: 48px;
+    height: 55px;
   }
 }
 
+/* Мобильные */
 @media (max-width: 480px) {
-  .contact {
-    padding: 2rem 0;
-  }
-
   .contact-container {
-    padding: 0 var(--mobile-padding-sm);
+    padding: 0 1rem;
   }
 
   .contact-content {
@@ -770,285 +320,64 @@
   }
 
   .contact-form-section {
-    padding: 1.5rem var(--mobile-padding-sm);
+    padding: 1.5rem 1rem;
   }
 
   .field-label {
     font-size: clamp(1rem, 2.5vw, 1.3rem);
     min-height: 55px;
     padding: 0.8rem;
-    background-color: #d1d4db; /* Светло-серый фон как в Figma */
-    color: #000000; /* Черный текст как в Figma */
-    display: flex;
-    align-items: center;
-  }
-  
-  .field-label.focused {
-    min-height: 55px;
-    background-color: #d1d4db; /* Светло-серый фон как в Figma */
-    color: #000000; /* Черный текст как в Figma */
-    display: flex;
-    align-items: center;
-  }
-  
-  .textarea-field {
-    height: 100px !important;
-    min-height: 100px !important;
-    max-height: 100px !important;
-    min-width: auto;
-    max-width: 100%;
-    overflow: hidden;
-  }
-  
-  .textarea-field.focused {
-    height: 100px !important;
-    min-height: 100px !important;
-    max-height: 100px !important;
-    min-width: auto;
-    max-width: 100%;
-    overflow: hidden;
   }
 
-  .form-field input,
-  .form-field textarea {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    padding: 0.8rem;
-    min-height: 45px;
-    background-color: transparent;
-    color: #000000; /* Черный текст как в Figma */
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    resize: none !important;
-  }
-  
-  .form-field textarea {
+  .field-label.textarea-field,
+  .field-label textarea {
     height: 100px !important;
-    min-height: 100px !important;
-    max-height: 100px !important;
-    overflow: hidden;
   }
-  
-  .field-label.focused input,
-  .field-label.focused textarea {
-    opacity: 1;
+
+  .submit-button,
+  .contact-action,
+  .social-link {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    min-height: 55px;
   }
 
   .submit-button {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    min-height: 70px;
     padding: 0.8rem;
   }
-  
+
   .divider-text {
     font-size: clamp(2.5rem, 7vw, 3.5rem);
   }
-  
-  .contact-action {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-  }
-  
-  .contact-email {
+
+  .contact-email a {
     font-size: clamp(1.4rem, 4vw, 2rem);
     padding: 0.4rem 0.8rem;
     word-break: break-word;
-    hyphens: auto;
   }
 
-  .contact-social {
-    flex-direction: row;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
-  }
-  
   .social-link {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
     padding: 0.8rem 1.5rem;
-    min-height: 55px;
-    min-width: 120px;
-    width: auto;
-  }
-
-  .contact-footer {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    font-size: clamp(0.8rem, 2vw, 0.9rem);
   }
 }
 
-/* Очень маленькие экраны */
-@media (max-width: 360px) {
-  .contact-container {
-    padding: 0 0.5rem;
-  }
-  
-  .contact-form-section {
-    padding: 1rem 0.5rem;
-  }
-  
-  .field-label {
-    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
-    min-height: 50px;
-    padding: 0.6rem;
-    background-color: #d1d4db; /* Светло-серый фон как в Figma */
-    color: #000000; /* Черный текст как в Figma */
-    display: flex;
-    align-items: center;
-  }
-  
-  .form-field input,
-  .form-field textarea {
-    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
-    padding: 0.6rem;
-    min-height: 40px;
-    background-color: transparent;
-    color: #000000; /* Черный текст как в Figma */
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .field-label.focused input,
-  .field-label.focused textarea {
-    opacity: 1;
-  }
-  
-  .submit-button {
-    font-size: clamp(1.5rem, 4.5vw, 2rem);
-    min-height: 60px;
-  }
-  
-  .divider-text {
-    font-size: clamp(2rem, 6vw, 3rem);
-  }
-  
-  .contact-action {
-    font-size: clamp(1.5rem, 4.5vw, 2rem);
-  }
-  
-  .contact-email {
-    font-size: clamp(1.2rem, 3.5vw, 1.7rem);
-  }
-  
-  .contact-social {
-    flex-direction: row;
-    gap: 1.5rem;
-    justify-content: center;
-  }
-  
-  .social-link {
-    font-size: clamp(1.5rem, 4.5vw, 2rem);
-    min-height: 50px;
-    padding: 0.6rem 1rem;
-    width: auto;
-  }
-}
-
-/* Ландшафтная ориентация для мобильных */
-@media (max-width: 812px) and (orientation: landscape) {
-  .contact {
-    padding: 1.5rem 0;
-    min-height: auto;
-  }
-  
-  .contact-content {
-    gap: 1.5rem;
-  }
-  
-  .contact-form-section {
-    padding: 1rem;
-  }
-  
-  .field-label,
-  .field-label.focused {
-    min-height: 45px;
-    background-color: #d1d4db; /* Светло-серый фон как в Figma */
-    color: #000000; /* Черный текст как в Figma */
-    display: flex;
-    align-items: center;
-  }
-  
-  .textarea-field {
-    min-height: 80px;
-    min-width: auto;
-    max-width: 100%;
-  }
-  
-  .textarea-field.focused {
-    min-height: 90px;
-    min-width: auto;
-    max-width: 100%;
-  }
-  
-  .submit-button {
-    min-height: 60px;
-    font-size: clamp(1.5rem, 4vw, 2rem);
-  }
-  
-  .contact-social {
-    flex-direction: row;
-    gap: 1.5rem;
-  }
-  
-  .social-link {
-    min-width: 80px;
-    width: auto;
-  }
-}
-
-/* Улучшения для устройств с Touch */
+/* Touch устройства */
 @media (hover: none) and (pointer: coarse) {
   .field-label,
   .submit-button,
   .social-link {
-    min-height: 48px; /* Минимальный размер для касания */
+    min-height: 48px;
   }
-  
+
   .form-field input,
   .form-field textarea {
-    font-size: 16px; /* Предотвращение зума в iOS */
-  }
-  
-  /* Убираем hover эффекты для touch устройств */
-  .submit-button:hover,
-  .social-link:hover {
-    background-color: inherit;
-    color: inherit;
+    font-size: 16px;
   }
 }
 
-/* Предпочтения пользователя */
+/* Уменьшенная анимация */
 @media (prefers-reduced-motion: reduce) {
-  .field-label,
-  .submit-button,
-  .social-link,
-  .form-field input,
-  .form-field textarea {
+  * {
     transition: none !important;
     animation: none !important;
   }
 }
-
-/* Высокий контраст */
-@media (prefers-contrast: high) {
-  .field-label {
-    border-width: 3px;
-  }
-  
-  .field-label.focused {
-    border-width: 3px;
-    box-shadow: 0 0 0 3px var(--accent-primary);
-  }
-  
-  .form-field input:focus,
-  .form-field textarea:focus {
-    box-shadow: 0 0 0 3px rgba(166, 38, 57, 0.5);
-  }
-} 

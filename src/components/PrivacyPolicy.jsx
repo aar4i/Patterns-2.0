@@ -3,17 +3,24 @@ import '../styles/Modal.css';
 
 const PrivacyPolicy = ({ onClose }) => {
   useEffect(() => {
+    // Сохраняем текущую позицию скролла
+    const scrollY = window.scrollY;
+    
     // Блокируем прокрутку при открытии модального окна
-    document.body.classList.add('modal-open');
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
     
     // Разблокируем прокрутку при закрытии
     return () => {
-      document.body.classList.remove('modal-open');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollY);
     };
   }, []);
 
   const handleClose = () => {
-    document.body.classList.remove('modal-open');
     onClose();
   };
 
@@ -49,85 +56,64 @@ const PrivacyPolicy = ({ onClose }) => {
           <li>unsere Website besuchen (automatische Serverdaten, Cookies etc.)</li>
         </ul>
         
-        <p>Erhobene Daten können sein:</p>
+        <div className="section-divider"></div>
+        
+        <h3>3. Kontaktformular und E-Mail-Kontakt</h3>
+        <p>Wenn Sie unser Kontaktformular nutzen oder uns per E-Mail kontaktieren, verarbeiten wir folgende Daten:</p>
         <ul>
-          <li>Vor- und Nachname</li>
+          <li>Name</li>
           <li>E-Mail-Adresse</li>
-          <li>Telefonnummer</li>
-          <li>Liefer- oder Rechnungsadresse</li>
-          <li>Bestelldetails</li>
-          <li>IP-Adresse (bei Besuch der Website)</li>
+          <li>Telefonnummer (falls angegeben)</li>
+          <li>Nachrichteninhalt</li>
         </ul>
+        <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. lit. f DSGVO (berechtigtes Interesse an der Kommunikation mit Interessenten)</p>
+        <p><strong>Speicherdauer:</strong> Die Daten werden gelöscht, sobald sie für die Zwecke ihrer Verarbeitung nicht mehr erforderlich sind oder Sie um Löschung bitten.</p>
         
         <div className="section-divider"></div>
         
-        <h3>3. Zweck der Verarbeitung</h3>
-        <p>Wir verarbeiten Ihre Daten zu folgenden Zwecken:</p>
+        <h3>4. Server-Log-Dateien</h3>
+        <p>Bei jedem Besuch unserer Website erfasst unser System automatisch Daten und Informationen vom System des aufrufenden Rechners:</p>
         <ul>
-          <li>zur Abwicklung Ihrer Bestellung</li>
-          <li>zur Beantwortung von Anfragen</li>
-          <li>zur Erfüllung gesetzlicher Pflichten (z. B. Aufbewahrungspflichten)</li>
-          <li>ggf. für die technische Bereitstellung und Sicherheit der Website</li>
+          <li>IP-Adresse</li>
+          <li>Browsertyp und -version</li>
+          <li>Betriebssystem</li>
+          <li>Datum und Uhrzeit des Zugriffs</li>
+          <li>Referrer-URL</li>
         </ul>
+        <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Gewährleistung der Systemsicherheit)</p>
+        <p><strong>Speicherdauer:</strong> Die Daten werden nach 7 Tagen automatisch gelöscht.</p>
         
         <div className="section-divider"></div>
         
-        <h3>4. Rechtsgrundlage der Verarbeitung</h3>
-        <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) und Art. 6 Abs. 1 lit. c DSGVO (gesetzliche Pflicht). Bei Einwilligung (z. B. Newsletter) auf Basis von Art. 6 Abs. 1 lit. a DSGVO.</p>
-        
-        <div className="section-divider"></div>
-        
-        <h3>5. Weitergabe von Daten</h3>
-        <p>Eine Weitergabe Ihrer Daten erfolgt nicht, außer:</p>
-        <ul>
-          <li>an technische Dienstleister (z. B. Squarespace, E-Mail-Anbieter), mit denen ein Auftragsverarbeitungsvertrag besteht</li>
-          <li>an Logistikdienstleister, falls eine Lieferung erfolgt</li>
-          <li>wenn gesetzlich vorgeschrieben</li>
-        </ul>
-        
-        <div className="section-divider"></div>
-        
-        <h3>6. Cookies & Tracking</h3>
-        <p>Unsere Website kann Cookies einsetzen, um Funktionalitäten (z. B. Formulare, Sicherheitsfeatures) sicherzustellen.</p>
-        <p>Wenn Sie zustimmen, können Drittanbieter-Cookies (z. B. Google Analytics) verwendet werden.</p>
-        <p>Ein entsprechender Cookie-Banner wird beim ersten Besuch eingeblendet.</p>
-        
-        <div className="section-divider"></div>
-        
-        <h3>7. Speicherdauer</h3>
-        <p>Wir speichern personenbezogene Daten nur so lange, wie dies für die genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungsfristen bestehen.</p>
-        
-        <div className="section-divider"></div>
-        
-        <h3>8. Ihre Rechte</h3>
+        <h3>5. Ihre Rechte</h3>
         <p>Sie haben das Recht auf:</p>
         <ul>
-          <li>Auskunft über gespeicherte Daten (Art. 15 DSGVO)</li>
+          <li>Auskunft über Ihre gespeicherten personenbezogenen Daten (Art. 15 DSGVO)</li>
           <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
-          <li>Löschung (Art. 17 DSGVO)</li>
+          <li>Löschung Ihrer Daten (Art. 17 DSGVO)</li>
           <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
           <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
-          <li>Widerspruch gegen Verarbeitung (Art. 21 DSGVO)</li>
+          <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+          <li>Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
         </ul>
-        <p>Bitte wenden Sie sich hierzu an: <strong>contact@patterns-agency.com</strong></p>
         
         <div className="section-divider"></div>
         
-        <h3>9. Kontakt Datenschutz</h3>
-        <p>Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden:</p>
-        <div className="contact-info">
-          <p><strong>contact@patterns-agency.com</strong></p>
-        </div>
+        <h3>6. Weitergabe von Daten</h3>
+        <p>Eine Übermittlung Ihrer persönlichen Daten an Dritte erfolgt nur:</p>
+        <ul>
+          <li>wenn Sie ausdrücklich eingewilligt haben (Art. 6 Abs. 1 lit. a DSGVO)</li>
+          <li>dies zur Erfüllung eines Vertrags erforderlich ist (Art. 6 Abs. 1 lit. b DSGVO)</li>
+          <li>eine gesetzliche Verpflichtung besteht (Art. 6 Abs. 1 lit. c DSGVO)</li>
+        </ul>
         
         <div className="section-divider"></div>
         
-        <h3>10. Hosting & Website-Plattform</h3>
-        <p>Unsere Website wird über Squarespace (Squarespace Inc., USA) bereitgestellt.</p>
-        <p>Es besteht ein Auftragsverarbeitungsvertrag (Data Processing Addendum) mit Squarespace.</p>
-        <p>Daten können in die USA übertragen werden – in Einklang mit der DSGVO und den EU-Standardvertragsklauseln.</p>
+        <h3>7. Änderungen dieser Datenschutzerklärung</h3>
+        <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen.</p>
       </div>
     </div>
   );
 };
 
-export default PrivacyPolicy; 
+export default PrivacyPolicy;
