@@ -13,7 +13,7 @@
   position: relative;
 }
 
-/* Бегущие линии по бокам */
+/* Running lines on the sides */
 .about-content-wrapper::before,
 .about-content-wrapper::after {
   content: '';
@@ -48,7 +48,7 @@
   100% { background-position: 0% 0%; }
 }
 
-/* === MARQUEE (БЕГУЩИЕ СТРОКИ) === */
+/* === MARQUEE (RUNNING LINES) === */
 .marquee-container {
   width: 100%;
   display: flex;
@@ -72,7 +72,7 @@
   will-change: transform;
 }
 
-/* Разные скорости для строк */
+/* Different speeds for lines */
 .marquee-line:nth-child(2) .marquee-content {
   animation-duration: 75s;
   animation-direction: reverse;
@@ -108,7 +108,7 @@
   animation-play-state: paused;
 }
 
-/* === PA ЭЛЕМЕНТЫ === */
+/* === PA ELEMENTS === */
 .pa-element-marquee {
   display: inline-block;
   margin: 0 1rem;
@@ -140,9 +140,9 @@
   }
 }
 
-/* === АДАПТИВНОСТЬ === */
+/* === RESPONSIVENESS === */
 
-/* Планшеты */
+/* Tablets */
 @media (max-width: 768px) {
   .about {
     padding: 0 0 1.5rem;
@@ -179,7 +179,7 @@
   }
 }
 
-/* Мобильные */
+/* Mobile */
 @media (max-width: 480px) {
   .about {
     padding: 0 0 1rem;
@@ -216,7 +216,7 @@
   }
 }
 
-/* Уменьшенная анимация */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .marquee-content,
   .about-content-wrapper::before,

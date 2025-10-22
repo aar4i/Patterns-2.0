@@ -11,7 +11,7 @@ const VideoColorAnalyzer = ({ src, className = '', targetColor = null }) => {
   
   const [isReady, setIsReady] = useState(false);
 
-  // Проверка цвета пикселя
+  // Check pixel color
   const checkColor = (x, y, target, tolerance = 80) => {
     const hiddenCanvas = hiddenCanvasRef.current;
     const canvas = canvasRef.current;
@@ -48,7 +48,7 @@ const VideoColorAnalyzer = ({ src, className = '', targetColor = null }) => {
     }
   };
 
-  // Рендер PA элементов
+  // Render PA elements
   const render = () => {
     const canvas = canvasRef.current;
     if (!canvas || !targetColor) return;
@@ -84,7 +84,7 @@ const VideoColorAnalyzer = ({ src, className = '', targetColor = null }) => {
     elementsRef.current = newElements;
   };
 
-  // Анализ кадра и добавление новых элементов
+  // Analyze frame and add new elements
   const analyzeFrame = () => {
     if (!targetColor || !isReady) return;
     
@@ -140,7 +140,7 @@ const VideoColorAnalyzer = ({ src, className = '', targetColor = null }) => {
     }
   };
 
-  // Запуск анимации
+  // Start animation
   const startAnimation = () => {
     if (animationRef.current) {
       cancelAnimationFrame(animationRef.current);
@@ -154,7 +154,7 @@ const VideoColorAnalyzer = ({ src, className = '', targetColor = null }) => {
     animate();
   };
 
-  // Обновление размеров canvas
+  // Update canvas dimensions
   const updateCanvasSize = () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -178,7 +178,7 @@ const VideoColorAnalyzer = ({ src, className = '', targetColor = null }) => {
     hiddenCanvas.height = Math.floor(videoRect.height * 0.3);
   };
 
-  // Инициализация видео
+  // Initialize video
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !src) return;
@@ -205,21 +205,21 @@ const VideoColorAnalyzer = ({ src, className = '', targetColor = null }) => {
     };
   }, [src]);
 
-  // Смена цвета
+  // Color change
   useEffect(() => {
     if (targetColor) {
       elementsRef.current = [];
     }
   }, [targetColor]);
 
-  // Запуск анимации
+  // Start animation
   useEffect(() => {
     if (isReady && targetColor) {
       startAnimation();
     }
   }, [isReady, targetColor]);
 
-  // Анализ кадров
+  // Frame analysis
   useEffect(() => {
     if (!isReady || !targetColor) return;
     
@@ -231,7 +231,7 @@ const VideoColorAnalyzer = ({ src, className = '', targetColor = null }) => {
     };
   }, [isReady, targetColor]);
 
-  // Очистка при размонтировании
+  // Cleanup on unmount
   useEffect(() => {
     return () => {
       if (animationRef.current) {

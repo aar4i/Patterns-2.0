@@ -16,7 +16,7 @@ function About() {
           {aboutLines.map((line, lineIndex) => (
             <div key={lineIndex} className="marquee-line">
               <div className="marquee-content">
-                {/* Дублируем 4 раза для бесшовной анимации */}
+                {/* Duplicate 4 times for seamless animation */}
                 {[...Array(4)].map((_, index) => (
                   <span key={index} className="marquee-text">
                     {line}{' '}

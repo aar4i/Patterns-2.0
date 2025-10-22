@@ -1,4 +1,4 @@
-/* Секция services main */
+/* Main services section */
 .services {
   background-color: #eee8e7;
   width: 100%;
@@ -15,7 +15,7 @@
   position: relative;
 }
 
-/* Container основной */
+/* Main container */
 .services-main-container {
   width: 1000px;
   min-height: 835px;
@@ -23,7 +23,7 @@
   position: relative;
 }
 
-/* Container каждого сервиса */
+/* Each service container */
 .service-item {
   width: 936px;
   min-height: 177px;
@@ -37,7 +37,7 @@
   margin-bottom: 0;
 }
 
-/* Container заголовка */
+/* Title container */
 .service-title-row {
   width: 936px;
   height: 67px;
@@ -47,7 +47,7 @@
   z-index: 5;
 }
 
-/* Heading 2 - красный фон */
+/* Heading 2 - red background */
 .service-header {
   position: absolute;
   left: 0;
@@ -63,7 +63,7 @@
   z-index: 6;
 }
 
-/* Text заголовка с глифами кружочков */
+/* Title text with circle glyphs */
 .service-title {
   color: #161616;
   font-family: var(--font-primary);
@@ -82,7 +82,7 @@
   font-variant-alternates: stylistic(circled-numbers);
 }
 
-/* Container субтитра */
+/* Subtitle container */
 .service-subtitle-row {
   width: 936px;
   height: 110px;
@@ -92,7 +92,7 @@
   z-index: 10;
 }
 
-/* Text субтитра */
+/* Subtitle text */
 .service-subtitle {
   position: absolute;
   left: 0;
@@ -111,7 +111,7 @@
   z-index: 11;
 }
 
-/* Выпадающая панель */
+/* Dropdown panel */
 .service-panel {
   max-height: 0;
   overflow: hidden;
@@ -155,7 +155,7 @@
   width: 75%;
 }
 
-/* Новый контейнер для изображения */
+/* New image container */
 .service-image-container {
   display: flex;
   justify-content: center;
@@ -196,7 +196,7 @@
   letter-spacing: 0;
 }
 
-/* Стили для цифр в кружочках в тексте */
+/* Styles for circled numbers in text */
 .feature-number-inline {
   color: #a62639;
   font-family: 'ApfelPA', var(--font-primary);
@@ -208,14 +208,14 @@
   vertical-align: baseline;
 }
 
-/* Hover эффект - изменение цвета текста и подчеркивания */
+/* Hover effect - text and underline color change */
 .service-header:hover .service-title {
   color: #ffffff;
   text-decoration-color: #ffffff;
   transition: color 0.3s ease, text-decoration-color 0.3s ease;
 }
 
-/* Белый цвет заголовка когда панель открыта */
+/* White title color when panel is open */
 .service-header.active .service-title {
   color: #ffffff !important;
   text-decoration-color: #ffffff !important;
@@ -225,7 +225,7 @@
   transition: color 0.3s ease, text-decoration-color 0.3s ease;
 }
 
-/* Мобильная адаптивность */
+/* Mobile responsiveness */
 @media (max-width: 1920px) {
   .services-container {
     width: 100%;

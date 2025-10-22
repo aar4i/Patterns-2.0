@@ -3,7 +3,7 @@ import VideoColorAnalyzer from './VideoColorAnalyzer'
 import FooterCopyright from './FooterCopyright'
 import '../styles/Hero.css'
 
-// Константы для цветов вне компонента для гарантированной стабильности ссылок
+// Color constants outside component for guaranteed reference stability
 const BLACK_COLOR = { r: 0, g: 0, b: 0 }
 const WHITE_COLOR = { r: 255, g: 255, b: 255 }
 
@@ -11,7 +11,7 @@ function Hero() {
   const [isMobile, setIsMobile] = useState(false)
   const [isWhiteMode, setIsWhiteMode] = useState(false)
 
-  // Мемоизируем targetColor чтобы избежать лишних ре-рендеров
+  // Memoize targetColor to avoid unnecessary re-renders
   const targetColor = useMemo(() => {
     return isWhiteMode ? WHITE_COLOR : BLACK_COLOR
   }, [isWhiteMode])
@@ -64,7 +64,7 @@ function Hero() {
         <div className="hero-content"></div>
       </div>
 
-      {/* PA элемент справа вверху - только переключатель цвета */}
+      {/* PA element in top right - only color switcher */}
       <div className="hero-pa-elements">
         <img 
           src={isWhiteMode ? "/logos/CursorPM-white.svg" : "/logos/CursorPM.svg"}
@@ -81,7 +81,7 @@ function Hero() {
         />
       </div>
       
-      {/* Логотип в левом верхнем углу */}
+      {/* Logo in top left corner */}
       <div className="hero-top-left-logo">
         <img 
           src="/logos/PM Final-93.svg" 

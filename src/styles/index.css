@@ -15,7 +15,7 @@ body {
   width: 100%;
   margin: 0 auto;
 }
-/* Минималистичная прокрутка */
+/* Minimalist scrolling */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -33,13 +33,13 @@ body {
   background: #a62639;
 }
 
-/* Выделение текста */
+/* Text selection */
 ::selection {
   background: #a62639;
   color: #161616;
 }
 
-/* Фокус */
+/* Focus */
 *:focus-visible {
   outline: 1px solid #a62639;
   outline-offset: 1px;

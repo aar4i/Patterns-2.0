@@ -3,15 +3,15 @@ import '../styles/Modal.css';
 
 const PrivacyPolicy = ({ onClose }) => {
   useEffect(() => {
-    // Сохраняем текущую позицию скролла
+    // Save current scroll position
     const scrollY = window.scrollY;
     
-    // Блокируем прокрутку при открытии модального окна
+    // Lock scrolling when opening modal
     document.body.style.position = 'fixed';
     document.body.style.top = `-${scrollY}px`;
     document.body.style.width = '100%';
     
-    // Разблокируем прокрутку при закрытии
+    // Unlock scrolling when closing
     return () => {
       document.body.style.position = '';
       document.body.style.top = '';

@@ -1,4 +1,4 @@
-/* Модальные окна в стиле Patterns Manufacturing */
+/* Modal windows in Patterns Manufacturing style */
 
 .modal-overlay {
   position: fixed;
@@ -131,7 +131,7 @@
   color: #a62639;
 }
 
-/* Скроллбар в стиле проекта */
+/* Project style scrollbar */
 .modal-content::-webkit-scrollbar {
   width: 8px;
 }
@@ -149,13 +149,13 @@
   background: #8a1f30;
 }
 
-/* Firefox скроллбар */
+/* Firefox scrollbar */
 .modal-content {
   scrollbar-width: thin;
   scrollbar-color: #a62639 #f1f1f1;
 }
 
-/* Анимация появления */
+/* Appearance animation */
 @keyframes modalFadeIn {
   from {
     opacity: 0;
@@ -171,14 +171,14 @@
   animation: modalFadeIn 0.3s ease-out;
 }
 
-/* Блокировка прокрутки при открытом модальном окне */
+/* Scroll lock when modal is open */
 body.modal-open {
   overflow: hidden;
   position: fixed;
   width: 100%;
 }
 
-/* Мобильная адаптация */
+/* Mobile adaptation */
 @media (max-width: 768px) {
   .modal-content {
     padding: 2rem 1.5rem;
@@ -244,7 +244,7 @@ body.modal-open {
   }
 }
 
-/* Ландшафтная ориентация на мобильных */
+/* Landscape orientation on mobile */
 @media (max-width: 812px) and (orientation: landscape) {
   .modal-content {
     max-height: 95vh;

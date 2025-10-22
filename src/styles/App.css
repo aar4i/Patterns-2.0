@@ -1,29 +1,29 @@
 @import './fonts.css';
 
 :root {
-  /* Цвета */
+  /* Colors */
   --bg-primary: #eee8e7;
   --bg-secondary: #a62639;
   --text-primary: #161616;
   --text-secondary: #eee8e7;
   --accent-primary: #a62639;
   
-  /* Шрифты */
+  /* Fonts */
   --font-primary: 'ApfelGrotezk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   
-  /* Тени */
+  /* Shadows */
   --shadow-light: 0 2px 8px rgba(166, 38, 57, 0.3);
   --shadow-medium: 0 4px 16px rgba(166, 38, 57, 0.4);
   
-  /* Переходы */
+  /* Transitions */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
-  /* Мобильные отступы */
+  /* Mobile padding */
   --mobile-padding: 1rem;
   --mobile-padding-sm: 0.75rem;
 }
 
-/* === БАЗОВЫЕ СТИЛИ === */
+/* === BASE STYLES === */
 * {
   margin: 0;
   padding: 0;
@@ -54,14 +54,14 @@ body {
 
 
 
-/* === УТИЛИТЫ === */
-/* Скрытие скроллбара */
+/* === UTILITIES === */
+/* Hide scrollbar */
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
 
-/* Выделение текста */
+/* Text selection */
 ::selection {
   background-color: var(--accent-primary);
   color: var(--text-secondary);
@@ -72,12 +72,12 @@ body {
   color: var(--text-secondary);
 }
 
-/* Отключение tap highlight на мобильных */
+/* Disable tap highlight on mobile */
 * {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* === АДАПТИВНОСТЬ === */
+/* === RESPONSIVENESS === */
 @media (max-width: 768px) {
   body {
     font-size: 14px;
@@ -90,7 +90,7 @@ body {
   }
 }
 
-/* Уменьшенная анимация */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;

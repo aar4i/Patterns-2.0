@@ -19,7 +19,7 @@
   height: 32px;
 }
 
-/* === ЛЕВАЯ И ПРАВАЯ ЧАСТИ === */
+/* === LEFT AND RIGHT PARTS === */
 .copyright-left,
 .footer-right {
   display: flex;
@@ -36,7 +36,7 @@
   padding-left: 16px;
 }
 
-/* === ТЕКСТ === */
+/* === TEXT === */
 .copyright-text,
 .powered-by-text,
 .footer-link-small {
@@ -76,7 +76,7 @@
   transform: translateY(-1px);
 }
 
-/* === АДАПТИВНОСТЬ === */
+/* === RESPONSIVENESS === */
 @media (max-width: 768px) {
   .footer-copyright-content {
     padding: 0 16px;

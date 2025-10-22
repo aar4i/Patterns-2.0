@@ -47,7 +47,7 @@ function Services() {
     }
   }
 
-  // Функция для обработки текста и выделения функций
+  // Function to process text and highlight features
   const processDescription = (description) => {
     const parts = description.split(/(\s\d\s)/);
     return parts.map((part, index) => {

@@ -3,10 +3,10 @@ import '../styles/Modal.css';
 
 const TermsOfService = ({ onClose }) => {
   useEffect(() => {
-    // Блокируем прокрутку при открытии модального окна
+    // Lock scrolling when opening modal
     document.body.classList.add('modal-open');
     
-    // Разблокируем прокрутку при закрытии
+    // Unlock scrolling when closing
     return () => {
       document.body.classList.remove('modal-open');
     };
